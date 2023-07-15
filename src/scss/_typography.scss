@@ -1,0 +1,99 @@
+// headings
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5 {
+	font-family: $font-heading;
+}
+// body
+body, html {
+	font-family: $font-body;
+	font-size: $default-font-size;
+	line-height: $default-line-height;
+	font-weight: $default-font-weight;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-backface-visibility: hidden;
+	-webkit-tap-highlight-color: transparent;
+}
+
+// font-sizes
+h1,.h1 {
+	font-size: 60px;
+	line-height: 64px;
+	font-weight: 600;
+	@media (max-width: $mobile) {
+		font-size: 40px;
+		line-height: 44px;
+	}
+}
+h2,.h2 {
+	font-size: 48px;
+	line-height: 48px;
+	font-weight: 600;
+	@media (max-width: $mobile) {
+		font-size: 40px;
+		line-height: 44px;
+	}
+}
+h3,.h3 {
+	font-size: 40px;
+	line-height: 40px;
+	font-weight: 400;
+	@media (max-width: $mobile) {
+		font-size: 32px;
+		line-height: 36px;
+	}
+}
+h4,.h4 {
+	font-size: 32px;
+	line-height: 38px;
+	font-weight: 500;
+	@media (max-width: $mobile) {
+		font-size: 28px;
+		line-height: 32px;
+	}
+}
+h5,.h5 {
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: 500;
+	@media (max-width: $mobile) {
+		font-size: 20px;
+		line-height: 28px;
+	}
+}
+h6,.h6 {
+	font-family: 'Arial', sans-serif;
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: 400;
+}
+
+.p-large {
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: 400;
+	@media (max-width: $mobile) {
+		font-size: 18px;
+	}
+}
+
+.p-small {
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 400;
+}
+
+.p-bold {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 700;
+}
+
+.info-label {
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 700;
+	color: $sky-blue;
+	text-transform: uppercase;
+}

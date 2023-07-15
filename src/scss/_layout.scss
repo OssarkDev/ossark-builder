@@ -1,0 +1,165 @@
+/*
+=================================================================
+    Layout Spacing
+=================================================================
+*/
+section, .section {
+    margin: $section-margin-laptop 0;
+    @media (max-width: $mobile) {
+        margin: $section-margin-mobile 0;
+    }
+    @media (min-width: $hd-screen) {
+        margin: $section-margin-desktop 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.container {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $container-padding-desktop;
+    @media (max-width: $mobile) {
+        padding: 0 $container-padding-mobile;
+        column-gap: $grid-column-gap-mobile;
+    }
+    @media (min-width: $tablet) {
+        padding: 0 $container-padding-tablet;
+        column-gap: $grid-column-gap-tablet;
+    }
+    @media (min-width: $hd-screen) {
+        padding: 0 $container-padding-hd-screens;
+        column-gap: $grid-column-gap-desktop;
+    }
+}
+
+.row {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat($grid-columns-desktop, 1fr);
+    column-gap: $grid-column-gap-desktop;
+    // mobile
+    @media (max-width: $mobile) {
+        grid-template-columns: repeat($grid-columns-mobile, 1fr);
+        column-gap: $grid-column-gap-mobile;
+    }
+    // tablet
+    @media (min-width: $mobile) and (max-width: $tablet) {
+        grid-template-columns: repeat($grid-columns-tablet, 1fr);
+        column-gap: $grid-column-gap-tablet;
+    }
+}
+
+/*
+=================================================================
+    Grid
+=================================================================
+*/
+
+// create all grid column classes for dekstop
+@for $i from 1 through $grid-columns-desktop {
+	.col-#{$i} {
+		grid-column: span #{$i};
+	}
+	// create all grid column offset classes
+	@for $j from 1 through calc($grid-columns-desktop - $i) {
+		@if $i < $grid-columns-desktop {
+			.col-#{$i}-offset-#{$j} {
+				display: flex;
+				grid-column-start: #{$j + 1};
+				grid-column-end: #{$i + $j + 1};
+			}
+		}
+	}
+}
+
+// create all grid column classes for mobile
+@for $i from 1 through $grid-columns-mobile {
+	@media(max-width: $mobile) {
+		.col-sm-#{$i} {
+			grid-column: span #{$i};
+		}
+		// create all grid column offset classes for mobile
+		@for $j from 1 through calc($grid-columns-mobile - $i) {
+			@if $i < $grid-columns-mobile {
+				.col-sm-#{$i}-offset-#{$j} {
+					display: flex;
+					grid-column-start: #{$j + 1};
+					grid-column-end: #{$i + $j + 1};
+				}
+			}
+		}
+	}
+}
+
+// create all grid column classes for tablet
+@for $i from 1 through $grid-columns-tablet {
+    @media(min-width: $mobile) and (max-width: $tablet) {
+        .col-md-#{$i} {
+            grid-column: span #{$i};
+        }
+        // create all grid column offset classes for tablet
+        @for $j from 1 through calc($grid-columns-tablet - $i) {
+            @if $i < $grid-columns-tablet {
+                .col-md-#{$i}-offset-#{$j} {
+                    display: flex;
+                    grid-column-start: #{$j + 1};
+                    grid-column-end: #{$i + $j + 1};
+                }
+            }
+        }
+    }
+}
+
+// create all grid column classes for hd-screens
+@for $i from 1 through $grid-columns-hd-screens {
+    @media(min-width: $hd-screen) {
+        .col-lg-#{$i} {
+            grid-column: span #{$i};
+        }
+        // create all grid column offset classes for hd-screens
+        @for $j from 1 through calc($grid-columns-hd-screens - $i) {
+            @if $i < $grid-columns-hd-screens {
+                .col-lg-#{$i}-offset-#{$j} {
+                    display: flex;
+                    grid-column-start: #{$j + 1};
+                    grid-column-end: #{$i + $j + 1};
+                }
+            }
+        }
+    }
+}
+
+/*
+=================================================================
+    Spacing
+=================================================================
+*/
+
+// create all padding and margin classes
+@each $space in $spacing {
+    @each $class, $class-name in zip($directions, $directions-classname) {
+        .#{$class-name}-#{$space} {
+            #{$class}: #{$space}px;
+        }
+    }
+}
+
+// override certain padding and margin classes for mobile
+@media(max-width: $mobile) {
+    @each $class, $class-name in zip($directions, $directions-classname) {
+        @each $desktop, $mobile in zip($desktop-change, $mobile-change) {
+            .#{$class-name}-#{$desktop} {
+                #{$class}: #{$mobile}px;
+            }
+        }
+    }
+}
+
+

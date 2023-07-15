@@ -1,0 +1,29 @@
+@use "sass:math";
+
+@function pxToRem($value) {
+    @return strip-unit($value)*0.1 + px;
+}
+
+@function remToPx($value) {
+    @return remToNum($value) + px;
+}
+
+@function remToNum($value) {
+    @return strip-unit($value) * 10;
+}
+
+@function numToRem($value) {
+    @return #{$value*0.1 + rem};
+}
+
+@function numToPx($value) {
+    @return #{$value + px};
+}
+
+@function numToVw($value) {
+    @return #{$value + vw};
+}
+
+@function strip-unit($num) {
+    @return math.div($num, $num * 0 + 1);
+}

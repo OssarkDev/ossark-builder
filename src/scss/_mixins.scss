@@ -1,0 +1,49 @@
+// breakpoint mixin
+@mixin min-screen($size) {
+    @media only screen and (min-width: $size) {
+        @content;
+    }
+}
+@mixin max-screen($size) {
+    @media only screen and (max-width: $size) {
+        @content;
+    }
+}
+
+// make an absolute image
+@mixin abs-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+// Mixin that will truncate text
+@mixin truncate-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+// Font-size mixin, with IE7 & IE8 support, CSS tricks courtesy
+@mixin font-size($size: 16, $line: $size * 1.25) {
+    font-size: $size + px;
+    line-height: ($line * 10) + px;
+    font-size: $size + rem;
+    line-height: $line + rem;
+  }
+
+// add border radius
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+
