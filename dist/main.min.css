@@ -1930,6 +1930,32 @@ section:first-child, .section:first-child {
     margin-left: 80px;
   }
 }
+.header__container .row {
+  align-items: center;
+}
+.header__nav {
+  margin: 24px 0;
+}
+.header__nav__list {
+  display: flex;
+  justify-content: center;
+}
+.header__nav__list__item {
+  margin-right: 24px;
+}
+.header__cta {
+  height: 100%;
+  display: flex;
+}
+
+.footer__nav__list {
+  display: flex;
+  flex-direction: column;
+}
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+}
 .hero {
   background-size: cover;
   background-position: center center;

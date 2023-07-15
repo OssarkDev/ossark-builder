@@ -5,38 +5,49 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php wp_head(); ?>
-    <!-- <?php // the_field('header_scripts','option'); ?> -->
 </head>
 <body>
 <header class="header" id="header">
 <?php
     $menu = get_field('navigation', 'option');
     $logo = get_field('logo', 'option');
+    $header_cta = get_field('header_cta', 'option');
     ?>
     <div class="container header__container">
         <div class="row">
-            <div class="col-4 header__logo">
-                <a href="<?php echo get_site_url(); ?>">
-                    <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+            <div class="col-2 header__logo">
+                <a href="<?= get_site_url(); ?>">
+                    <img src="<?= esc_url($logo['url']); ?>" alt="<?= esc_attr($image['alt']); ?>">
                 </a>
             </div>
             <div class="col-8">
                 <?php if($menu): ?>
                     <nav class="header__nav">
-                        <ul class="header__nav__list">
+                        <div class="header__nav__list">
                             <?php foreach($menu as $item): ?>
                                 <?php
                                 $name = $item['menu_item']['title'];
                                 $link = $item['menu_item']['link'];
                                 ?>
-                                <li class="header__nav__list__item">
-                                    <a href="<?php echo esc_url($link); ?>">
-                                        <?php echo esc_html($name); ?>
-                                    </a>
-                                </li>
+                                <a href="<?= esc_url($link); ?>" class="header__nav__list__item">
+                                    <span>
+                                        <?= esc_html($name); ?>
+                                    </span>
+                                </a>
                             <?php endforeach; ?>
-                        </ul>
+                        </div>
                     </nav>
+                <?php endif; ?>
+            </div>
+            <div class="col-2">
+                <?php if($header_cta): ?>
+                    <div class="header__cta">
+                        <a href="<?= $header_cta['link']; ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
+                            <span>
+                                <?= $header_cta['title']; ?>
+                            </span>
+                        </a>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>

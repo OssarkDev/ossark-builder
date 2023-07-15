@@ -17,20 +17,20 @@ $secondary_cta = get_field('secondary_cta');
             <div class="container hero__container">
                 <?php if($title): ?>
                     <div class="hero__title">
-                        <h1><?php echo $title; ?></h1>
+                        <h1><?= $title; ?></h1>
                     </div>
                 <?php endif; ?>
                 <?php if($content): ?>
                     <div class="hero__content">
-                        <p><?php echo $content; ?></p>
+                        <p><?= $content; ?></p>
                     </div>
                 <?php endif; ?>
                 <div class="hero__buttons">
                     <?php if($cta): ?>
-                        <a href="<?php echo $cta['url']; ?>" class="btn"><?php echo $cta['title']; ?></a>
+                        <a href="<?= $cta['url']; ?>" class="btn"><?= $cta['title']; ?></a>
                     <?php endif; ?>
                     <?php if($secondary_cta): ?>
-                        <a href="<?php echo $secondary_cta['url']; ?>" class="btn"><?php echo $secondary_cta['title']; ?></a>
+                        <a href="<?= $secondary_cta['url']; ?>" class="btn"><?= $secondary_cta['title']; ?></a>
                     <?php endif; ?>
                 </div>
             </div>

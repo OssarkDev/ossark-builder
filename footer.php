@@ -5,37 +5,54 @@
     $menu = get_field('navigation', 'option');
     $logo = get_field('logo', 'option');
     $address = get_field('company_address', 'option');
+    $contact_phone = get_field('footer_phone', 'option');
+    $contact_email = get_field('footer_email', 'option');
     $cookie_statement = get_field('cookie_statement', 'option');
     $privacy_policy = get_field('privacy_policy', 'option');
     ?>
     <div class="footer">
-        <div class="container pt-4 pb-4">
+        <div class="container">
             <div class="row">
+
                 <!-- logo -->
-                <div class="col-4 footer__logo">
-                    <a href="<?php echo get_site_url(); ?>">
-                        <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                <div class="col-3 footer__logo">
+                    <a href="<?= get_site_url(); ?>">
+                        <img src="<?= $logo['url']; ?>" alt="<?= $image['alt']; ?>">
                     </a>
                 </div>
+
+                <!-- address -->
+                <div class="col-3">
+                    <div class="footer__address">
+                        <?= $address; ?>
+                    </div>
+                </div>
+
                 <!-- contact -->
-                <div class="col-4"></div>
+                <div class="col-3">
+                    <div class="footer__contact">
+                        <a href="tel:<?= $contact_phone; ?>">
+                            <?= $contact_phone; ?>
+                        </a>
+                        <a href="mailto:<?= $contact_email; ?>">
+                            <?= $contact_email; ?>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- menu -->
-                <div class="col-4">
+                <div class="col-3">
                     <?php if($menu): ?>
                         <nav class="footer__nav">
-                            <ul class="footer__nav__list">
+                            <div class="footer__nav__list">
                                 <?php foreach($menu as $item): ?>
-                                    <?php
-                                    $name = $item['menu_item']['title'];
-                                    $link = $item['menu_item']['link'];
-                                    ?>
-                                    <li class="footer__nav__list__item">
-                                        <a href="<?php echo esc_url($link); ?>">
-                                            <?php echo esc_html($name); ?>
-                                        </a>
-                                    </li>
+                                    <a href="<?= $item['menu_item']['link'] ?>" class="footer__nav__list__item">
+                                        <span>
+                                            <?= $item['menu_item']['title'];; ?>
+                                        </span>
+                                    </a>
                                 <?php endforeach; ?>
-                            </ul>
+                            </div>
                         </nav>
                     <?php endif; ?>
                 </div>

@@ -1,0 +1,32 @@
+.footer {
+
+	&__logo {
+
+	}
+
+	&__nav {
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+
+			&__item {
+
+			}
+		}
+
+	}
+
+	&__social {
+
+	}
+
+	&__contact {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__address {
+
+	}
+}

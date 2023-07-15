@@ -1,11 +1,10 @@
 // @import '_functions';
-@import '_mixins';
-
-@import '_variables';
-@import '_fonts';
-@import '_reset';
-@import '_typography';
-@import '_layout';
+@import 'include/_mixins';
+@import 'include/_variables';
+@import 'include/_fonts';
+@import 'include/_reset';
+@import 'include/_typography';
+@import 'include/_layout';
 
 // parts
 @import 'parts/_header';
