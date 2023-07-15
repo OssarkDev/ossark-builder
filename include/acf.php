@@ -30,9 +30,9 @@ if (function_exists('acf_register_block_type')) {
 function register_acf_block_types()
 {
     acf_register_block_type(array(
-        'name' => 'hero-section',
-        'title' => __('Hero Section'),
-        'description'   => __('Hero block'),
+        'name' => 'hero',
+        'title' => __('Hero'),
+        'description'   => __('Hero Section'),
         'render_template' => 'components/hero.php',
         'category' => 'osmo-blocks',
         'icon' => 'admin-comments',
@@ -96,7 +96,7 @@ add_filter( 'allowed_block_types', 'allowed_block_types', 10, 2 );
 function allowed_block_types( $allowed_blocks, $post ) {
 
     $all_blocks = [
-      'acf/text-block',
+      'acf/hero',
     ];
     $article_blocks = [];
     $services_blocks = [];

@@ -6,3 +6,13 @@
 @import '_reset';
 @import '_typography';
 @import '_layout';
+
+// parts
+@import 'parts/_header';
+@import 'parts/_footer';
+@import 'parts/_buttons';
+@import 'parts/_animations';
+
+
+// components
+@import 'components/_hero';
