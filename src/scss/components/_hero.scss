@@ -2,4 +2,24 @@
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
+	height: 100vh;
+	width: auto;
+	display: flex;
+	align-items: center;
+
+	&__title {
+
+	}
+
+	&__content {
+
+	}
+
+	&__buttons {
+		display: flex;
+		gap: 24px;
+		@include max-screen($tablet) {
+			flex-direction: column;
+		}
+	}
 }

@@ -277,6 +277,9 @@ section, .section {
 section:last-child, .section:last-child {
   margin-bottom: 0;
 }
+section:first-child, .section:first-child {
+  margin-top: 0;
+}
 
 .container {
   box-sizing: border-box;
@@ -1931,6 +1934,19 @@ section:last-child, .section:last-child {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  height: 100vh;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+.hero__buttons {
+  display: flex;
+  gap: 24px;
+}
+@media only screen and (max-width: 992px) {
+  .hero__buttons {
+    flex-direction: column;
+  }
 }
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].oneOf[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].oneOf[2].use[2]!./node_modules/slick-carousel/slick/slick.scss ***!
