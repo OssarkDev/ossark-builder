@@ -1,6 +1,19 @@
 <?php
 /*
 =====================
+	ACF Maps block
+=====================
+*/
+function map_acf_init() {
+    $api_key = get_field('google_map_api_key', 'option');
+    acf_update_setting('google_api_key', $api_key);
+}
+add_action('acf/init', 'map_acf_init');
+
+
+
+/*
+=====================
 	Add custom block category
 =====================
 */

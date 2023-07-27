@@ -1,0 +1,11 @@
+@-webkit-keyframes  hideHeader {
+	from {transform: translate(0, 0%);}
+	to {transform: translate(0, -100%);}
+  }
+
+  header.hide-header {
+	animation-duration:700ms;
+	animation-name: hideHeader;
+	animation-timing-function:cubic-bezier(0.00, 0.00, 0.00, 1.00);
+	animation-fill-mode:both;
+  }

@@ -78,6 +78,8 @@ $directions-classname: p pt pr pb pl m mt mr mb ml;
 // add desktop sizes and corresponding mobile sizes
 $desktop-change: 32 40 56 80 120;
 $mobile-change: 24 32 40 56 80;
+// header
+$header-height: 80px;
 
 /*
 =================================================================
@@ -86,3 +88,5 @@ $mobile-change: 24 32 40 56 80;
 */
 // $border-middle-grey: 1.5px solid $middle-grey;
 // $border-blue: 1.5px solid $sky-blue;
+
+

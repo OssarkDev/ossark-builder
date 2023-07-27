@@ -33,10 +33,12 @@ function excerpt($limit,$post_id=-1) {
     return $excerpt;
 }
 
-/**
- * Get svg icon from sprite
- * usage: icon( 'check' ); or icon( 'check', 'test_mod' );
- */
+
+/*
+	=====================
+		Get svg icon from sprite usage: icon( 'check' ); or icon( 'check', 'test_mod' );
+	=====================	
+*/
 function icon( $icon_name, $icon_mod = null ) {
   if ( $icon_name ) {
     $out     = '';
@@ -56,3 +58,17 @@ function icon( $icon_name, $icon_mod = null ) {
 */
 // update_option( 'siteurl', 'http://example.com' );
 // update_option( 'home', 'http://example.com' );
+
+
+/*
+	=====================
+		PHP Console.log
+	=====================	
+*/
+function console_log($data) {
+  $output = $data;
+  if (is_array($output))
+      $output = implode(',', $output);
+
+  echo "<script>console.log('Debug Objects: " . json_encode($output) . "' );</script>";
+}

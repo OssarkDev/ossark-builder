@@ -4,6 +4,7 @@
 
 		.row {
 			align-items: center;
+			height: $header-height;
 		}
 
 	}
@@ -13,7 +14,6 @@
 	}
 
 	&__nav {
-		margin: 24px 0;
 
 		&__list {
 			display: flex;
@@ -29,11 +29,19 @@
 			}
 		}
 
+		@include max-screen($tablet) {
+			display: none;
+		}
+
 	}
 
 	&__cta {
-		height: 100%;
+		// height: 100%;
 		display: flex;
+
+		@include max-screen($tablet) {
+			display: none;
+		}
 	}
 
 }

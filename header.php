@@ -20,36 +20,34 @@
                     <img src="<?= esc_url($logo['url']); ?>" alt="<?= esc_attr($image['alt']); ?>">
                 </a>
             </div>
-            <div class="col-8">
-                <?php if($menu): ?>
-                    <nav class="header__nav">
-                        <div class="header__nav__list">
-                            <?php foreach($menu as $item): ?>
-                                <?php
-                                $name = $item['menu_item']['title'];
-                                $link = $item['menu_item']['link'];
-                                ?>
-                                <a href="<?= esc_url($link); ?>" class="header__nav__list__item">
-                                    <span>
-                                        <?= esc_html($name); ?>
-                                    </span>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
-                    </nav>
-                <?php endif; ?>
-            </div>
-            <div class="col-2">
-                <?php if($header_cta): ?>
-                    <div class="header__cta">
-                        <a href="<?= $header_cta['link']; ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
-                            <span>
-                                <?= $header_cta['title']; ?>
-                            </span>
-                        </a>
+            <?php if($menu): ?>
+                <nav class="col-8 header__nav">
+                    <div class="header__nav__list">
+                        <?php foreach($menu as $item): ?>
+                            <?php
+                            $name = $item['menu_item']['title'];
+                            $link = $item['menu_item']['link'];
+                            ?>
+                            <a href="<?= esc_url($link); ?>" class="header__nav__list__item">
+                                <span>
+                                    <?= esc_html($name); ?>
+                                </span>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
-                <?php endif; ?>
-            </div>
+                </nav>
+            <?php endif; ?>
+            <?php if($header_cta): ?>
+                <div class="col-2 header__cta">
+                    <a href="<?= $header_cta['link']; ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
+                        <span>
+                            <?= $header_cta['title']; ?>
+                        </span>
+                    </a>
+                </div>
+            <?php endif; ?>
+            <!-- Hamburger Menu -->
+            <div class="header__hamburger"></div>
         </div>
     </div>
 </header>

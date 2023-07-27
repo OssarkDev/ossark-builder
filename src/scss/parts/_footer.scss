@@ -1,4 +1,12 @@
 .footer {
+	margin: 40px 0;
+
+	&__row {
+		@include max-screen($mobile) {
+			row-gap: 40px;
+		}
+		
+	}
 
 	&__logo {
 
@@ -18,6 +26,12 @@
 	}
 
 	&__social {
+		display: flex;
+		gap: 12px;
+
+		&__icon {
+
+		}
 
 	}
 

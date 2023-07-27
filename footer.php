@@ -9,27 +9,28 @@
     $contact_email = get_field('footer_email', 'option');
     $cookie_statement = get_field('cookie_statement', 'option');
     $privacy_policy = get_field('privacy_policy', 'option');
+    $social = get_field('social', 'option');
     ?>
     <div class="footer">
         <div class="container">
-            <div class="row">
+            <div class="row footer__row">
 
                 <!-- logo -->
-                <div class="col-3 footer__logo">
+                <div class="col-2 col-sm-6 footer__logo">
                     <a href="<?= get_site_url(); ?>">
                         <img src="<?= $logo['url']; ?>" alt="<?= $image['alt']; ?>">
                     </a>
                 </div>
 
                 <!-- address -->
-                <div class="col-3">
+                <div class="col-2 col-sm-6">
                     <div class="footer__address">
                         <?= $address; ?>
                     </div>
                 </div>
 
                 <!-- contact -->
-                <div class="col-3">
+                <div class="col-3 col-sm-6">
                     <div class="footer__contact">
                         <a href="tel:<?= $contact_phone; ?>">
                             <?= $contact_phone; ?>
@@ -40,8 +41,23 @@
                     </div>
                 </div>
 
+                <!-- social -->
+                <div class="col-2 col-sm-6">
+                    <div class="footer__social">
+                        <?php if($social): ?>
+                            <?php foreach($social as $item): ?>
+                                <?php $icon = $item['icon']; ?>
+                                <?php $link = $item['link']; ?>
+                                <a href="<?= $link['url']; ?>" target="_blank" class="footer__social__icon">
+                                    <?php  echo file_get_contents($icon['url']); ?>
+                                </a>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
                 <!-- menu -->
-                <div class="col-3">
+                <div class="col-3 col-sm-6">
                     <?php if($menu): ?>
                         <nav class="footer__nav">
                             <div class="footer__nav__list">
@@ -62,11 +78,11 @@
 </footer>
 
 <?php 
-    $enable_hotjar = get_field('enable_hotjar', 'option');
-    $hotjar_script = get_field('hotjar_script', 'option');
-    if($enable_hotjar && $hotjar_script) {
-        echo $hotjar_script;
-    }
+    // $enable_hotjar = get_field('enable_hotjar', 'option');
+    // $hotjar_script = get_field('hotjar_script', 'option');
+    // if($enable_hotjar && $hotjar_script) {
+    //     echo $hotjar_script;
+    // }
 ?>
 
 <?php wp_footer(); ?>
