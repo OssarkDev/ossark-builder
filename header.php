@@ -12,7 +12,7 @@
     $menu = get_field('navigation', 'option');
     $logo = get_field('logo', 'option');
     $header_cta = get_field('header_cta', 'option');
-    ?>
+?>
     <div class="container header__container">
         <div class="row">
             <div class="col-2 header__logo">
@@ -46,12 +46,14 @@
                     </a>
                 </div>
             <?php endif; ?>
-            <!-- Hamburger Menu -->
+
             <div class="header__hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+
+            
         </div>
     </div>
 </header>

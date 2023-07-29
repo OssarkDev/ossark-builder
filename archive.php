@@ -1,11 +1,20 @@
 <?php
 /*
-    Archive page template
+    Default Archive page template
 */
 ?>
 
-<?php get_header(); ?>
+<?php
+get_header();
 
-<?php the_content(); ?>
+wp_reset_query();
 
-<?php get_footer(); ?>
+if ( have_posts() ) :
+    while ( have_posts() ) : the_post();
+        the_content();
+    endwhile;
+endif;
+
+wp_reset_query();
+
+get_footer();

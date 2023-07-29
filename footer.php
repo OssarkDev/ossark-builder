@@ -16,14 +16,14 @@
             <div class="row footer__row">
 
                 <!-- logo -->
-                <div class="col-2 col-sm-6 footer__logo">
+                <div class="col-2 col-md-6 footer__logo">
                     <a href="<?= get_site_url(); ?>">
                         <img src="<?= $logo['url']; ?>" alt="<?= $image['alt']; ?>">
                     </a>
                 </div>
 
                 <!-- address -->
-                <div class="col-2 col-sm-6">
+                <div class="col-2 col-md-6">
                     <div class="footer__address">
                         <?= $address; ?>
                     </div>
@@ -42,7 +42,7 @@
                 </div>
 
                 <!-- social -->
-                <div class="col-2 col-sm-6">
+                <div class="col-2 col-md-6">
                     <div class="footer__social">
                         <?php if($social): ?>
                             <?php foreach($social as $item): ?>
@@ -57,7 +57,7 @@
                 </div>
 
                 <!-- menu -->
-                <div class="col-3 col-sm-6">
+                <div class="col-3 col-md-6">
                     <?php if($menu): ?>
                         <nav class="footer__nav">
                             <div class="footer__nav__list">

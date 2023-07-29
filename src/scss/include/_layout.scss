@@ -35,7 +35,7 @@ section, .section {
         padding: 0 $container-padding-mobile;
         column-gap: $grid-column-gap-mobile;
     }
-    @media (min-width: $tablet) {
+    @media (max-width: $tablet) {
         padding: 0 $container-padding-tablet;
         column-gap: $grid-column-gap-tablet;
     }
