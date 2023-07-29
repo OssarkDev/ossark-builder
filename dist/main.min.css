@@ -1962,52 +1962,31 @@ section:first-child, .section:first-child {
 }
 .header__hamburger {
   display: none;
-  width: 60px;
-  height: 60px;
-  top: 100px;
-  left: 120px;
   transition-duration: 0.5s;
 }
 @media only screen and (max-width: 992px) {
   .header__hamburger {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }
-.header__hamburger__icon {
-  transition-duration: 0.5s;
-  position: absolute;
-  height: 8px;
-  width: 60px;
-  top: 30px;
+.header__hamburger span {
+  display: block;
+  width: 48px;
+  height: 6px;
   background-color: #000;
-}
-.header__hamburger__icon:before {
   transition-duration: 0.5s;
-  position: absolute;
-  width: 60px;
-  height: 8px;
-  background-color: #000;
-  content: "";
-  top: -20px;
 }
-.header__hamburger__icon:after {
-  transition-duration: 0.5s;
-  position: absolute;
-  width: 60px;
-  height: 8px;
-  background-color: #000;
-  content: "";
-  top: 20px;
-}
-.header__hamburger.open .header__hamburger__icon {
+.header__hamburger.open span:nth-child(2) {
   transition-duration: 0.5s;
   background: transparent;
 }
-.header__hamburger.open .header__hamburger__icon:before {
-  transform: rotateZ(45deg) scaleX(1.25) translate(13px, 13px);
+.header__hamburger.open span:nth-child(1) {
+  transform: rotateZ(45deg) scaleX(1) translate(11px, 12px);
 }
-.header__hamburger.open .header__hamburger__icon:after {
-  transform: rotateZ(-45deg) scaleX(1.25) translate(12px, -12px);
+.header__hamburger.open span:nth-child(3) {
+  transform: rotateZ(-45deg) scaleX(1) translate(8px, -9px);
 }
 .header__hamburger:hover {
   cursor: pointer;

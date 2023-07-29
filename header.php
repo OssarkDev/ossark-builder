@@ -48,7 +48,9 @@
             <?php endif; ?>
             <!-- Hamburger Menu -->
             <div class="header__hamburger">
-                <div class="header__hamburger__icon"></div>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </div>

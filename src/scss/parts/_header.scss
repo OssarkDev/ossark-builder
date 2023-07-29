@@ -41,52 +41,31 @@
     &__hamburger {
         display: none;
         @include max-screen($tablet) {
-            display: block;
+            display: flex;
+			flex-direction: column;
+			gap: 8px;
         }
-        width: 60px;
-        height: 60px;
-        top: 100px;
-        left: 120px;
         transition-duration: 0.5s;
 
-        &__icon {
-            transition-duration: 0.5s;
-            position: absolute;
-            height: 8px;
-            width: 60px;
-            top: 30px;
-            background-color: $black;
-            &:before {
-                transition-duration: 0.5s;
-                position: absolute;
-                width: 60px;
-                height: 8px;
-                background-color: $black;
-                content: "";
-                top: -20px;
-            }
-            &:after {
-                transition-duration: 0.5s;
-                position: absolute;
-                width: 60px;
-                height: 8px;
-                background-color: $black;
-                content: "";
-                top: 20px;
-            }
-        }
+		span {
+			display: block;
+			width: 48px;
+			height: 6px;
+			background-color: $black;
+			transition-duration: 0.5s;
+		}
+
 		&.open {
-			.header__hamburger__icon {
+			span:nth-child(2) {
 				transition-duration: 0.5s;
 				background: transparent;
+			}
+			span:nth-child(1) {
+				transform: rotateZ(45deg) scaleX(1) translate(11px, 12px);
+			}
 
-				&:before {
-					transform: rotateZ(45deg) scaleX(1.25) translate(13px, 13px);
-				}
-
-				&:after {
-					transform: rotateZ(-45deg) scaleX(1.25) translate(12px, -12px);
-				}
+			span:nth-child(3) {
+				transform: rotateZ(-45deg) scaleX(1) translate(8px, -9px);
 			}
 		}
 		&:hover {
