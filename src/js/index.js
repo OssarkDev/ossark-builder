@@ -8,11 +8,13 @@ import { lottie } from "./parts/lottie";
 import { backToTop } from "./components/backToTop";
 import { shareButton } from "./components/shareButton";
 import { slider } from "./components/slider";
+import { hamburger } from "./components/hamburger";
 
 export function runAfterDomLoad() {
  headerAnimation()
  lottie()
  backToTop()
  shareButton()
- slider
+ slider()
+ hamburger()
 }

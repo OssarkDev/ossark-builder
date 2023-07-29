@@ -1,47 +1,97 @@
 .header {
 
-	&__container {
+    &__container {
+        .row {
+            align-items: center;
+            height: $header-height;
+            @include max-screen($tablet) {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
 
-		.row {
-			align-items: center;
-			height: $header-height;
-		}
+    &__logo {}
 
-	}
+    &__nav {
 
-	&__logo {
+        &__list {
+            display: flex;
+            justify-content: center;
+            &__item {
+                margin-right: 24px;
+                span {}
 
-	}
+            }
+        }
 
-	&__nav {
+        @include max-screen($tablet) {
+            display: none;
+        }
 
-		&__list {
-			display: flex;
-			justify-content: center;
+    }
 
-			&__item {
-				margin-right: 24px;
+    &__cta {
+        display: flex;
+        @include max-screen($tablet) {
+            display: none;
+        }
+    }
 
-				span {
+    &__hamburger {
+        display: none;
+        @include max-screen($tablet) {
+            display: block;
+        }
+        width: 60px;
+        height: 60px;
+        top: 100px;
+        left: 120px;
+        transition-duration: 0.5s;
 
+        &__icon {
+            transition-duration: 0.5s;
+            position: absolute;
+            height: 8px;
+            width: 60px;
+            top: 30px;
+            background-color: $black;
+            &:before {
+                transition-duration: 0.5s;
+                position: absolute;
+                width: 60px;
+                height: 8px;
+                background-color: $black;
+                content: "";
+                top: -20px;
+            }
+            &:after {
+                transition-duration: 0.5s;
+                position: absolute;
+                width: 60px;
+                height: 8px;
+                background-color: $black;
+                content: "";
+                top: 20px;
+            }
+        }
+		&.open {
+			.header__hamburger__icon {
+				transition-duration: 0.5s;
+				background: transparent;
+
+				&:before {
+					transform: rotateZ(45deg) scaleX(1.25) translate(13px, 13px);
 				}
 
+				&:after {
+					transform: rotateZ(-45deg) scaleX(1.25) translate(12px, -12px);
+				}
 			}
 		}
-
-		@include max-screen($tablet) {
-			display: none;
+		&:hover {
+			cursor: pointer;
 		}
-
-	}
-
-	&__cta {
-		// height: 100%;
-		display: flex;
-
-		@include max-screen($tablet) {
-			display: none;
-		}
-	}
+    }
 
 }

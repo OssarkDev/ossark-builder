@@ -47,7 +47,9 @@
                 </div>
             <?php endif; ?>
             <!-- Hamburger Menu -->
-            <div class="header__hamburger"></div>
+            <div class="header__hamburger">
+                <div class="header__hamburger__icon"></div>
+            </div>
         </div>
     </div>
 </header>
