@@ -52,7 +52,22 @@
                 <span></span>
                 <span></span>
             </div>
-
+            
+            <div class="header__mobile-menu">
+                <div class="header__mobile-menu__list">
+                    <?php foreach($menu as $item): ?>
+                        <?php
+                        $name = $item['menu_item']['title'];
+                        $link = $item['menu_item']['link'];
+                        ?>
+                        <a href="<?= esc_url($link); ?>" class="header__mobile-menu__list__item">
+                            <span>
+                                <?= esc_html($name); ?>
+                            </span>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
             
         </div>
     </div>

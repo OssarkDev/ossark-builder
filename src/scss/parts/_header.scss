@@ -53,6 +53,7 @@
             display: flex;
 			flex-direction: column;
 			gap: 8px;
+            z-index: 3;
         }
         transition-duration: 0.5s;
 
@@ -80,6 +81,33 @@
 		&:hover {
 			cursor: pointer;
 		}
+    }
+
+    &__mobile-menu {
+        display: none;
+        &.open {
+            display: block;
+            position: absolute;
+            width: 100vh;
+            height: 100vh;
+            z-index: 2;
+            background-color: $white;
+            top: 0;
+            left: 0;
+        }
+        &__list {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            gap: 24px;
+
+            &__item {
+
+            }
+        }
     }
 
 }
