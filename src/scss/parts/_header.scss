@@ -1,4 +1,13 @@
 .header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    transition: 0.5s;
+    animation: showHeader 0.5s cubic-bezier(0.00, 0.00, 0.00, 1.00) both;
+
+    &.hide-header {
+        animation: hideHeader 0.5s cubic-bezier(0.00, 0.00, 0.00, 1.00) both;
+    }
 
     &__container {
         .row {

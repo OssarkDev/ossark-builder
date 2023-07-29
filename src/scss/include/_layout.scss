@@ -8,6 +8,12 @@ section, .section {
     @media (max-width: $mobile) {
         margin: $section-margin-mobile 0;
     }
+    @media (min-width: $tablet) and (max-width: $desktop) {
+        margin: $section-margin-tablet 0;
+    }
+    @media (min-width: $desktop) and (max-width: $hd-screen) {
+        margin: $section-margin-laptop 0;
+    }
     @media (min-width: $hd-screen) {
         margin: $section-margin-desktop 0;
     }
