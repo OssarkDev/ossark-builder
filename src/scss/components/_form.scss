@@ -1,0 +1,78 @@
+.form {
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		width: 400px;
+	}
+
+	&__names {
+		display: flex;
+		gap: 16px;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		
+		label {
+
+		}
+
+		span input, textarea {
+			width: 100%;
+			height: 40px;
+			border: 1px solid #000;
+			border-radius: 4px;
+			padding: 0;
+			margin: 0;
+			padding-left: 8px;
+			font-size: 16px;
+			line-height: 24px;
+			color: #000;
+			background-color: #fff;
+			transition: all 0.3s ease-in-out;
+		}
+
+		span textarea {
+			height: 120px;
+			resize: none;
+		}
+	}
+
+	&__container {
+
+	}
+
+	&__title {
+
+	}
+
+	&__subtitle {
+
+	}
+
+	&__contact-info {
+
+	}
+
+	&__social {
+
+		&__title {
+
+		}
+		&__icon {
+
+		}
+	}
+
+}
+
+
+.wpcf7-response-output {
+	border: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	margin-top: 40px !important;
+}

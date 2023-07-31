@@ -163,7 +163,7 @@ add_theme_support( 'title-tag' );
 add_theme_support( 'post-thumbnails' );
 
 // remove p tags from wysiwyg
-remove_filter ('acf_the_content', 'wpautop');
+// remove_filter ('acf_the_content', 'wpautop');
 
 //remove extra WP styling (header)
 add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
@@ -197,3 +197,6 @@ add_theme_support(
 
 if (function_exists('add_image_size')) {
 }
+
+// Remove <p> and <br/> from Contact Form 7
+add_filter('wpcf7_autop_or_not', '__return_false');
