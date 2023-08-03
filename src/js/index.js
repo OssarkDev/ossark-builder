@@ -9,6 +9,7 @@ import { backToTop } from "./components/backToTop";
 import { shareButton } from "./components/shareButton";
 import { slider } from "./components/slider";
 import { hamburger } from "./components/hamburger";
+import { formSuccessRedirect } from "./parts/contact";
 
 export function runAfterDomLoad() {
  headerAnimation()
@@ -17,4 +18,5 @@ export function runAfterDomLoad() {
  shareButton()
  slider()
  hamburger()
+ formSuccessRedirect()
 }

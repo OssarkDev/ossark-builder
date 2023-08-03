@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-2 header__logo">
                 <a href="<?= get_site_url(); ?>">
-                    <img src="<?= esc_url($logo['url']); ?>" alt="<?= esc_attr($image['alt']); ?>">
+                    <img src="<?= esc_url($logo['url']); ?>" alt="<?= isset($image['alt']); ?>">
                 </a>
             </div>
             <?php if($menu): ?>
@@ -26,9 +26,9 @@
                         <?php foreach($menu as $item): ?>
                             <?php
                             $name = $item['menu_item']['title'];
-                            $link = $item['menu_item']['link'];
+                            $link = isset($item['menu_item']['link']);
                             ?>
-                            <a href="<?= esc_url($link); ?>" class="header__nav__list__item">
+                            <a href="<?= isset($link); ?>" class="header__nav__list__item">
                                 <span>
                                     <?= esc_html($name); ?>
                                 </span>
@@ -39,7 +39,7 @@
             <?php endif; ?>
             <?php if($header_cta): ?>
                 <div class="col-2 header__cta">
-                    <a href="<?= $header_cta['link']; ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
+                    <a href="<?= isset($header_cta['link']); ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
                         <span>
                             <?= $header_cta['title']; ?>
                         </span>

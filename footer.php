@@ -16,11 +16,13 @@
             <div class="row footer__row">
 
                 <!-- logo -->
+                <?php if ($logo): ?>
                 <div class="col-2 col-md-6 footer__logo">
                     <a href="<?= get_site_url(); ?>">
-                        <img src="<?= $logo['url']; ?>" alt="<?= $image['alt']; ?>">
+                        <img src="<?php echo $logo['url'] ?? ''; ?>" alt="<?= $image['alt'] ?? ''; ?>">
                     </a>
                 </div>
+                <?php endif; ?>
 
                 <!-- address -->
                 <div class="col-2 col-md-6">
@@ -62,9 +64,9 @@
                         <nav class="footer__nav">
                             <div class="footer__nav__list">
                                 <?php foreach($menu as $item): ?>
-                                    <a href="<?= $item['menu_item']['link'] ?>" class="footer__nav__list__item">
+                                    <a href="<?= $item['menu_item']['link'] ?? '';?>" class="footer__nav__list__item">
                                         <span>
-                                            <?= $item['menu_item']['title'];; ?>
+                                            <?= $item['menu_item']['title']; ?>
                                         </span>
                                     </a>
                                 <?php endforeach; ?>
