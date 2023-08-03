@@ -81,6 +81,26 @@ function register_acf_block_types()
 			)
 		)
 	));
+
+	// PDF block
+	acf_register_block_type(array(
+		'name' => 'pdf',
+		'title' => __('PDF'),
+		'description'   => __('PDF Section'),
+		'render_template' => 'components/pdf.php',
+		'category' => 'osmo-blocks',
+		'icon' => 'admin-comments',
+		'keywords' => array('File', 'PDF'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
+	));
 }
 
 /*
@@ -132,6 +152,7 @@ function allowed_block_types( $allowed_blocks, $post ) {
 	$all_blocks = [
 		'acf/hero',
 		'acf/form',
+		'acf/pdf',
 	];
 	$article_blocks = [];
 	$services_blocks = [];

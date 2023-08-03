@@ -2,10 +2,13 @@
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-	height: calc(100vh - $header-height);
+	// height: calc(100vh - $header-height);
+	height: 100vh;
 	width: auto;
 	display: flex;
 	align-items: center;
+	transition: 0.5s;
+    animation: showSection 0.5s ease-in both;
 
 	&__title {
 
