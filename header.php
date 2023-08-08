@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-2 header__logo">
                 <a href="<?= get_site_url(); ?>">
-                    <img src="<?= esc_url($logo['url']); ?>" alt="<?= isset($image['alt']); ?>">
+                    <img src="<?= esc_url($logo['url']); ?>" alt="<?= $logo['alt']; ?>">
                 </a>
             </div>
             <?php if($menu): ?>
@@ -28,7 +28,7 @@
                             $name = $item['menu_item']['title'];
                             $link = isset($item['menu_item']['link']);
                             ?>
-                            <a href="<?= isset($link); ?>" class="header__nav__list__item">
+                            <a href="<?= $link; ?>" class="header__nav__list__item">
                                 <span>
                                     <?= esc_html($name); ?>
                                 </span>
@@ -58,7 +58,7 @@
                     <?php foreach($menu as $item): ?>
                         <?php
                         $name = $item['menu_item']['title'];
-                        $link = $item['menu_item']['link'];
+                        $link = isset($item['menu_item']['link']);
                         ?>
                         <a href="<?= esc_url($link); ?>" class="header__mobile-menu__list__item">
                             <span>

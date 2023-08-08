@@ -86,6 +86,7 @@
 
     &__mobile-menu {
         display: none;
+        // animation: hideSection 0.25s ease-in both;
         &.open {
             display: block;
             position: absolute;
@@ -95,6 +96,7 @@
             background-color: $white;
             top: 0;
             left: 0;
+            animation: showSection 0.25s ease-in both;
         }
         &__list {
             display: flex;

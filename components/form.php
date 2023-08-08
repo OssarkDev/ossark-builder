@@ -18,14 +18,14 @@ $add_social = get_field('add_socials');
 				<div class="row">
 					<div class="col-8">
 						<div class="form__container">
-							<h2 class="form__title"><?php echo $title; ?></h2>
-							<p class="form__subtitle"><?php echo $subtitle; ?></p>
-							<?php echo $form; ?>
+							<h2 class="form__title"><?= $title; ?></h2>
+							<p class="form__subtitle"><?= $subtitle; ?></p>
+							<?= $form; ?>
 						</div>
 					</div>
 					<div class="col-4">
 						<div class="form__contact-info">
-							<?php echo $contact_info; ?>
+							<?= $contact_info; ?>
 						</div>
 						<?php if($add_social): ?>
 							<div class="form__social">

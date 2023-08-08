@@ -14,3 +14,7 @@ to {transform: translate(0, 0%);}
 	from {opacity: 0;}
 	to {opacity: 1;}
   }
+@-webkit-keyframes hideSection {
+	from {opacity: 1;}
+	to {opacity: 0;}
+  }
