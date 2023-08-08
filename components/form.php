@@ -16,14 +16,14 @@ $add_social = get_field('add_socials');
 		<div class="form">
 			<div class="container">
 				<div class="row">
-					<div class="col-8">
+					<div class="col-8 col-md-6">
 						<div class="form__container">
 							<h2 class="form__title"><?= $title; ?></h2>
 							<p class="form__subtitle"><?= $subtitle; ?></p>
 							<?= $form; ?>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-4 col-md-6">
 						<div class="form__contact-info">
 							<?= $contact_info; ?>
 						</div>

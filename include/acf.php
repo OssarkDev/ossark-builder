@@ -101,6 +101,28 @@ function register_acf_block_types()
 			)
 		)
 	));
+
+	// Image/Text block
+	acf_register_block_type(array(
+		'name' => 'image-text',
+		'title' => __('Image/Text'),
+		'description'   => __('Image and text with invert option'),
+		'render_template' => 'components/image-text.php',
+		'category' => 'osmo-blocks',
+		'icon' => 'admin-comments',
+		'keywords' => array('Image', 'Text', 'Left' , 'Right'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
+	));
+
+
 }
 
 /*
@@ -153,6 +175,7 @@ function allowed_block_types( $allowed_blocks, $post ) {
 		'acf/hero',
 		'acf/form',
 		'acf/pdf',
+		'acf/image-text',
 	];
 	$article_blocks = [];
 	$services_blocks = [];

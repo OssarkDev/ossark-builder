@@ -109,7 +109,7 @@ section, .section {
 
 // create all grid column classes for tablet
 @for $i from 1 through $grid-columns-tablet {
-    @media(min-width: $mobile) and (max-width: $tablet) {
+    @media (max-width: $tablet) {
         .col-md-#{$i} {
             grid-column: span #{$i};
         }
