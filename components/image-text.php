@@ -18,19 +18,19 @@
 			<div class="col-6">
 				<div class="image-text__inner">
 					<div class="image-text__title">
-						<h2><?php echo $title; ?></h2>
+						<h2><?= $title; ?></h2>
 					</div>
 					<div class="image-text__content">
-						<?php echo $content; ?>
+						<?= $content; ?>
 					</div>
 					<div class="image-text__cta">
-						<a href="<?php echo $cta['url']; ?>" class="btn"><?php echo $cta['title']; ?></a>
+						<a href="<?= $cta['url']; ?>" class="btn"><?= $cta['title']; ?></a>
 					</div>
 				</div>
 			</div>
 			<div class="col-6">
 				<div class="image-text__image">
-					<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+					<img src="<?= $image['url']; ?>" alt="<?= $image['alt']; ?>" />
 				</div>
 			</div>
 		</div>

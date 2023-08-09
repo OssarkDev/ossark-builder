@@ -1,4 +1,43 @@
 <?php
+
+/*
+=====================
+	Add theme options menu
+=====================
+*/
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme Options',
+		'menu_title'	=> 'Theme Options',
+		'menu_slug' 	=> 'theme-options',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+
+	acf_add_options_sub_page([
+		'page_title' => "Header",
+		'menu_title' => __("Header"),
+		'menu_slug' => "header",
+		'parent' => 'theme-options'
+	]);
+
+	acf_add_options_sub_page([
+		'page_title' => "Footer",
+		'menu_title' => __("Footer"),
+		'menu_slug' => "footer",
+		'parent' => 'theme-options'
+	]);
+
+	acf_add_options_sub_page([
+		'page_title' => "Scripts",
+		'menu_title' => __("Scripts"),
+		'menu_slug' => "scripts",
+		'parent' => 'theme-options'
+	]);
+
+}
+
+
 /*
 =====================
 	ACF Maps block
@@ -122,45 +161,29 @@ function register_acf_block_types()
 		)
 	));
 
-
-}
-
-/*
-=====================
-	Add theme options menu
-=====================
-*/
-if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page(array(
-		'page_title' 	=> 'Theme Options',
-		'menu_title'	=> 'Theme Options',
-		'menu_slug' 	=> 'theme-options',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
+	// Text block
+	acf_register_block_type(array(
+		'name' => 'text',
+		'title' => __('Text'),
+		'description'   => __('Text block'),
+		'render_template' => 'components/text.php',
+		'category' => 'osmo-blocks',
+		'icon' => 'admin-comments',
+		'keywords' => array('Text', 'Content'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
 	));
 
-	acf_add_options_sub_page([
-		'page_title' => "Header",
-		'menu_title' => __("Header"),
-		'menu_slug' => "header",
-		'parent' => 'theme-options'
-	]);
-
-	acf_add_options_sub_page([
-		'page_title' => "Footer",
-		'menu_title' => __("Footer"),
-		'menu_slug' => "footer",
-		'parent' => 'theme-options'
-	]);
-
-	acf_add_options_sub_page([
-		'page_title' => "Scripts",
-		'menu_title' => __("Scripts"),
-		'menu_slug' => "scripts",
-		'parent' => 'theme-options'
-	]);
 
 }
+
 
 /*
 =====================
@@ -176,6 +199,7 @@ function allowed_block_types( $allowed_blocks, $post ) {
 		'acf/form',
 		'acf/pdf',
 		'acf/image-text',
+		'acf/text',
 	];
 	$article_blocks = [];
 	$services_blocks = [];
