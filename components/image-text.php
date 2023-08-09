@@ -13,10 +13,10 @@
  ?>
 
  <section class="image-text">
-	<div class="container">
-		<div class="row">
+	<div class="container image-text__container">
+		<div class="row image-text__row <?php if($positioning) {echo 'invert';}; ?>">
 			<div class="col-6">
-				<div class="image-text__content">
+				<div class="image-text__inner">
 					<div class="image-text__title">
 						<h2><?php echo $title; ?></h2>
 					</div>

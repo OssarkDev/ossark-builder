@@ -1,0 +1,37 @@
+.image-text {
+
+	&__container {
+
+	}
+
+	&__row {
+
+		&.invert {
+			:first-child {
+				order: 1;
+			}
+		}
+
+	}
+
+	&__inner {
+
+	}
+
+	&__title {
+
+	}
+
+	&__content {
+
+	}
+
+	&__cta {
+
+	}
+
+	&__image {
+
+	}
+
+}
