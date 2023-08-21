@@ -10,6 +10,7 @@ import { shareButton } from "./components/shareButton";
 import { slider } from "./components/slider";
 import { hamburger } from "./components/hamburger";
 import { formSuccessRedirect } from "./parts/contact";
+import { video } from "./components/video";
 
 export function runAfterDomLoad() {
  headerAnimation()
@@ -19,4 +20,5 @@ export function runAfterDomLoad() {
  slider()
  hamburger()
  formSuccessRedirect()
+ video()
 }

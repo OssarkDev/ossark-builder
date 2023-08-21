@@ -181,6 +181,26 @@ function register_acf_block_types()
 		)
 	));
 
+	// Video block
+	acf_register_block_type(array(
+		'name' => 'video',
+		'title' => __('Video'),
+		'description'   => __('Video block'),
+		'render_template' => 'components/video.php',
+		'category' => 'osmo-blocks',
+		'icon' => 'admin-comments',
+		'keywords' => array('Video', 'Content'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
+	));
+
 
 }
 
@@ -200,6 +220,7 @@ function allowed_block_types( $allowed_blocks, $post ) {
 		'acf/pdf',
 		'acf/image-text',
 		'acf/text',
+		'acf/video',
 	];
 	$article_blocks = [];
 	$services_blocks = [];
