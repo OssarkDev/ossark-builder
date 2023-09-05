@@ -72,3 +72,30 @@ function console_log($data) {
 
   echo "<script>console.log('Debug Objects: " . json_encode($output) . "' );</script>";
 }
+
+
+
+
+/*
+	=====================
+		Make youtube embed from share link
+	=====================	
+*/
+function returnYoutubeUrl($url){
+  $parts = parse_url($url);
+  $videoID = '';
+  $query = [];
+  if(isset($parts['query'])){
+      parse_str($parts['query'], $query);
+  }
+  if(str_contains($url, 'youtu.be')){
+      $videoID = substr($parts['path'], 1);
+  }
+  if($query && isset($query['v'])){
+      $videoID = $query['v'];
+  }
+  if(str_contains($url, 'embed/')){
+      $videoID = explode('embed/', $url)[1];
+  }
+  return 'https://www.youtube.com/embed/' . $videoID;
+}

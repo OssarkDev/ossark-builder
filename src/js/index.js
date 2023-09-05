@@ -13,12 +13,12 @@ import { formSuccessRedirect } from "./parts/contact";
 import { video } from "./components/video";
 
 export function runAfterDomLoad() {
- headerAnimation()
- lottie()
- backToTop()
- shareButton()
- slider()
- hamburger()
- formSuccessRedirect()
- video()
+	headerAnimation()
+	lottie()
+	backToTop()
+	shareButton()
+	slider()
+	hamburger()
+	formSuccessRedirect()
+	video()
 }
