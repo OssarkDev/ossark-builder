@@ -5,8 +5,8 @@
 */
 $mobile: 576px; 
 $tablet: 992px;
-$desktop: 1680px;
-$hd-screen: 1920px;
+$desktop: 1440px;
+$hd: 1920px;
 
 /*
 =================================================================
@@ -28,11 +28,13 @@ $default-font-weight: 400;
 $sky-blue: #00A6D6;
 $white: #FFF;
 $black: #000;
+
 // secondary
 $navy: #0C2340;
 $mantis-green: #6CC24A;
 $french-blue: #0076C2;
 $palatinate-purple: #6F1D77;
+
 // tertiary
 $dim-grey: #666666;
 $black-40: rgba(0, 0, 0, 0.4);
@@ -61,20 +63,24 @@ $container-padding-mobile: 24px;
 $container-padding-tablet: 40px;
 $container-padding-desktop: 108px;
 $container-padding-hd-screens: 160px;
+
 // section
 $section-margin-mobile: 80px;
 $section-margin-tablet: 100px;
 $section-margin-laptop: 120px;
 $section-margin-desktop: 160px;
+
 // gaps
 $grid-column-gap-mobile: 8px;
 $grid-column-gap-tablet: 16px;
 $grid-column-gap-desktop: 32px;
 $grid-column-gap-hd-screens: 40px;
+
 // set all 8 grid spacings used in the design for margin and padding
 $spacing: 16 24 40 56 72 80 152 216;
 $directions: padding padding-top padding-right padding-bottom padding-left margin margin-top margin-right margin-bottom margin-left;
 $directions-classname: p pt pr pb pl m mt mr mb ml;
+
 // add desktop sizes and corresponding mobile sizes
 $desktop-change: 32 40 56 80 120;
 $mobile-change: 24 32 40 56 80;

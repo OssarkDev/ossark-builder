@@ -17,6 +17,7 @@ import { slider } from "./components/slider";
 import { hamburger } from "./components/hamburger";
 import { formSuccessRedirect } from "./parts/contact";
 import { video } from "./components/video";
+import { lazy } from "./parts/lazy";
 
 export function runAfterDomLoad() {
 	headerAnimation()
@@ -27,4 +28,5 @@ export function runAfterDomLoad() {
 	hamburger()
 	formSuccessRedirect()
 	video()
+	lazy()
 }

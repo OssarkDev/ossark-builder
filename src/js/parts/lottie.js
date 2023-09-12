@@ -1,5 +1,5 @@
 import $  from 'jquery';
-import bodymovin from 'bodymovin';
+import bodymovin from 'lottie-web/build/player/lottie_svg.min.js';
 
 export function lottie(){
     $(document).ready(function () {

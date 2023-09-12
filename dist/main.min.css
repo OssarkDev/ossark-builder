@@ -269,12 +269,12 @@ section, .section {
     margin: 80px 0;
   }
 }
-@media (min-width: 992px) and (max-width: 1680px) {
+@media (min-width: 992px) and (max-width: 1440px) {
   section, .section {
     margin: 100px 0;
   }
 }
-@media (min-width: 1680px) and (max-width: 1920px) {
+@media (min-width: 1440px) and (max-width: 1920px) {
   section, .section {
     margin: 120px 0;
   }
@@ -339,11 +339,28 @@ section:first-child, .section:first-child {
   }
 }
 
+.row-flex {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 576px) {
+  .row-flex {
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 576px) {
   .empty {
     display: none;
   }
 }
+
 /*
 =================================================================
     Grid
@@ -552,10 +569,6 @@ section:first-child, .section:first-child {
     Spacing
 =================================================================
 */
-.grecaptcha-badge {
-  visibility: hidden;
-}
-
 .header {
   position: fixed;
   width: 100%;

@@ -1,19 +1,23 @@
 {
-  "name": "devtemplate",
+  "name": "ossark",
   "version": "1.0.0",
   "main": "src/main.js",
-  "repository": "https://github.com/obiwan00/webpackTemplate2.git",
-  "author": "MIG",
+  "author": "Ossian",
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack --mode=development --config webpack.config.js",
     "watch": "yarn build:dev --watch",
-    "build": "webpack --mode=production --config webpack.config.js"
+    "build": "webpack --mode=production --config webpack.config.js",
+    "lint": "eslint \"**/*.js\" -c config/eslintrc.json"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "compression-webpack-plugin": "^10.0.0",
     "css-loader": "^6.7.2",
     "file-loader": "^6.2.0",
@@ -30,9 +34,7 @@
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
-    "bodymovin": "^4.13.0",
-    "bootstrap-4-grid": "^3.4.0",
-    "jquery-lazy": "^1.7.11",
+    "lottie-web": "^5.7.11",
     "slick": "^1.12.2",
     "slick-carousel": "^1.8.1",
     "vanilla-lazyload": "^17.8.3"
