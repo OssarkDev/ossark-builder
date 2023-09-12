@@ -29,6 +29,7 @@
     "webpack-messages": "^2.0.4"
   },
   "dependencies": {
+    "aos": "^3.0.0-beta.6",
     "bodymovin": "^4.13.0",
     "bootstrap-4-grid": "^3.4.0",
     "jquery-lazy": "^1.7.11",

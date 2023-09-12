@@ -2,6 +2,12 @@
 import "slick-carousel";
 import 'slick-carousel/slick/slick.scss';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// initialise libs
+AOS.init();
+
 // custom JS
 import { headerAnimation } from "./parts/header";
 import { lottie } from "./parts/lottie";
