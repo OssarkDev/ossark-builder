@@ -26,20 +26,26 @@
 
                 <!-- address -->
                 <div class="col-2 col-md-6">
-                    <div class="footer__address">
-                        <?= $address; ?>
-                    </div>
+                    <?php if($address): ?>
+                        <div class="footer__address">
+                            <?= $address; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <!-- contact -->
                 <div class="col-3 col-sm-6">
                     <div class="footer__contact">
-                        <a href="tel:<?= $contact_phone; ?>">
-                            <?= $contact_phone; ?>
-                        </a>
-                        <a href="mailto:<?= $contact_email; ?>">
-                            <?= $contact_email; ?>
-                        </a>
+                        <?php if($contact_phone): ?>
+                            <a href="tel:<?= $contact_phone; ?>">
+                                <?= $contact_phone; ?>
+                            </a>
+                        <?php endif; ?>
+                        <?php if($contact_email): ?>
+                            <a href="mailto:<?= $contact_email; ?>">
+                                <?= $contact_email; ?>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
 

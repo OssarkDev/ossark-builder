@@ -16,9 +16,11 @@
     <div class="container header__container">
         <div class="row">
             <div class="col-2 header__logo">
-                <a href="<?= get_site_url(); ?>">
-                    <img src="<?= esc_url($logo['url']); ?>" alt="<?= $logo['alt']; ?>">
-                </a>
+                <?php if($logo): ?>
+                    <a href="<?= get_site_url(); ?>">
+                        <img src="<?= esc_url($logo['url']); ?>" alt="<?= $logo['alt']; ?>">
+                    </a>
+                <?php endif; ?>
             </div>
             <?php if($menu): ?>
                 <nav class="col-8 header__nav">
@@ -54,19 +56,21 @@
             </div>
             
             <div class="header__mobile-menu">
-                <div class="header__mobile-menu__list">
-                    <?php foreach($menu as $item): ?>
-                        <?php
-                        $name = $item['menu_item']['title'];
-                        $link = isset($item['menu_item']['link']);
-                        ?>
-                        <a href="<?= esc_url($link); ?>" class="header__mobile-menu__list__item">
-                            <span>
-                                <?= esc_html($name); ?>
-                            </span>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
+                <?php if($menu): ?>
+                    <div class="header__mobile-menu__list">
+                        <?php foreach($menu as $item): ?>
+                            <?php
+                            $name = $item['menu_item']['title'];
+                            $link = isset($item['menu_item']['link']);
+                            ?>
+                            <a href="<?= esc_url($link); ?>" class="header__mobile-menu__list__item">
+                                <span>
+                                    <?= esc_html($name); ?>
+                                </span>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
             
         </div>
