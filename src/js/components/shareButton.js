@@ -1,20 +1,20 @@
 export function shareButton() {
-    let shareButton = document.querySelector('.share-button');
+	const button = document.querySelector('.share-button');
 
-    if (shareButton) {
-        shareButton.addEventListener('click', () => {
-            let tempInput = document.createElement('textarea');
+	if (button) {
+		button.addEventListener('click', () => {
+			const tempInput = document.createElement('textarea');
 
-            tempInput.value = window.location.href;
+			tempInput.value = window.location.href;
 
-            shareButton.parentNode.appendChild(tempInput);
+			button.parentNode.appendChild(tempInput);
 
-            tempInput.select();
-            tempInput.setSelectionRange(0, 99999);
+			tempInput.select();
+			tempInput.setSelectionRange(0, 99999);
 
-            document.execCommand('copy');
+			document.execCommand('copy');
 
-            tempInput.parentNode.removeChild(tempInput);
-        });
-    }
+			tempInput.parentNode.removeChild(tempInput);
+		});
+	}
 }

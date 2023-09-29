@@ -1,6 +1,6 @@
 export function formSuccessRedirect() {
-	document.addEventListener( 'wpcf7mailsent', function( event ) {
-		location = document.location.origin + '/thank-you/';
-		console.log( 'Form sent' + location );
-	  }, false );
+	document.addEventListener('wpcf7mailsent', () => {
+		const thankYouUrl = `${document.location.origin}/thank-you/`;
+		console.log(`Form sent${thankYouUrl}`);
+	  }, false);
 }

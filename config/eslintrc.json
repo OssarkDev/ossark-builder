@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jquery": true
     },
     "extends": "airbnb-base",
     "parserOptions": {
@@ -25,7 +26,8 @@
         "no-tabs": 0,
         "no-console": "off",
         "func-names": "off",
-        "no-mixed-spaces-and-tabs": 0
+        "no-mixed-spaces-and-tabs": 0,
+        "import/prefer-default-export": "off"
     },
     "ignorePatterns": ["../dist/", "../node_modules/", "webpack.config.js", "**/*.json", "../js/libs/", "**/*.min.js",  "../js/template-parts/blocks/via/"]
 }

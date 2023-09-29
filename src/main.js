@@ -2,7 +2,7 @@
 // import 'slick-carousel';
 // import 'vanilla-lazyload';
 
-import "./scss/index.scss"; // custom styles
+import './scss/index.scss'; // custom styles
 
 import { runAfterDomLoad } from './js';
 
