@@ -45,6 +45,7 @@ section, .section {
     @media (min-width: $hd) {
         padding: 0 $container-padding-hd-screens;
         column-gap: $grid-column-gap-desktop;
+        max-width: $container-max-width;
     }
 }
 

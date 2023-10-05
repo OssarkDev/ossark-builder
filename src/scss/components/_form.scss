@@ -39,6 +39,7 @@
 		span textarea {
 			height: 120px;
 			resize: none;
+			padding: 16px 24px;
 		}
 	}
 
@@ -76,4 +77,18 @@
 	padding: 0 !important;
 	margin: 0 !important;
 	margin-top: 40px !important;
+}
+
+.wpcf7-form-control-wrap {
+	display: flex;
+}
+
+.wpcf7-spinner {
+	position: absolute;
+	background-color: grey;
+}
+
+.wpcf7-not-valid-tip {
+	position: absolute;
+	bottom: -24px;
 }
