@@ -1,22 +1,19 @@
 <?php
 /*
-    Sinlge post page template
+    Single post page template
 */
 ?>
 
-<?php
-get_header();
+<?php get_header(); ?>
 
-wp_reset_query();
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <?php the_content(); ?>
+            </div>
+        </div>
+    </div>
+</div>
 
-if ( have_posts() ) :
-    while ( have_posts() ) : the_post();
-        the_content();
-    endwhile;
-endif;
-
-wp_reset_query();
-
-get_footer();
-
-?>
+<?php get_footer(); ?>

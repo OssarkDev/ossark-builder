@@ -2,27 +2,30 @@
 	<div class="form__names">
 		<div class="form__item">
 			<label>First name</label>
-			[text* first-name autocomplete:name]
+			[text* first-name autocomplete:name placeholder "First Name"]
 		</div>
-		
 		<div class="form__item">
-			<label>Second name</label>
-			[text* last-name autocomplete:name] 
+			<label>Last name</label>
+			[text* last-name autocomplete:name placeholder "Last Name"] 
 		</div>
+	</div>
+	<div class="form__item">
+		<label>Company</label>
+		[text* company placeholder "Company"]
 	</div>
 	<div class="form__item">
 		<label>Email</label>
-		[email* email autocomplete:email]
+		[email* email autocomplete:email placeholder "Email"]
 	</div>
 	<div class="form__item">
 		<label>Phone</label>
-		[tel* phone]
+		[tel* phone placeholder "Contact Number"]
 	</div>
 	<div class="form__item">
 		<label>Message</label>
-		[textarea message]
+		[textarea message placeholder "Message"]
 	</div>
 	<div class="form__submit">
-		[submit "Submit"]
+		[submit class:btn "Submit"]
 	</div>
 </div>

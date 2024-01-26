@@ -11,7 +11,7 @@ function enqueue_scripts() {
 
     // styles
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array());
-    wp_enqueue_style( 'mincss', get_template_directory_uri() . './dist/main.min.css',  array(), filemtime( $style_path ), 'all');
+    wp_enqueue_style( 'mincss', get_template_directory_uri() . '/dist/main.min.css',  array(), filemtime( $style_path ), 'all');
 
     // remove old jquery
     wp_deregister_script( 'jquery' );
@@ -21,10 +21,10 @@ function enqueue_scripts() {
     wp_enqueue_script( 'jquery' );
 
     // custom js
-    wp_enqueue_script( 'main', get_template_directory_uri() . './dist/main.min.js', array('jquery'), filemtime( $js_path ) , true);
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/dist/main.min.js', array('jquery'), filemtime( $js_path ) , true);
     
     // vendors
-    wp_enqueue_script( 'vendors', get_template_directory_uri() . './dist/vendors.min.js', false , filemtime( $vendors_js_path ) , true);
+    wp_enqueue_script( 'vendors', get_template_directory_uri() . '/dist/vendors.min.js', false , filemtime( $vendors_js_path ) , true);
 
     //send PHP variables to JS
     wp_localize_script( 'main', 'customjs_ajax_object',

@@ -14,7 +14,13 @@ import { slider } from './components/slider';
 import { hamburger } from './components/hamburger';
 import { formSuccessRedirect } from './parts/contact';
 import { video } from './components/video';
-import { lazy } from './parts/lazy';
+import { splitText } from './animations/splitText';
+
+
+/*
+	Lazy script is not working
+*/
+// import { lazy } from './parts/lazy';
 
 // initialise libs
 AOS.init();
@@ -28,5 +34,7 @@ export function runAfterDomLoad() {
 	hamburger();
 	formSuccessRedirect();
 	video();
-	lazy();
+	// lazy();
+	splitText();
+
 }

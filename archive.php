@@ -4,17 +4,23 @@
 */
 ?>
 
-<?php
-get_header();
+<?php get_header(); ?>
 
-wp_reset_query();
+<?php wp_reset_query(); ?>
 
-if ( have_posts() ) :
-    while ( have_posts() ) : the_post();
-        the_content();
-    endwhile;
-endif;
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-wp_reset_query();
+<div class="section">
+    <div class="row">
+        <div class="container">
+            <div class="col-12">
+                <?php the_content(); ?>
+            </div>
+        </div>
+    </div>
+</div>
 
-get_footer();
+<?php endwhile; endif; ?>
+<?php wp_reset_query(); ?>
+
+<?php get_footer(); ?>

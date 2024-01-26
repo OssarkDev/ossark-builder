@@ -1,7 +1,36 @@
-// @font-face {
-//     font-family: "RobotoSlab";
-//     src: url("../assets/fonts/RobotoSlab/RobotoSlab-Regular.ttf") format("truetype");
-//     font-display: swap;
-//     font-style: normal;
-//     font-weight: 400;
-// }
+// Regular
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+}
+
+// Light
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
+    font-display: swap;
+    font-style: light;
+    font-weight: 300;
+}
+
+// Medium
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/Poppins/Poppins-Medium.ttf") format("truetype");
+    font-display: swap;
+    font-style: medium;
+    font-weight: 500;
+}
+
+// Bold
+@font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    font-display: swap;
+    font-style: bold;
+    font-weight: 700;
+}
+

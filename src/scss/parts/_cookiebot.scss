@@ -1,0 +1,48 @@
+
+// remove header logo, etc.
+#CybotCookiebotDialogHeader {
+	display: none !important;
+}
+
+// fade at the bottom of other tabs
+#CybotCookiebotFader {
+	background: none !important;
+}
+
+// background color
+#CybotCookiebotDialogNav, .CybotCookiebotScrollContainer, .CybotCookiebotDialogBodyBottomWrapper, #CybotCookiebotDialogFooter {
+	background-color: $dim-grey !important;
+}
+
+// buttons
+.CybotCookiebotDialogBodyButton {
+	background-color: transparent !important;
+	border: 1px solid $black !important;
+	border-radius: 40px !important;
+	color: $black !important;
+}
+
+// text color
+.CybotCookiebotDialogNavItemLink, #CybotCookiebotDialogTabContent {
+	color: $black !important;
+}
+
+// color of active tab
+.CybotCookiebotDialogActive {
+	border-bottom: 1px solid $orange !important;
+}
+
+// toggle off color
+#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonSlider {
+	background-color: $slate-grey !important;
+}
+
+// toggle on color
+#CybotCookiebotDialog input:checked+.CybotCookiebotDialogBodyLevelButtonSlider {
+	background-color: $orange !important;
+}
+
+// remove widget from bottom left of site
+#CookiebotWidget {
+	display: none !important;
+}

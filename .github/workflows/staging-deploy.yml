@@ -1,8 +1,8 @@
 on:
   push:
     branches:
-      - development
-name: 🚀 Deploy development website
+      - staging
+name: 🚀 Deploy staging website
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -14,12 +14,19 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: osmo.digital
-        username: pilates-boutique-dev@osmo.digital
-        password: ${{ secrets.development_ftp_password }}
-        server-dir: wp-content/themes/pilates-boutique/
+        server: ossark.ie
+        username: stagingdeploy@ossark.ie
+        password: ${{ secrets.staging_ftp_password }}
+        server-dir: wp-content/themes/ossark/
         exclude: |
           **/node_modules/**
           package-lock.json
           package.json
           README.md
+          yarn.lock
+          .editorconfig
+          webpack.config.js
+          .gitignore
+          .github
+          .git
+          **/config/**

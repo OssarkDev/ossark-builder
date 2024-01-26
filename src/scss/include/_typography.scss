@@ -14,10 +14,18 @@ body, html {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-backface-visibility: hidden;
 	-webkit-tap-highlight-color: transparent;
+	::selection {
+		background-color: transparent;
+		color: grey;
+	}
 }
 
-// font-sizes
-h1,.h1 {
+/*
+=================================================================
+    Headings
+=================================================================
+*/
+h1,.h1, h1 > * > * {
 	font-size: 60px;
 	line-height: 64px;
 	font-weight: 600;
@@ -26,7 +34,7 @@ h1,.h1 {
 		line-height: 44px;
 	}
 }
-h2,.h2 {
+h2,.h2,h2 > * > * {
 	font-size: 48px;
 	line-height: 48px;
 	font-weight: 600;
@@ -35,7 +43,7 @@ h2,.h2 {
 		line-height: 44px;
 	}
 }
-h3,.h3 {
+h3,.h3,h3 > * > * {
 	font-size: 40px;
 	line-height: 40px;
 	font-weight: 400;
@@ -44,7 +52,7 @@ h3,.h3 {
 		line-height: 36px;
 	}
 }
-h4,.h4 {
+h4,.h4,h4 > * > * {
 	font-size: 32px;
 	line-height: 38px;
 	font-weight: 500;
@@ -53,7 +61,7 @@ h4,.h4 {
 		line-height: 32px;
 	}
 }
-h5,.h5 {
+h5,.h5,h5 > * > * {
 	font-size: 24px;
 	line-height: 32px;
 	font-weight: 500;
@@ -62,11 +70,27 @@ h5,.h5 {
 		line-height: 28px;
 	}
 }
-h6,.h6 {
+h6,.h6,h6 > * > * {
 	font-family: 'Arial', sans-serif;
 	font-size: 24px;
 	line-height: 32px;
 	font-weight: 400;
+}
+
+/*
+=================================================================
+    All other text
+=================================================================
+*/
+p, .p, a, span, li {
+	font-family: $font-body;
+	font-size: $default-font-size;
+	line-height: $default-line-height;
+	font-weight: $default-font-weight;
+	@media (max-width: $mobile) {
+		font-size: 14px;
+		line-height: 20px;
+	}
 }
 
 .p-large {

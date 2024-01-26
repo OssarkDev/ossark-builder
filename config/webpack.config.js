@@ -5,8 +5,6 @@ const babelConfig = require("./babel.config.json");
 const WebpackMessages = require('webpack-messages');
 const TerserPlugin = require("terser-webpack-plugin");
 // const CompressionPlugin = require("compression-webpack-plugin");
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 
 const config = (dir = __dirname) => ({
     stats: "summary", // sets console output
@@ -50,12 +48,10 @@ const config = (dir = __dirname) => ({
         },
     },
     plugins: [
-
         new MiniCssExtractPlugin({
             filename: "[name].min.css",
             chunkFilename: "[id].css",
         }),
-
         // new CopyPlugin([
         //     {
         //         from: path.resolve(dir, "./src/img/**/*"),
@@ -63,19 +59,14 @@ const config = (dir = __dirname) => ({
         //         to: "./img",
         //     },
         // ]),
-
         // new CompressionPlugin({
         //     algorithm: "brotliCompress",
         //     test: /\.js(\?.*)?$/i,
         //   }),
-
-        // new BundleAnalyzerPlugin(),
-
         new WebpackMessages({
             name: 'production',
             logger: str => console.log(`>> ${str}`)
           }),
-          
     ],
     module: {
         rules: [

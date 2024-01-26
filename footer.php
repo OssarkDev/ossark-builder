@@ -85,6 +85,8 @@
     </div>
 </footer>
 
+<?php the_field('footer_scripts', 'option') ?>
+
 <?php 
     // $enable_hotjar = get_field('enable_hotjar', 'option');
     // $hotjar_script = get_field('hotjar_script', 'option');
