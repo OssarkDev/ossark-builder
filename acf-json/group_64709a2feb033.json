@@ -23,6 +23,26 @@
             "new_lines": ""
         },
         {
+            "key": "field_65b41a1a0ed24",
+            "label": "Body Scripts",
+            "name": "body_scripts",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 12,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_64709a79e707d",
             "label": "Footer Scripts",
             "name": "footer_scripts",
@@ -109,5 +129,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1691530839
+    "modified": 1706302314
 }

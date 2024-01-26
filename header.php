@@ -7,7 +7,9 @@
     <?php wp_head(); ?>
     <?php the_field('header_scripts','option'); ?>
 </head>
+
 <body>
+<?php the_field('body_scripts', 'option') ?>
 <header class="header" id="header">
 <?php
     $menu = get_field('navigation', 'option');
