@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php wp_head(); ?>
-    <?php the_field('header_scripts','option'); ?>
+    <?php
+        $header_scripts = get_field('header_scripts', 'option');
+        if ($header_scripts) {
+            echo $header_scripts;
+        }
+    ?>
 </head>
 
 <body>
-<?php the_field('body_scripts', 'option') ?>
+<?php
+    $body_scripts = get_field('body_scripts', 'option');
+    if ($body_scripts) {
+        echo $body_scripts;
+    }
+?>
 <header class="header" id="header">
 <?php
     $menu = get_field('navigation', 'option');

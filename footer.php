@@ -85,14 +85,19 @@
     </div>
 </footer>
 
-<?php the_field('footer_scripts', 'option') ?>
+<?php
+    $footer_scripts = get_field('footer_scripts', 'option');
+    if ($footer_scripts) {
+        echo $footer_scripts;
+    }
+?>
 
 <?php 
-    // $enable_hotjar = get_field('enable_hotjar', 'option');
-    // $hotjar_script = get_field('hotjar_script', 'option');
-    // if($enable_hotjar && $hotjar_script) {
-    //     echo $hotjar_script;
-    // }
+    $enable_hotjar = get_field('enable_hotjar', 'option');
+    $hotjar_script = get_field('hotjar_script', 'option');
+    if($enable_hotjar && $hotjar_script) {
+        echo $hotjar_script;
+    }
 ?>
 
 <?php wp_footer(); ?>
