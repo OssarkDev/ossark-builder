@@ -18,3 +18,17 @@ to {transform: translate(0, 0%);}
 	from {opacity: 1;}
 	to {opacity: 0;}
   }
+
+// buttons 
+.btn, 
+.btn span, 
+.btn svg path {
+	transition: all 0.2s ease-in-out;
+}
+
+// links
+.link,
+.link span,
+.link span:after {
+	transition: all 0.2s;
+}

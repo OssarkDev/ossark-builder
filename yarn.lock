@@ -1345,15 +1345,6 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-aos@^3.0.0-beta.6:
-  version "3.0.0-beta.6"
-  resolved "https://registry.npmjs.org/aos/-/aos-3.0.0-beta.6.tgz"
-  integrity sha512-VLWrpq8bfAWcetynVHMMrqdC+89Qq/Ym6UBJbHB4crIwp3RR8uq1dNGgsFzoDl03S43rlVMK+na3r5+oUCZsYw==
-  dependencies:
-    classlist-polyfill "^1.2.0"
-    lodash.debounce "^4.0.8"
-    lodash.throttle "^4.1.1"
-
 argparse@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz"
@@ -1662,11 +1653,6 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
-
-classlist-polyfill@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/classlist-polyfill/-/classlist-polyfill-1.2.0.tgz"
-  integrity sha512-GzIjNdcEtH4ieA2S8NmrSxv7DfEV5fmixQeyTmqmRmRJPGpRBaSnA2a0VrCjyT8iW8JjEdMbKzDotAJf+ajgaQ==
 
 clone-deep@^4.0.1:
   version "4.0.1"
@@ -3131,11 +3117,6 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
-
-lodash.throttle@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
-  integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
 lottie-web@^5.7.11:
   version "5.12.2"

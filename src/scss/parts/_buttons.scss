@@ -1,12 +1,16 @@
+/*
+=================================================================
+    Buttons
+=================================================================
+*/
+
 .btn {
 	display: inline-block;
-	padding: 0.5rem 1rem;
-	border: 1px solid #ccc;
-	border-radius: 0.25rem;
-	background-color: #fff;
-	color: #333;
-	font-size: 1rem;
-	line-height: 1.5;
+	padding: 24px 40px;
+	border: 1px solid $black;
+	border-radius: 40px;
+	background-color: $white;
+	color: $black;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
@@ -15,4 +19,80 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	text-decoration: none !important;
+	span {
+		font-size: 20px;
+		line-height: 32px;
+		font-weight: 500;
+	}
+	svg {
+		width: 24px;
+		height: 24px;
+	}
+	&:hover {
+		color: $white;
+		background-color: $black;
+
+		span {
+			color: $white;
+		}
+
+		svg path {
+			fill: $white;
+		}
+	}
+
+	/*
+		Blue button
+	*/
+	&.blue {
+		border: 1px solid $blue;
+		background-color: transparent;
+		span {
+			color: $blue;
+		}
+		svg path {
+			fill: $blue;
+		}
+		&:hover {
+			background-color: $blue;
+			span {
+				color: $white;
+			}
+			svg path {
+				fill: $white;
+			}
+		}
+	}
+}
+
+
+/*
+	Links
+*/
+.link {
+	span {
+		position: relative;
+		&:after {
+			content: '';
+			position: absolute;
+			width: 0%;
+			height: 1px;
+			background-color: $blue;
+			bottom: 0px;
+			left: 0;
+		}
+	}
+	&:hover {
+		span {
+			color: $blue;
+			&:after {
+				width: 100%;
+			}
+		}
+	}
 }
