@@ -1,3 +1,16 @@
+<!--
+Created by
+
+ ██████╗ ███████╗███████╗ █████╗ ██████╗ ██╗  ██╗
+██╔═══██╗██╔════╝██╔════╝██╔══██╗██╔══██╗██║ ██╔╝
+██║   ██║███████╗███████╗███████║██████╔╝█████╔╝ 
+██║   ██║╚════██║╚════██║██╔══██║██╔══██╗██╔═██╗ 
+╚██████╔╝███████║███████║██║  ██║██║  ██║██║  ██╗
+
+visits us at ossark.ie
+ 
+-->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,9 +41,9 @@
 ?>
     <div class="container header__container">
         <div class="row">
-            <div class="col-2 header__logo">
+            <div class="col-2">
                 <?php if($logo): ?>
-                    <a href="<?= get_site_url(); ?>">
+                    <a href="<?= get_site_url(); ?>" class="header__logo">
                         <img src="<?= esc_url($logo['url']); ?>" alt="<?= $logo['alt']; ?>">
                     </a>
                 <?php endif; ?>
@@ -41,11 +54,11 @@
                         <?php foreach($menu as $item): ?>
                             <?php
                             $name = $item['menu_item']['title'];
-                            $link = isset($item['menu_item']['link']);
+                            $link = $item['menu_item']['url'];
                             ?>
                             <a href="<?= $link; ?>" class="header__nav__list__item">
                                 <span>
-                                    <?= esc_html($name); ?>
+                                    <?= $name; ?>
                                 </span>
                             </a>
                         <?php endforeach; ?>
@@ -54,7 +67,7 @@
             <?php endif; ?>
             <?php if($header_cta): ?>
                 <div class="col-2 header__cta">
-                    <a href="<?= isset($header_cta['link']); ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
+                    <a href="<?= $header_cta['url']; ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
                         <span>
                             <?= $header_cta['title']; ?>
                         </span>
@@ -74,11 +87,11 @@
                         <?php foreach($menu as $item): ?>
                             <?php
                             $name = $item['menu_item']['title'];
-                            $link = isset($item['menu_item']['link']);
+                            $link = $item['menu_item']['url'];
                             ?>
-                            <a href="<?= esc_url($link); ?>" class="header__mobile-menu__list__item">
+                            <a href="<?= $link; ?>" class="header__mobile-menu__list__item">
                                 <span>
-                                    <?= esc_html($name); ?>
+                                    <?= $name; ?>
                                 </span>
                             </a>
                         <?php endforeach; ?>

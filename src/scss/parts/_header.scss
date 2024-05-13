@@ -24,9 +24,14 @@
 
     &__logo {
         z-index: 3;
-        width: 140px;
+        width: 120px;
+        position: relative;
         @include max-screen($mobile) {
             width: 80px;
+        }
+        img {
+            width: 100%;
+            height: auto;
         }
     }
 

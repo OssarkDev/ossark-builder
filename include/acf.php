@@ -122,86 +122,6 @@ function register_acf_block_types()
 		)
 	));
 
-	// PDF block
-	acf_register_block_type(array(
-		'name' => 'pdf',
-		'title' => __('PDF'),
-		'description'   => __('PDF Section'),
-		'render_template' => 'components/pdf.php',
-		'category' => 'osmo-blocks',
-		'icon' => 'admin-comments',
-		'keywords' => array('File', 'PDF'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
-
-	// Image/Text block
-	acf_register_block_type(array(
-		'name' => 'image-text',
-		'title' => __('Image/Text'),
-		'description'   => __('Image and text with invert option'),
-		'render_template' => 'components/image-text.php',
-		'category' => 'osmo-blocks',
-		'icon' => 'admin-comments',
-		'keywords' => array('Image', 'Text', 'Left' , 'Right'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
-
-	// Text block
-	acf_register_block_type(array(
-		'name' => 'text',
-		'title' => __('Text'),
-		'description'   => __('Text block'),
-		'render_template' => 'components/text.php',
-		'category' => 'osmo-blocks',
-		'icon' => 'admin-comments',
-		'keywords' => array('Text', 'Content'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
-
-	// Video block
-	acf_register_block_type(array(
-		'name' => 'video',
-		'title' => __('Video'),
-		'description'   => __('Video block'),
-		'render_template' => 'components/video.php',
-		'category' => 'osmo-blocks',
-		'icon' => 'admin-comments',
-		'keywords' => array('Video', 'Content'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
-
 
 }
 
@@ -218,10 +138,6 @@ function allowed_block_types( $allowed_blocks, $post ) {
 	$all_blocks = [
 		'acf/hero',
 		'acf/form',
-		'acf/pdf',
-		'acf/image-text',
-		'acf/text',
-		'acf/video',
 	];
 	$article_blocks = [];
 	$services_blocks = [];
@@ -229,18 +145,18 @@ function allowed_block_types( $allowed_blocks, $post ) {
 	$vacancy_blocks = [];
   
 	switch( $post->post_type ) {
-	  case 'article':
-		  return $article_blocks;
-		  break;
-	  case 'services':
-		  return $services_blocks;
-		  break;
-	  case 'work':
-		  return $work_blocks;
-		  break;
-	  case 'vacancy':
-		  return $vacancy_blocks;
-		  break;
+	//   case 'article':
+	// 	  return $article_blocks;
+	// 	  break;
+	//   case 'services':
+	// 	  return $services_blocks;
+	// 	  break;
+	//   case 'work':
+	// 	  return $work_blocks;
+	// 	  break;
+	//   case 'vacancy':
+	// 	  return $vacancy_blocks;
+	// 	  break;
 	  default:
 		  return $all_blocks;
 	}

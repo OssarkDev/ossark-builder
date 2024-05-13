@@ -69,10 +69,13 @@
                     <?php if($menu): ?>
                         <nav class="footer__nav">
                             <div class="footer__nav__list">
-                                <?php foreach($menu as $item): ?>
-                                    <a href="<?= $item['menu_item']['link'] ?? '';?>" class="footer__nav__list__item">
+                                <?php foreach($menu as $item): 
+                                $link = $item['menu_item']['url'];
+                                $title = $item['menu_item']['title'];    
+                                ?>
+                                    <a href="<?= $link;?>" class="footer__nav__list__item">
                                         <span>
-                                            <?= $item['menu_item']['title']; ?>
+                                            <?= $title; ?>
                                         </span>
                                     </a>
                                 <?php endforeach; ?>
@@ -89,14 +92,6 @@
     $footer_scripts = get_field('footer_scripts', 'option');
     if ($footer_scripts) {
         echo $footer_scripts;
-    }
-?>
-
-<?php 
-    $enable_hotjar = get_field('enable_hotjar', 'option');
-    $hotjar_script = get_field('hotjar_script', 'option');
-    if($enable_hotjar && $hotjar_script) {
-        echo $hotjar_script;
     }
 ?>
 

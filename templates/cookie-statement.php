@@ -6,7 +6,9 @@
 
 <?php get_header(); ?>
 
-<div class="section">
+<?php $cookie_statement = get_field('cookie_statement', 'option'); ?>
+
+<section class="section">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -15,16 +17,16 @@
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
-<div class="section">
+<section class="section">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<script id="CookieDeclaration" src="https://consent.cookiebot.com/db63ed26-4479-4dec-aa7f-7094a41ed5fe/cd.js" type="text/javascript" async></script>
+				<?= $cookie_statement; ?>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 <?php get_footer(); ?>
