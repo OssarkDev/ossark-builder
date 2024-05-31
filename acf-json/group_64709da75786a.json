@@ -6,7 +6,6 @@
             "key": "field_64709da769aec",
             "label": "Address",
             "name": "",
-            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -16,6 +15,7 @@
                 "class": "",
                 "id": ""
             },
+            "aria-label": "",
             "placement": "top",
             "endpoint": 0
         },
@@ -23,7 +23,6 @@
             "key": "field_64709dd869aee",
             "label": "Company Address",
             "name": "company_address",
-            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -33,6 +32,7 @@
                 "class": "",
                 "id": ""
             },
+            "aria-label": "",
             "default_value": "",
             "tabs": "all",
             "toolbar": "full",
@@ -43,7 +43,6 @@
             "key": "field_64709dc669aed",
             "label": "Footer Links",
             "name": "",
-            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -53,63 +52,14 @@
                 "class": "",
                 "id": ""
             },
+            "aria-label": "",
             "placement": "top",
             "endpoint": 0
         },
         {
-            "key": "field_64709de969aef",
-            "label": "Cookie Statement",
-            "name": "cookie_statement",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
-            "key": "field_64709df469af0",
-            "label": "Provicy Policy",
-            "name": "provicy_policy",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
-            "key": "field_64b2874c9c1e1",
-            "label": "Social",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_64b2870938e34",
-            "label": "Social",
-            "name": "social",
-            "aria-label": "",
+            "key": "field_6643b254a68fb",
+            "label": "Footer Bottom Links",
+            "name": "footer_bottom_links",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -119,6 +69,60 @@
                 "class": "",
                 "id": ""
             },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_6643b267a68fc",
+                    "label": "Item",
+                    "name": "item",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
+        },
+        {
+            "key": "field_64b2874c9c1e1",
+            "label": "Social",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_64b2870938e34",
+            "label": "Social",
+            "name": "social",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "aria-label": "",
             "layout": "table",
             "pagination": 0,
             "min": 0,
@@ -131,7 +135,6 @@
                     "key": "field_64b2872338e35",
                     "label": "Icon",
                     "name": "icon",
-                    "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -141,6 +144,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "aria-label": "",
                     "return_format": "array",
                     "library": "all",
                     "min_width": "",
@@ -157,7 +161,6 @@
                     "key": "field_64b2872f38e36",
                     "label": "Link",
                     "name": "link",
-                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 0,
@@ -167,6 +170,7 @@
                         "class": "",
                         "id": ""
                     },
+                    "aria-label": "",
                     "return_format": "array",
                     "parent_repeater": "field_64b2870938e34"
                 }
@@ -176,7 +180,6 @@
             "key": "field_64b2c0258a3da",
             "label": "Contact",
             "name": "",
-            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -186,6 +189,7 @@
                 "class": "",
                 "id": ""
             },
+            "aria-label": "",
             "placement": "top",
             "endpoint": 0
         },
@@ -193,7 +197,6 @@
             "key": "field_64b2c0318a3db",
             "label": "Phone",
             "name": "footer_phone",
-            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -203,6 +206,7 @@
                 "class": "",
                 "id": ""
             },
+            "aria-label": "",
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -213,7 +217,6 @@
             "key": "field_64b2c03d8a3dc",
             "label": "Email",
             "name": "footer_email",
-            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -223,6 +226,7 @@
                 "class": "",
                 "id": ""
             },
+            "aria-label": "",
             "default_value": "",
             "maxlength": "",
             "placeholder": "",
@@ -245,8 +249,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": 1,
     "description": "",
-    "show_in_rest": 0,
-    "modified": 1691530839
+    "modified": 1715712692
 }

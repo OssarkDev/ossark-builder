@@ -7,17 +7,17 @@
 @import 'include/_layout';
 
 // parts
-@import 'parts/_header';
-@import 'parts/_footer';
-@import 'parts/_buttons';
-@import 'parts/_animations';
-@import 'parts/cookiebot';
-@import 'parts/smooth-scroll';
+@import 'components/_header';
+@import 'components/_footer';
+@import 'components/_buttons';
+@import 'components/_animations';
+@import 'components/_cookiebot';
+@import 'components/_smooth-scroll';
 
 
 // components
-@import 'components/_hero';
-@import 'components/_form';
-@import 'components/_pdf';
-@import 'components/_image-text';
-@import 'components/_video';
+@import 'components/blocks/_hero';
+@import 'components/blocks/_form';
+@import 'components/blocks/_pdf';
+@import 'components/blocks/_image-text';
+@import 'components/blocks/_video';

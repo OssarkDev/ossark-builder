@@ -20,19 +20,23 @@ function ui_title($title, $classes = '', $heading_size = '') {
     Button
   =====================
 */
-function ossarkButton($button, $classes, $arrowType) {
-    // $button is the ACF array for a link. $classes includes an extra classes for .btn. $arrows can be seen in icons
+function ossarkButton($button, $classes) {
     $output = '';
-    $link = $button['url'] ?: '';
-    $target = $button['target'] ?: '_self';
-    $title = $button['title'] ?: 'Read more';
-    $arrow = $arrowType ?: 'black-large';
+
+    if(is_array($button)) {
+      $link = $button['url'] ?: '';
+      $target = $button['target'] ?: '_self';
+      $title = $button['title'] ?: 'Read more';
+    } else {
+      $link = $button;
+      $target = '_self';
+      $title = 'Read more';
+    }
     
     $output .= 
-        '<a href="'. $link . '" target="'. $target .'" class="btn '. $classes . $mobile .'">
-        <span>'. $title .'</span>
-        '. get_inline_svg($arrow) .'
-        </a>';
+      '<a href="'. $link . '" target="'. $target .'" class="btn '. $classes .'">
+      <span>'. $title .'</span>
+      </a>';
   
     return $output;
   }

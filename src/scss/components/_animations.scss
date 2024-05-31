@@ -1,0 +1,69 @@
+
+// header
+@-webkit-keyframes hideHeader {
+	from {transform: translate(0, 0%);}
+	to {transform: translate(0, -100%);}
+}
+@-webkit-keyframes showHeader {
+	from {transform: translate(0, -100%);}
+	to {transform: translate(0, 0%);}
+}
+
+// sections
+@-webkit-keyframes showSection {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+@-webkit-keyframes hideSection {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}
+
+.line-draw {
+	position: relative;
+	&:after {
+		content: '';
+		display: block;
+		width: 0;
+		height: 8px;
+		background-color: $blue;
+		border-radius: 3px;
+		margin-top: 16px;
+		transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	&.animate {
+		&:after {
+			width: 100%;
+		}
+	}
+}
+
+// image reveal zoom out
+.img-show {
+	overflow: hidden;
+	img {
+		opacity: 0;
+		transition: all 2s ease-out;
+		scale: 1.1;
+	}
+	&.animate {
+		img {
+			opacity: 1;
+			scale: 1;
+		}
+	}
+}
+
+// buttons 
+.btn, 
+.btn span, 
+.btn svg path {
+	transition: all 0.2s ease-in-out;
+}
+
+// links
+.link,
+.link span,
+.link span:after {
+	transition: all 0.2s;
+}

@@ -3,6 +3,26 @@
     "title": "Theme Options: Scripts",
     "fields": [
         {
+            "key": "field_6659968465bc9",
+            "label": "Cookie Statement",
+            "name": "cookie_statement",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
             "key": "field_64709a30248b6",
             "label": "Header Scripts",
             "name": "header_scripts",
@@ -61,54 +81,6 @@
             "rows": 12,
             "placeholder": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_64709a9de707e",
-            "label": "Enable Hotjar?",
-            "name": "enable_hotjar",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "",
-            "ui_off_text": "",
-            "ui": 1
-        },
-        {
-            "key": "field_64709aaee707f",
-            "label": "Hotjar Script",
-            "name": "hotjar_script",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64709a9de707e",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "rows": 12,
-            "placeholder": "",
-            "new_lines": ""
         }
     ],
     "location": [
@@ -129,5 +101,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1706302314
+    "modified": 1717147779
 }

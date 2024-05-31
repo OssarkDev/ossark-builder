@@ -12,6 +12,9 @@ function my_custom_width_gutenberg() {
     .wp-block{
         max-width: 95% !important;
     }
+    .acf-block-body .acf-block-fields {
+      border: 2px solid #F7934C !important;
+    }
   </style>';
 }
 

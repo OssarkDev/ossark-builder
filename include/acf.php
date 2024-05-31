@@ -61,8 +61,8 @@ add_filter('block_categories', function ($categories, $post) {
 	$arr = array_merge(
 		array(
 			array(
-				'slug' => 'osmo-blocks',
-				'title' => 'Osmo Blocks',
+				'slug' => 'ossark-blocks',
+				'title' => 'Ossark Blocks',
 			),
 		),
 		$categories
@@ -82,34 +82,15 @@ if (function_exists('acf_register_block_type')) {
 */
 function register_acf_block_types()
 {
-	// hero block
-	acf_register_block_type(array(
-		'name' => 'hero',
-		'title' => __('Hero'),
-		'description'   => __('Hero Section'),
-		'render_template' => 'components/hero.php',
-		'category' => 'osmo-blocks',
-		'icon' => 'admin-comments',
-		'keywords' => array('Hero Section', 'Content'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
 
-	// form block
+	// form
 	acf_register_block_type(array(
 		'name' => 'form',
 		'title' => __('Form'),
 		'description'   => __('Contact Form'),
-		'render_template' => 'components/form.php',
-		'category' => 'osmo-blocks',
-		'icon' => 'admin-comments',
+		'render_template' => 'components/blocks/form.php',
+		'category' => 'ossark-blocks',
+		'icon' => 'block-default',
 		'keywords' => array('Contact', 'Form'),
 		'mode' => 'edit',
 		'example'  => array(
@@ -122,6 +103,25 @@ function register_acf_block_types()
 		)
 	));
 
+	// map
+	acf_register_block_type(array(
+		'name' => 'map',
+		'title' => __('Map'),
+		'description'   => __('Map component'),
+		'render_template' => 'components/blocks/map.php',
+		'category' => 'ossark-blocks',
+		'icon' => 'block-default',
+		'keywords' => array('Map', 'Location'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
+	));
 
 }
 
@@ -136,29 +136,21 @@ add_filter( 'allowed_block_types', 'allowed_block_types', 10, 2 );
 function allowed_block_types( $allowed_blocks, $post ) {
 
 	$all_blocks = [
-		'acf/hero',
 		'acf/form',
+		'acf/map',
 	];
 	$article_blocks = [];
 	$services_blocks = [];
-	$work_blocks = [];
-	$vacancy_blocks = [];
   
 	switch( $post->post_type ) {
-	//   case 'article':
-	// 	  return $article_blocks;
-	// 	  break;
-	//   case 'services':
-	// 	  return $services_blocks;
-	// 	  break;
-	//   case 'work':
-	// 	  return $work_blocks;
-	// 	  break;
-	//   case 'vacancy':
-	// 	  return $vacancy_blocks;
-	// 	  break;
-	  default:
-		  return $all_blocks;
-	}
+		case 'article':
+		return $article_blocks;
+		break;
+	   	case 'services':
+		return $services_blocks;
+		break;
+	  	default:
+		return $all_blocks;
   }
+}
 
