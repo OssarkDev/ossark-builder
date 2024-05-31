@@ -25,7 +25,11 @@
 }
 </style>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMwAHwBb5yTwPgpRek3jDKdlHq6LGdNIg"></script>
+<?php
+$google_maps_api_key = get_field('google_maps_api_key', 'option') ?: 'AIzaSyAemXQ9Y6TbPpPxjAAwhxt81UFqJvLjjDA';
+?>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= $google_maps_api_key; ?>"></script>
 <script type="text/javascript">
 
 
@@ -167,6 +171,8 @@ $(document).ready(function(){
 <?php
 if (isset($args)) {
     $location = $args['location'];
+} else {
+    $location = get_field('location');
 }
 
 if( $location ): ?>

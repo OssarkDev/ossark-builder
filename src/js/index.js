@@ -3,15 +3,15 @@ import 'slick-carousel';
 import 'slick-carousel/slick/slick.scss';
 
 // custom JS
-import { headerAnimation } from './parts/header';
-import { lottie } from './parts/lottie';
-import { backToTop } from './components/backToTop';
-import { shareButton } from './components/shareButton';
-import { slider } from './components/slider';
-import { hamburger } from './components/hamburger';
-import { formSuccessRedirect } from './parts/contact';
-import { video } from './components/video';
-import { splitText } from './animations/splitText';
+import { headerAnimation } from './components/parts/header';
+import { lottie } from './components/parts/lottie';
+import { backToTop } from './components/parts/backToTop';
+import { shareButton } from './components/parts/shareButton';
+import { slider } from './components/blocks/slider';
+import { hamburger } from './components/parts/hamburger';
+import { formSuccessRedirect } from './components/parts/contact';
+import { video } from './components/blocks/video';
+import { splitText } from './components/parts/splitText';
 
 export function runAfterDomLoad() {
 	headerAnimation();
