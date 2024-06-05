@@ -32,11 +32,7 @@
             <?php endif; ?>
             <?php if($header_cta): ?>
                 <div class="col-2 header__cta">
-                    <a href="<?= $header_cta['url']; ?>" target="<?= $header_cta['target'] ?: '_self'; ?>" class="btn">
-                        <span>
-                            <?= $header_cta['title']; ?>
-                        </span>
-                    </a>
+                    <?= ossarkButton($header_cta , ''); ?>
                 </div>
             <?php endif; ?>
 

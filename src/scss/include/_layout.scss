@@ -93,12 +93,19 @@ section, .section {
 @for $i from 1 through $grid-columns-desktop {
 	.col-#{$i} {
 		grid-column: span #{$i};
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
 	}
 	// create all grid column offset classes
 	@for $j from 1 through calc($grid-columns-desktop - $i) {
 		@if $i < $grid-columns-desktop {
 			.col-#{$i}-offset-#{$j} {
 				display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                position: relative;
 				grid-column-start: #{$j + 1};
 				grid-column-end: #{$i + $j + 1};
                 @media(max-width: $mobile) {

@@ -26,6 +26,7 @@ function create_posttypes() {
         'show_in_menu' => true,
         'show_in_rest' => true, // show in rest api, if true it can be seen in blokc editor
         'rewrite' => array('slug' => 'work'), // url structure
+        'publicly_queryable'  => true, // if there is no single or archive page, set to false
         'supports' => array(
             'title',
             'editor',

@@ -81,6 +81,17 @@
                     <?php endif; ?>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer__bottom">
+                        <div class="footer__bottom__copyright">
+                            <p>&copy; <?= date('Y'); ?> <?= get_bloginfo('name'); ?>. All rights reserved.</p>
+                            <p>Made by <a href="https://ossark.ie/?utm_source=<?= get_bloginfo('name'); ?>&utm_medium=Client%20Website%20Refferal" target="_blank">Ossark</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

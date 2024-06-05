@@ -99,25 +99,3 @@ function returnYoutubeUrl($url){
   }
   return 'https://www.youtube.com/embed/' . $videoID;
 }
-
-/*
-	=====================
-		Return button
-	=====================	
-*/
-function ossarkButton($button, $classes, $arrowType) {
-  // $button is the ACF array for a link. $classes includes an extra classes for .btn. $arrows can be seen in icons
-  $output = '';
-  $link = $button['url'] ?: '';
-  $target = $button['target'] ?: '_self';
-  $title = $button['title'] ?: 'Read more';
-  $arrow = $arrowType ?: 'black-large';
-  
-  $output .= 
-  '<a href="'. $link . '" target="'. $target .'" class="btn '. $classes .'">
-  <span>'. $title .'</span>
-  '. get_inline_svg($arrow) .'
-  </a>';
-
-  return $output;
-}

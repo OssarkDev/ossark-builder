@@ -2,25 +2,6 @@
 
 /*
   =====================
-    Make Gutenber blocks full width
-  =====================
-*/
-add_action('admin_head', 'my_custom_width_gutenberg');
-
-function my_custom_width_gutenberg() {
-    echo '<style>
-    .wp-block{
-        max-width: 95% !important;
-    }
-    .acf-block-body .acf-block-fields {
-      border: 2px solid #F7934C !important;
-    }
-  </style>';
-}
-
-
-/*
-  =====================
     Add Categories and Tags to pages
   =====================
 */
