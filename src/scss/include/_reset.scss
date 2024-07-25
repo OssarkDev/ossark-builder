@@ -30,11 +30,10 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
+html, body {
+  // scroll-behavior: smooth;
+  position: relative;
+  overflow-x: hidden;
   line-height: 1;
 }
 
@@ -68,7 +67,7 @@ a {
   text-decoration: none;
 }
 
-html, body {
+body {
   overflow-x: hidden;
 }
 
@@ -76,6 +75,7 @@ img {
   display: block;
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 button {

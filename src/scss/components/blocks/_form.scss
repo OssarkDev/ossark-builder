@@ -137,3 +137,25 @@
 	line-height: 24px;
 	padding-top: 8px;
 }
+
+.wpcf7 {
+	width: 100%;
+}
+
+.wpcf7-select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: url('../assets/icons/chevron.svg') no-repeat 98% 50%;
+	font-size: 17px !important;
+	cursor: pointer;
+	position: relative;
+	color: #757575 !important;
+	@include max-screen($mobile) {
+		background-position: 92% 50%;
+		font-size: 15px !important;
+	}
+
+	option {
+		color: $dim-grey !important;
+	}
+}

@@ -1,8 +1,16 @@
+# Variables
+env:
+  BRANCH_NAME: 'development'
+  THEME_NAME: 'ossark-builder'
+  SERVER_NAME: 'osmo.ie'
+  FTP_USERNAME: 'ossark-builder@osmo.ie'
+
+# Workflow
 on:
   push:
     branches:
-      - staging
-name: 🚀 Deploy staging website
+      - $BRANCH_NAME
+name: 🚀 Deploy website
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -14,10 +22,10 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ossark.ie
-        username: stagingdeploy@ossark.ie
-        password: ${{ secrets.staging_ftp_password }}
-        server-dir: wp-content/themes/ossark/
+        server: echo ${{ env.SERVER_NAME }}
+        username: ${{ env.FTP_USERNAME }}
+        password: ${{ secrets.dev_ftp_password }}
+        server-dir: wp-content/themes/${{ env.THEME_NAME }}/
         exclude: |
           **/node_modules/**
           package-lock.json

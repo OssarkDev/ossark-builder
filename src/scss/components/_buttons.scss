@@ -46,6 +46,13 @@
 		}
 	}
 
+	&.submit {
+		input {
+			border: none;
+			cursor: pointer;
+		}
+	}
+
 	/*
 		Blue button
 	*/

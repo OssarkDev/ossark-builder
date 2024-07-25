@@ -69,3 +69,18 @@
 	transition-duration: $transition-length;
 	transition-timing-function: $transition-timing-function;
 }
+
+// container mixin, for positioning absolute elements on the edge of the container
+@mixin container {
+    padding: $container-padding-desktop;
+    max-width: $container-max-width;
+    @include max-screen($tablet) {
+        padding: $container-padding-tablet;
+    }
+    @include max-screen($mobile) {
+        padding: $container-padding-mobile;
+    }
+    @include min-screen($hd-screens) {
+        padding: $container-padding-hd-screens;
+    }
+}

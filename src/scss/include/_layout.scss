@@ -9,20 +9,20 @@ main {
 }
 
 section, .section {
-    margin: $section-margin-laptop 0;
+    padding: $section-margin-laptop 0;
     &:first-child {
-        margin: calc($section-margin-laptop + $header-height) 0 $section-margin-laptop 0;
+        padding: calc($section-margin-laptop + $header-height) 0 $section-margin-laptop 0;
     }
     @media (max-width: $mobile) {
-        margin: $section-margin-mobile 0;
+        padding: $section-margin-mobile 0;
         &:first-child {
-            margin: calc($section-margin-mobile + $header-height) 0 $section-margin-mobile 0;
+            padding: calc($section-margin-mobile + $header-height) 0 $section-margin-mobile 0;
         }
     }
     @media (min-width: $hd) {
-        margin: $section-margin-desktop 0;
+        padding: $section-margin-desktop 0;
         &:first-child {
-            margin: calc($section-margin-desktop + $header-height) 0 $section-margin-desktop 0;
+            padding: calc($section-margin-desktop + $header-height) 0 $section-margin-desktop 0;
         }
     }
 }
@@ -116,13 +116,6 @@ section, .section {
 	}
 }
 
-// empty column instead of offset.
-.empty {
-    @include max-screen($mobile) {
-        display: none;
-    }
-}
-
 // create all grid column classes for dekstop
 @for $i from 1 through $grid-columns-desktop {
 	.col-#{$i} {
@@ -133,7 +126,7 @@ section, .section {
 	}
 }
 
-// create all grid column classes for mobile
+// // create all grid column classes for mobile
 // @for $i from 1 through $grid-columns-mobile {
 // 	@media(max-width: $mobile) {
 // 		.col-sm-#{$i} {
@@ -151,14 +144,14 @@ section, .section {
     }
 }
 
-// create all grid column classes for hd-screens
-@for $i from 1 through $grid-columns-hd-screens {
-    @media(min-width: $hd) {
-        .col-lg-#{$i} {
-            grid-column: span #{$i};
-        }
-    }
-}
+// // create all grid column classes for hd-screens
+// @for $i from 1 through $grid-columns-hd-screens {
+//     @media(min-width: $hd) {
+//         .col-lg-#{$i} {
+//             grid-column: span #{$i};
+//         }
+//     }
+// }
 
 /*
 =================================================================

@@ -64,4 +64,28 @@ function remove_wp_block_library_css() {
   wp_dequeue_style( 'wc-block-style' );
   wp_dequeue_style( 'global-styles' );
 }
-  add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
+
+add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
+
+
+
+/*
+=====================
+	Remove Contact Form 7 Scripts
+=====================
+*/
+function contactform7_dequeue_scripts() {
+  $check_cf7 = false;
+
+  if( is_page('contact') ) {
+      $check_cf7 = true;
+  }
+
+  if( !$check_cf7 ) {
+      wp_dequeue_script( 'contact-form-7' );
+      wp_dequeue_style( 'contact-form-7' );
+      wp_dequeue_script( 'cf7-conditional-fields' );
+      wp_dequeue_style( 'cf7-conditional-fields' );
+  }
+}
+add_action( 'wp_enqueue_scripts', 'contactform7_dequeue_scripts', 77 );

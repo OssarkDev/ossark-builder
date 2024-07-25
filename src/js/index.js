@@ -12,6 +12,8 @@ import { hamburger } from './components/parts/hamburger';
 import { formSuccessRedirect } from './components/parts/contact';
 import { video } from './components/blocks/video';
 import { splitText } from './components/parts/splitText';
+import { scrollToAnchor } from './components/parts/scrollToAnchor';
+import { scroll } from './components/parts/scroll';
 
 export function runAfterDomLoad() {
 	headerAnimation();
@@ -23,4 +25,7 @@ export function runAfterDomLoad() {
 	formSuccessRedirect();
 	video();
 	splitText();
+	scrollToAnchor();
+	scroll();
+	activeMenuItem();
 }

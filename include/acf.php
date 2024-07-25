@@ -14,8 +14,15 @@ function my_custom_width_gutenberg() {
         max-width: 95% !important;
     }
     .acf-block-body .acf-block-fields {
-      border: 2px solid #F7934C !important;
+      border: 2px solid #000 !important;
+	  border-radius: 10px;
     }
+	.editor-styles-wrapper {
+		background-color: #FFF !important;
+	}
+	.button, .page-title-action {
+		border-radius: 40px !important;
+	}
   </style>';
 }
 
@@ -80,8 +87,16 @@ add_filter('block_categories', function ($categories, $post) {
 	$arr = array_merge(
 		array(
 			array(
-				'slug' => 'ossark-blocks',
-				'title' => 'Ossark Blocks',
+				'slug' => 'hero',
+				'title' => 'Hero',
+			),
+			array(
+				'slug' => 'slider',
+				'title' => 'Slider',
+			),
+			array(
+				'slug' => 'content',
+				'title' => 'Content',
 			),
 		),
 		$categories
@@ -108,7 +123,7 @@ function register_acf_block_types()
 		'title' => __('Form'),
 		'description'   => __('Contact Form'),
 		'render_template' => 'components/blocks/form.php',
-		'category' => 'ossark-blocks',
+		'category' => 'content',
 		'icon' => 'block-default',
 		'keywords' => array('Contact', 'Form'),
 		'mode' => 'edit',
@@ -128,7 +143,7 @@ function register_acf_block_types()
 		'title' => __('Map'),
 		'description'   => __('Map component'),
 		'render_template' => 'components/blocks/map.php',
-		'category' => 'ossark-blocks',
+		'category' => 'content',
 		'icon' => 'block-default',
 		'keywords' => array('Map', 'Location'),
 		'mode' => 'edit',
