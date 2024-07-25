@@ -1,5 +1,5 @@
 # Variables
-
+# need to manually update the branch
 env:
   THEME_NAME: 'ossark-builder'
   SERVER_NAME: 'osmo.ie'
@@ -9,7 +9,8 @@ env:
 # Workflow
 on:
   push:
-    branches: [ $BRANCH_NAME ]
+    branches: 
+      - development
 name: 🚀 Deploy website
 jobs:
   web-deploy:
