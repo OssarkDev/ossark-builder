@@ -1,16 +1,16 @@
 # Variables
 
 env:
-  BRANCH_NAME: 'development'
   THEME_NAME: 'ossark-builder'
   SERVER_NAME: 'osmo.ie'
   FTP_USERNAME: 'ossark-builder@osmo.ie'
+  BRANCH_NAME: 'development'
 
 # Workflow
 on:
   push:
     branches:
-      - "{{ env.BRANCH_NAME }}"
+      - $BRANCH_NAME
 name: 🚀 Deploy website
 jobs:
   web-deploy:
