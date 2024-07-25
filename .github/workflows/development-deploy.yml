@@ -9,8 +9,7 @@ env:
 # Workflow
 on:
   push:
-    branches:
-      - env.BRANCH_NAME
+    branches: [ $BRANCH_NAME ]
 name: 🚀 Deploy website
 jobs:
   web-deploy:
