@@ -10,7 +10,7 @@ env:
 on:
   push:
     branches:
-      - development
+      - ${{ env.BRANCH_NAME }}
 name: 🚀 Deploy website
 jobs:
   web-deploy:
