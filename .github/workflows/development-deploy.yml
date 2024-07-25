@@ -1,4 +1,5 @@
 # Variables
+
 env:
   BRANCH_NAME: 'development'
   THEME_NAME: 'ossark-builder'
@@ -9,7 +10,7 @@ env:
 on:
   push:
     branches:
-      - $BRANCH_NAME
+      - development
 name: 🚀 Deploy website
 jobs:
   web-deploy:
@@ -22,7 +23,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: echo ${{ env.SERVER_NAME }}
+        server: ${{ env.SERVER_NAME }}
         username: ${{ env.FTP_USERNAME }}
         password: ${{ secrets.dev_ftp_password }}
         server-dir: wp-content/themes/${{ env.THEME_NAME }}/
