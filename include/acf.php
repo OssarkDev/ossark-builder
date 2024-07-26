@@ -157,6 +157,26 @@ function register_acf_block_types()
 		)
 	));
 
+	// ajax test
+	acf_register_block_type(array(
+		'name' => 'ajax-test',
+		'title' => __('Ajax Test'),
+		'description'   => __('Ajax Test component'),
+		'render_template' => 'components/blocks/ajax-test.php',
+		'category' => 'content',
+		'icon' => 'block-default',
+		'keywords' => array('Ajax', 'Test'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
+	));
+
 }
 
 
@@ -172,6 +192,7 @@ function allowed_block_types( $allowed_blocks, $post ) {
 	$all_blocks = [
 		'acf/form',
 		'acf/map',
+		'acf/ajax-test'
 	];
 	$article_blocks = [];
 	$services_blocks = [];

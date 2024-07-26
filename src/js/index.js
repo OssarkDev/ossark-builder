@@ -14,6 +14,8 @@ import { video } from './components/blocks/video';
 import { splitText } from './components/parts/splitText';
 import { scrollToAnchor } from './components/parts/scrollToAnchor';
 import { scroll } from './components/parts/scroll';
+import { activeMenuItem } from './components/parts/activeMenuItem';
+import { testAjax } from './components/parts/testAjax';
 
 export function runAfterDomLoad() {
 	headerAnimation();
@@ -28,4 +30,5 @@ export function runAfterDomLoad() {
 	scrollToAnchor();
 	scroll();
 	activeMenuItem();
+	testAjax();
 }
