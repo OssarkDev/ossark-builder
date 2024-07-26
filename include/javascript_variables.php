@@ -14,4 +14,4 @@ function javascript_variables(){ ?>
         var ajax_nonce = '<?php echo wp_create_nonce( "secure_nonce_name" ); ?>';
     </script><?php
   }
-  add_action ( 'wp_head', 'javascript_variables' );
+add_action ( 'wp_head', 'javascript_variables' );

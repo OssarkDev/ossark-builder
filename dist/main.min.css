@@ -2318,7 +2318,7 @@ section:first-child, .section:first-child {
 */
 .btn {
   display: inline-block;
-  padding: 24px 40px;
+  padding: 12px 24px;
   border: 1px solid #000;
   border-radius: 40px;
   background-color: #FFF;
@@ -2344,6 +2344,7 @@ section:first-child, .section:first-child {
   font-size: 20px;
   line-height: 32px;
   font-weight: 500;
+  white-space: nowrap;
 }
 .btn svg {
   width: 24px;
@@ -2549,6 +2550,30 @@ section:first-child, .section:first-child {
 .img-show.animate img {
   opacity: 1;
   scale: 1;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 3000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.draw svg path {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+}
+.draw.in-view svg > path {
+  animation: dash 3s ease-in-out both;
+}
+
+.img-up {
+  transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(160px);
+}
+.img-up.in-view {
+  transform: translateY(0);
 }
 
 .btn,
