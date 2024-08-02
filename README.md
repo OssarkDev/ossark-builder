@@ -1,5 +1,7 @@
 ## Node version
-`16.17 or above`
+`18.0 or above. Preferably 22.2.0`
+## Yarn Version
+`1.22.22`
 
 ---
 
@@ -26,6 +28,10 @@
   `All images, icons & fonts are in the assets folder`
   `JS & SCSS are added to corresponding index files in the src folder`
   `Import all vendors in the main.js file`
+  `All new JS is to be imported and declared in index.js`
+
+## ACF
+  `include/acf.php - create new block and add to block arrays at the bottom of the file. Array is called $all_blocks. WordPress will only show blocks from this Array`
 
 ---
 
@@ -45,17 +51,23 @@
 
 ---
 
+## SCSS
+`all scss files to be listed in index.scss`
+
 ## SCSS Mixins 
 `There is a collection of useful SCSS mixins and functions available`
-- +max-screen($size) `max-width breakpoint`
-- +min-screen($size) `min-width breakpoint`
+- @include max-screen($size) `max-width breakpoint`
+- @include min-screen($size) `min-width breakpoint`
 
-*You can enable extra Webpack features:*  
-- `Compression plugin: dist files will be compressed to gzip, brotli, or choice`  
-- `you can add extra entry points to split code chunks (main.js, chunk.js, etc)`  
-- `Sprite functionalty is available, but not implemented.`
+---
 
+## SVG Output
+`Use the PHP function get_inline_svg(path). This path already begins in assetts. So it would be (icons/arrow.svg).`
 
-## WPML
-- To use WPML, you should uncomment line 11 in `include\javascript_variables.php`
-```
+---
+
+## UI Kit
+`There are some PHP fuinctions for simplifying front-end elements such as buttons. inc/ui_kit.php`
+
+## Scroll Trigger
+`There is a custom scroll trigger. use this by adding data-scroll to any div. When this div comes in to view, the class .in-view will be added.`

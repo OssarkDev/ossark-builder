@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * AJAX Example
+ */
 add_action('wp_ajax_test_ajax', 'test_ajax');
 add_action('wp_ajax_nopriv_test_ajax', 'test_ajax');
 
@@ -24,3 +27,7 @@ function test_ajax() {
     // Get the output buffer and clean it
     wp_die();
 }
+
+
+
+

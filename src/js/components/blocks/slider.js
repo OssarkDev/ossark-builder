@@ -1,8 +1,8 @@
 export function slider() {
-	let slider = $('.image-slider__slider');
-	let next = $('.image-slider__arrows__next');
-	let prev = $('.image-slider__arrows__prev');
-	let counter = $('.image-slider__numbers');
+	let slider = $('.slider');
+	let next = $('.slider__arrows__next');
+	let prev = $('.slider__arrows__prev');
+	let counter = $('.slider__numbers');
 
 
     // Create counter
@@ -26,5 +26,4 @@ export function slider() {
 		easing: true,
 		draggable: true,
 	});
-
 }

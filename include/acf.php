@@ -3,7 +3,7 @@
 
 /*
   =====================
-    Make Gutenber blocks full width
+    Make Gutenber blocks full width & add styles
   =====================
 */
 add_action('admin_head', 'my_custom_width_gutenberg');
@@ -177,6 +177,26 @@ function register_acf_block_types()
 		)
 	));
 
+	// filters
+	acf_register_block_type(array(
+		'name' => 'filters',
+		'title' => __('Filters'),
+		'description'   => __('Filters component'),
+		'render_template' => 'components/blocks/filters.php',
+		'category' => 'content',
+		'icon' => 'block-default',
+		'keywords' => array('Filters', 'Search'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
+	));
+
 }
 
 
@@ -192,7 +212,8 @@ function allowed_block_types( $allowed_blocks, $post ) {
 	$all_blocks = [
 		'acf/form',
 		'acf/map',
-		'acf/ajax-test'
+		'acf/ajax-test',
+		'acf/filters',
 	];
 	$article_blocks = [];
 	$services_blocks = [];
