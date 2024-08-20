@@ -1,4 +1,4 @@
-// @import '_functions';
+// include
 @import 'include/_mixins';
 @import 'include/_variables';
 @import 'include/_fonts';
@@ -6,13 +6,16 @@
 @import 'include/_typography';
 @import 'include/_layout';
 
-// parts
+// main
 @import 'components/_header';
 @import 'components/_footer';
 @import 'components/_buttons';
 @import 'components/_animations';
 @import 'components/_cookiebot';
 @import 'components/_smooth-scroll';
+
+// parts
+@import 'components/parts/_cookie-banner';
 
 // components
 @import 'components/blocks/_hero';

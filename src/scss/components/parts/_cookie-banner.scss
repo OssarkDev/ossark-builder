@@ -1,0 +1,28 @@
+.cookie-banner {
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 10px;
+    background-color: $stone-grey;
+    padding: 24px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.3s ease-in-out; 
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @include max-screen($mobile) {
+        width: auto;
+        margin: 16px;
+        bottom: 0;
+        right: 0;
+        gap: 16px;
+        padding: 16px;
+    }
+}

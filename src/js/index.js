@@ -17,6 +17,7 @@ import { scroll } from './components/parts/scroll';
 import { activeMenuItem } from './components/parts/activeMenuItem';
 import { testAjax } from './components/parts/testAjax';
 import { faq } from './components/blocks/faq';
+import { cookieBanner } from './components/parts/cookieBanner';
 
 export function runAfterDomLoad() {
 	headerAnimation();
@@ -33,4 +34,5 @@ export function runAfterDomLoad() {
 	activeMenuItem();
 	testAjax();
 	faq();
+	cookieBanner();
 }

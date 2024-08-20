@@ -9,6 +9,8 @@
     }
 ?>
 
+<?php get_template_part('components/parts/cookie'); ?>
+
 <?php wp_footer(); ?>
 
 </body>
