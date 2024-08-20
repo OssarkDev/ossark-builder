@@ -9,6 +9,11 @@ $subtitle = get_field('subtitle');
 $form = get_field('form');
 $contact_info = get_field('contact_info');
 $add_social = get_field('add_socials');
+
+if (get_field('is_preview')) { 
+    $name = $block['name'];
+    previewImage($name);
+} else {
 ?>
 
 <?php if($form): ?>
@@ -48,3 +53,5 @@ $add_social = get_field('add_socials');
 		</div>
 	</section>
 <?php endif; ?>
+
+<?php } ?>

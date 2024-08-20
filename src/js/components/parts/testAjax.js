@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { scroll } from './scroll';
 
 export function testAjax() {
     var block = $('.ajax-example');
@@ -25,6 +26,7 @@ export function testAjax() {
                     setTimeout(function() {
                         container.removeClass('loading');
                     }, 500);
+                    scroll(); // Call the scroll function to check if the section is in view
                 }
             },
             error: function(error) {

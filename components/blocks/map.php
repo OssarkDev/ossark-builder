@@ -1,3 +1,11 @@
+<?php 
+if (get_field('is_preview')) { 
+    $name = $block['name'];
+    previewImage($name);
+} else {
+?>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style type="text/css">
@@ -188,3 +196,5 @@ if( $location ): ?>
         </div>
     </section>
 <?php endif; ?>
+
+<?php } ?>

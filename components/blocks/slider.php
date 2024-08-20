@@ -1,7 +1,14 @@
 <?php 
-    $title = get_field('title');
-    $slider = get_field('slider');
+$title = get_field('title');
+$slider = get_field('slider');
+
+if (get_field('is_preview')) { 
+    $name = $block['name'];
+    previewImage($name);
+} else {
 ?>
+
+
 
 <section class="slider-block">
     <div class="container">
@@ -35,3 +42,5 @@
         <?php endif; ?>
     </div>
 </section>
+
+<?php } ?>

@@ -40,3 +40,14 @@ function ossarkButton($button, $classes) {
   
     return $output;
   }
+
+/*
+=====================
+  Preview Block Images
+=====================
+*/
+
+function previewImage($block_name) {
+  $block_name = str_replace('acf/', '', $block_name);
+  echo '<img src="' . get_template_directory_uri() . '/assets/block-previews/' . $block_name . '.jpg" alt="Preview for block" width="100%" height="auto"/>';
+}

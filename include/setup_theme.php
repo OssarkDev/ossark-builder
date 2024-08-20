@@ -24,14 +24,6 @@ function add_taxonomies_to_pages() {
 	$wp_query->set( 'post_type', $my_post_array );
 }
 
-  
-/*
-	=====================
-		Don't scale down large images
-	=====================	
-*/
-add_filter( 'big_image_size_threshold', '__return_false' );
-
 
 /*
   =====================
@@ -69,7 +61,7 @@ function remove_editor() {
 
 /*
   =====================
-    Remove menu item in WP admin
+    Remove menu item in WP admin menu
   =====================	
 */
 
@@ -77,6 +69,7 @@ function remove_menu_items ()
 { 
   //  remove_menu_page('edit.php'); // Posts
    remove_menu_page('edit-comments.php'); // Comments
+   remove_menu_page('edit.php'); // Posts
 }
 add_action('admin_menu', 'remove_menu_items'); 
 
@@ -178,9 +171,6 @@ add_theme_support(
     'flex-height' => true,
   )
 );
-
-if (function_exists('add_image_size')) {
-}
 
 // Remove <p> and <br/> from Contact Form 7
 add_filter('wpcf7_autop_or_not', '__return_false');

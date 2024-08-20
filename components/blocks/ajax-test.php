@@ -1,3 +1,10 @@
+<?php 
+if (get_field('is_preview')) { 
+    $name = $block['name'];
+    previewImage($name);
+} else {
+?>
+
 <section class="ajax-example">
     <div class="container">
         <div class="row">
@@ -10,3 +17,5 @@
         </div>
     </div>
 </section>
+
+<?php } ?>
