@@ -1,0 +1,81 @@
+.coming-soon {
+    background-color: #EDF2F4;
+    padding: 0 !important;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include max-screen($mobile) {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .container {
+        padding: 0 40px;
+        @include max-screen($mobile) {
+            padding: 0 16px;
+        }
+    }
+    &__title {
+        font-size: 18vw;
+        line-height: 0.8;
+        font-weight: 600;
+        letter-spacing: -3px;
+        padding-bottom: 80px;
+        padding-top: 56px;
+        @include max-screen($mobile) {
+            // font-size: 5rem;
+            // line-height: 4.5rem;
+            letter-spacing: -1.5px;
+            padding-bottom: 40px;
+            padding-top: 40px;
+        }
+    }
+    &__description {
+        font-size: 32px;
+        line-height: 40px;
+        padding-bottom: 8px;
+        font-weight: 500;
+        @include max-screen($mobile) {
+            font-size: 24px;
+            line-height: 36px;
+            padding-bottom: 16px;
+        }
+    }
+    &__content {
+        font-size: 24px;
+        line-height: 40px;
+        a {
+            font-weight: 500;
+            color: $black;
+            text-decoration: underline;
+        }
+        @include max-screen($mobile) {
+            padding-bottom: 24px;
+        }
+    }
+    &__logo {
+        @include max-screen($mobile) {
+            padding-bottom: 40px;
+        }
+    }
+    &__footer {
+        background-color: $black;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        p {
+            color: #EDF2F4;
+            font-size: 24px;
+            line-height: 40px;
+            font-weight: 300;
+        }
+        @include max-screen($mobile) {
+            flex-direction: column;
+            gap: 0;
+            padding: 20px 0;
+        }
+    }
+}

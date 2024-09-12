@@ -36,8 +36,8 @@
     font-size: $size + px;
     line-height: ($line * 10) + px;
     font-size: $size + rem;
-    line-height: $line + rem;
-  }
+    line-height: ($line * 10) + px;
+    }
 
 // add border radius
 @mixin border-radius($radius) {

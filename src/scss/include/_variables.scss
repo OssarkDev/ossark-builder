@@ -13,8 +13,8 @@ $hd: 1920px;
     Fonts
 =================================================================
 */
-$font-heading: 'RobotoSlab', serif;
-$font-body: 'Ariel', sans-serif;
+$font-heading: 'Poppins', sans-serif;
+$font-body: 'Poppins', sans-serif;
 $default-font-size: 16px;
 $default-line-height: 24px;
 $default-font-weight: 400;
@@ -75,8 +75,8 @@ $section-margin-desktop: 160px;
 // gaps
 $grid-column-gap-mobile: 8px;
 $grid-column-gap-tablet: 16px;
-$grid-column-gap-desktop: 32px;
-$grid-column-gap-hd-screens: 40px;
+$grid-column-gap-desktop: 16px;
+$grid-column-gap-hd-screens: 24px;
 
 // set all 8 grid spacings used in the design for margin and padding
 $spacing: 16 24 40 56 72 80 152 216;

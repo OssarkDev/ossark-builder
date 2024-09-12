@@ -183,15 +183,19 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 		Send all traffic to coming soon page
 	=====================	
 */
-  // add_action( 'template_redirect', function() {
-  //   if ( is_page( 'coming-soon' ) ) {
-  //       return;
-  //   }
+
+  $coming_sson = get_field('coming_soon', 'option');
+  if ($coming_sson) {
+  add_action( 'template_redirect', function() {
+    if ( is_page( 'coming-soon' ) ) {
+        return;
+    }
   
-  //   wp_redirect( esc_url_raw( home_url( 'coming-soon' ) ) );
+    wp_redirect( esc_url_raw( home_url( 'coming-soon' ) ) );
   
-  //   exit;
-  //   } );
+    exit;
+    } );
+  }
 
 
 /*

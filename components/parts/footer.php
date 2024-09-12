@@ -67,9 +67,9 @@
                         <nav class="footer__nav">
                             <div class="footer__nav__list">
                                 <?php foreach($menu as $item): 
-                                $link = $item['menu_item']['url'];
-                                $title = $item['menu_item']['title'];    
-                                ?>
+                                    $link = $item['menu_item']['url'];
+                                    $title = $item['menu_item']['title'];    
+                                    ?>
                                     <a href="<?= $link;?>" class="footer__nav__list__item">
                                         <span>
                                             <?= $title; ?>

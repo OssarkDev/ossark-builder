@@ -97,6 +97,9 @@ section, .section {
         flex-direction: column;
         align-items: flex-start;
         position: relative;
+        @include max-screen($mobile) {
+            width: 100%;
+        }
 	}
 	// create all grid column offset classes
 	@for $j from 1 through calc($grid-columns-desktop - $i) {
@@ -108,7 +111,7 @@ section, .section {
                 position: relative;
 				grid-column-start: #{$j + 1};
 				grid-column-end: #{$i + $j + 1};
-                @media(max-width: $mobile) {
+                @include max-screen($mobile) {
                     width: 100%;
                 }
 			}
@@ -117,14 +120,14 @@ section, .section {
 }
 
 // create all grid column classes for dekstop
-@for $i from 1 through $grid-columns-desktop {
-	.col-#{$i} {
-		grid-column: span #{$i};
-        @media(max-width: $mobile) {
-            width: 100%;
-        }
-	}
-}
+// @for $i from 1 through $grid-columns-desktop {
+// 	.col-#{$i} {
+// 		grid-column: span #{$i};
+//         @media(max-width: $mobile) {
+//             width: 100%;
+//         }
+// 	}
+// }
 
 // // create all grid column classes for mobile
 // @for $i from 1 through $grid-columns-mobile {
@@ -136,13 +139,13 @@ section, .section {
 // }
 
 // create all grid column classes for tablet
-@for $i from 1 through $grid-columns-tablet {
-    @media (max-width: $tablet) {
-        .col-md-#{$i} {
-            grid-column: span #{$i};
-        }
-    }
-}
+// @for $i from 1 through $grid-columns-tablet {
+//     @media (max-width: $tablet) {
+//         .col-md-#{$i} {
+//             grid-column: span #{$i};
+//         }
+//     }
+// }
 
 // // create all grid column classes for hd-screens
 // @for $i from 1 through $grid-columns-hd-screens {
