@@ -15,10 +15,3 @@ function raf(time) {
   requestAnimationFrame(raf)
 }
 requestAnimationFrame(raf)
-
-// on page load scroll 1px down to trigger scroll animations
-document.addEventListener('DOMContentLoaded', () => {
-  window.addEventListener('load', () => {
-    window.scrollBy(0, 1);
-  });
-});

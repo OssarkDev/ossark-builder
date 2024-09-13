@@ -3,26 +3,6 @@
     "title": "Theme Options: Scripts",
     "fields": [
         {
-            "key": "field_6659968465bc9",
-            "label": "Cookie Statement",
-            "name": "cookie_statement",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
             "key": "field_64709a30248b6",
             "label": "Header Scripts",
             "name": "header_scripts",
@@ -101,5 +81,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717147779
+    "modified": 1726235296
 }

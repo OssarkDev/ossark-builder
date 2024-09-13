@@ -56,3 +56,5 @@ $logo = get_field('coming_soon_logo', 'option');
         </a>
     </div>
 </section>
+
+<?php wp_footer(); ?>
