@@ -205,7 +205,7 @@ function register_acf_block_types()
 	Remove default blocks / only show:
 =====================
 */
-add_filter( 'allowed_block_types', 'allowed_block_types', 10, 2 );
+add_filter( 'allowed_block_types_all', 'allowed_block_types', 10, 2 );
 
 function allowed_block_types( $allowed_blocks, $post ) {
 
@@ -215,18 +215,7 @@ function allowed_block_types( $allowed_blocks, $post ) {
 		'acf/ajax-test',
 		'acf/filters',
 	];
-	$article_blocks = [];
-	$services_blocks = [];
-  
-	switch( $post->post_type ) {
-		case 'article':
-		return $article_blocks;
-		break;
-	   	case 'services':
-		return $services_blocks;
-		break;
-	  	default:
-		return $all_blocks;
-  }
+
+	return $all_blocks;
 }
 

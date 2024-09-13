@@ -119,3 +119,23 @@ function my_enable_debug_mode() {
 }
 
 add_action( 'after_setup_theme', 'my_enable_debug_mode' );
+
+
+/*
+	=====================
+		Send all traffic to coming soon page
+	=====================	
+*/
+
+add_action('init', function() {
+  $coming_soon = get_field('coming_soon', 'option');
+  if ($coming_soon) {
+    add_action( 'template_redirect', function() {
+      if ( is_page( 'coming-soon' ) ) {
+          return;
+      }
+      wp_redirect( esc_url_raw( home_url( 'coming-soon' ) ) );
+      exit;
+    });
+  }
+});

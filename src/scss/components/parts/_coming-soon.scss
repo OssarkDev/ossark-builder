@@ -1,14 +1,10 @@
 .coming-soon {
     background-color: #EDF2F4;
     padding: 0 !important;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    @include max-screen($mobile) {
-        height: auto;
-        min-height: 100vh;
-    }
 
     .container {
         padding: 0 40px;
@@ -45,13 +41,11 @@
     &__content {
         font-size: 24px;
         line-height: 40px;
+        padding-bottom: 24px;
         a {
             font-weight: 500;
             color: $black;
             text-decoration: underline;
-        }
-        @include max-screen($mobile) {
-            padding-bottom: 24px;
         }
     }
     &__logo {
