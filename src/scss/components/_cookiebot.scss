@@ -42,6 +42,11 @@
 	background-color: $orange !important;
 }
 
+// remove fade at bottom of item
+#CybotCookiebotDialog .CybotCookiebotFader.CybotCookiebotDialogActive {
+    opacity: 0;
+}
+
 // remove widget from bottom left of site
 #CookiebotWidget {
 	display: none !important;
