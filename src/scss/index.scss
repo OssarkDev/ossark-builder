@@ -5,15 +5,14 @@
 @import 'include/_reset';
 @import 'include/_typography';
 @import 'include/_layout';
+@import 'include/_smooth-scroll';
+@import 'include/_animations';
 
 // parts
 @import 'components/_header';
 @import 'components/_footer';
 @import 'components/_buttons';
-@import 'components/_animations';
 @import 'components/_cookiebot';
-@import 'components/_smooth-scroll';
-
 
 // components
 @import 'components/blocks/_hero';

@@ -23,3 +23,4 @@ header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload'
  * @link https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
  */
 header('Referrer-Policy: no-referrer-when-downgrade');
+

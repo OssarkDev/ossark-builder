@@ -16,6 +16,7 @@ import { scrollToAnchor } from './components/parts/scrollToAnchor';
 import { scroll } from './components/parts/scroll';
 import { activeMenuItem } from './components/parts/activeMenuItem';
 import { testAjax } from './components/parts/testAjax';
+import { map } from './components/blocks/map';
 
 export function runAfterDomLoad() {
 	headerAnimation();
@@ -31,4 +32,5 @@ export function runAfterDomLoad() {
 	scroll();
 	activeMenuItem();
 	testAjax();
+	map();
 }
