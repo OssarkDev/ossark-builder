@@ -34,7 +34,7 @@
 - You can offset columns by defining the col length and then the offset. The offset will be the amount of columns it's offset from the first, or col-1: `col-6-offset-2`
 - In `_variables.scss` set the amount of colunns for laptop & mobile. The section and container paddings for different sizes are also set here.   
 - There is a list of utility classes available for spacing. `.mt-48` is `margin-top: 48px`, `.pb-48` is `padding-bottom: 48px`, etc.  
-- These classes are responsive, so you can set the mobile spacing variation of these classes. Add the corresponding sizes to `$desktop-change` & `$mobile-change` in `_variables.scss`
+- These classes are responsive, so you can set the mobile spacing variation of these classes. Add the corresponding sizes to `$laptop-change` & `$mobile-change` in `_variables.scss`
 - There are column classes for dektop and mobile. You can uncomment the tablet if needed `line 101-118 in _layout.scss`
 
 ## Breakpoints & column classes

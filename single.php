@@ -2,6 +2,8 @@
 /*
     Single post page template
 */
+
+setup_postdata($post);
 ?>
 
 <?php get_header(); ?>

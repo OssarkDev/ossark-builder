@@ -11,9 +11,9 @@ function create_posttypes() {
        array(
         'labels' => array(
             'name' => __('Work'),
-            'all_items' => __('All works'),
+            'all_items' => __('All Works'),
             'singular_name' => __('Work'),
-            'add_new' => __('New work')
+            'add_new_item' => __('Add New Work')
         ),
         'public' => true,
         'show_ui' => true,

@@ -3,6 +3,11 @@
     Layout Spacing
 =================================================================
 */
+
+body {
+    background-color: $white;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -171,8 +176,8 @@ section, .section {
 // override certain padding and margin classes for mobile
 @media(max-width: $mobile) {
     @each $class, $class-name in zip($directions, $directions-classname) {
-        @each $desktop, $mobile in zip($desktop-change, $mobile-change) {
-            .#{$class-name}-#{$desktop} {
+        @each $laptop, $mobile in zip($laptop-change, $mobile-change) {
+            .#{$class-name}-#{$laptop} {
                 #{$class}: #{$mobile}px;
             }
         }

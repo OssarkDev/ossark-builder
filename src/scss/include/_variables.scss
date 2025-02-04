@@ -5,7 +5,7 @@
 */
 $mobile: 576px; 
 $tablet: 992px;
-$desktop: 1440px;
+$laptop: 1440px;
 $hd: 1920px;
 
 /*
@@ -43,6 +43,10 @@ $alice-blue: #EFF1F3;
 $slate-grey: #6B818C;
 $orange: #F7934C;
 $mid-grey: #C0CAD0;
+
+// status
+$success: #00A6D6;
+$error: #FF0000;
 
 /*
 =================================================================
@@ -84,7 +88,7 @@ $directions: padding padding-top padding-right padding-bottom padding-left margi
 $directions-classname: p pt pr pb pl m mt mr mb ml;
 
 // add desktop sizes and corresponding mobile sizes
-$desktop-change: 32 40 56 80 120;
+$laptop-change: 32 40 56 80 120;
 $mobile-change: 24 32 40 56 80;
 // header
 $header-height: 80px;

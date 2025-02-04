@@ -84,3 +84,9 @@
         padding: $container-padding-hd-screens;
     }
 }
+
+@mixin background-img($image-name) {
+    background-image: url('../assets/images/#{$image-name}');
+    background-size: cover;
+    background-position: center;
+}

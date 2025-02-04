@@ -9,6 +9,7 @@ function add_custom_taxonomies() {
     register_taxonomy('work-type', 'work', array(
         // Hierarchical taxonomy (like categories)
         'hierarchical' => true,
+        'show_in_rest' => true,
         // This array of options controls the labels displayed in the WordPress Admin UI
         'labels' => array(
             'name' => _x( 'Work Types', 'taxonomy general name' ),

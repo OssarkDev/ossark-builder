@@ -4,16 +4,16 @@ export function scroll() {
     // Class name is passed to the function where this exists
 
     const $mobileThreshold = 0.5;
-    const $desktopThreshold = 0.2;
+    const $laptopThreshold = 0.2;
     const $mobileMargin = '40px';
-    const $desktopMargin = '-200px';
+    const $laptopMargin = '-200px';
 
     // Check if the device is a mobile device
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     // Adjust the threshold and rootMargin based on the device type
-    const threshold = isMobile ? $mobileThreshold : $desktopThreshold;
-    const rootMargin = isMobile ? $mobileMargin : $desktopMargin;
+    const threshold = isMobile ? $mobileThreshold : $laptopThreshold;
+    const rootMargin = isMobile ? $mobileMargin : $laptopMargin;
 
     // Create an Intersection Observer instance
     const observer = new IntersectionObserver((entries) => {

@@ -8,15 +8,15 @@
 @import 'include/_smooth-scroll';
 @import 'include/_animations';
 
-// parts
-@import 'components/_header';
-@import 'components/_footer';
-@import 'components/_buttons';
-@import 'components/_cookiebot';
-
-// components
+// blocks
 @import 'components/blocks/_hero';
 @import 'components/blocks/_form';
 @import 'components/blocks/_pdf';
 @import 'components/blocks/_image-text';
 @import 'components/blocks/_video';
+
+// parts
+@import 'components/parts/_header';
+@import 'components/parts/_footer';
+@import 'components/parts/_buttons';
+@import 'components/parts/_cookiebot';
