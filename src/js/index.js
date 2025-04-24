@@ -17,8 +17,10 @@ import { scroll } from './components/parts/scroll';
 import { activeMenuItem } from './components/parts/activeMenuItem';
 import { testAjax } from './components/parts/testAjax';
 import { map } from './components/blocks/map';
+import { imageDimensions } from './components/parts/imageDimensions';
 
 export function runAfterDomLoad() {
+	imageDimensions();
 	headerAnimation();
 	lottie();
 	backToTop();

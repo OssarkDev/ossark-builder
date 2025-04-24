@@ -6,16 +6,45 @@
   =====================	
 */
 
-  add_action( 'after_setup_theme', 'my_enable_debug_mode' );
+  if ( get_option( 'my_debug_mode' ) ) {
+    add_action( 'after_setup_theme', function() {
+      error_reporting( E_ALL );
+      ini_set( 'display_errors', 1 );
+      ini_set( 'log_errors', 1 );
+      ini_set( 'error_log', get_template_directory() . '/debug.txt' );
+    });
+  }
 
-  function my_enable_debug_mode() {
-    // Turn on error reporting.
-    error_reporting( E_ALL );
-    // Sets to display errors on screen. Use 0 to turn off.
-    ini_set( 'display_errors', 1 );
-    // Sets to log errors. Use 0 (or omit) to not log errors.
-    ini_set( 'log_errors', 1 );
-    // Sets a log file path you can access in the theme editor.
-    $log_path = get_template_directory() . '/debug.txt';
-    ini_set( 'error_log', $log_path );
-}
+  add_action( 'admin_menu', function() {
+    add_options_page(
+      'Debug Mode',
+      'Debug Mode',
+      'manage_options',
+      'debug-mode',
+      function() {
+        ?>
+        <div class="wrap">
+          <h1>Debug Mode</h1>
+          <form method="post" action="options.php">
+            <?php
+            settings_fields( 'my_debug_mode_options_group' );
+            do_settings_sections( 'my_debug_mode_options_group' );
+            ?>
+            <table class="form-table">
+                <tr valign="top">
+                <tr valign="top">
+                  <th scope="row">Enable Debug Mode (Errors and Warnings)</th>
+                  <td><input type="checkbox" name="my_debug_mode" value="1" <?php checked( 1, get_option( 'my_debug_mode' ), true ); ?> /></td>
+                </tr>
+            </table>
+            <?php submit_button(); ?>
+          </form>
+        </div>
+        <?php
+      }
+    );
+  });
+
+  add_action( 'admin_init', function() {
+    register_setting( 'my_debug_mode_options_group', 'my_debug_mode' );
+  });

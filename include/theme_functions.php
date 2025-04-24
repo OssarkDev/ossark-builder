@@ -99,3 +99,31 @@ function returnYoutubeUrl($url){
   }
   return 'https://www.youtube.com/embed/' . $videoID;
 }
+
+
+/*
+  =====================
+    Get ACF block data from post content
+  =====================	
+*/
+function get_acf_block_data($post_id, $block_name, $field_name) {
+  $post = get_post($post_id); // Retrieve the post object
+  $content = '';
+
+  if (has_blocks($post->post_content)) {
+      $blocks = parse_blocks($post->post_content); // Parse all blocks
+
+      foreach ($blocks as $block) {
+          // Check if this is the target block
+          if ($block['blockName'] === $block_name) {
+              // Check if the desired field exists in the block's attributes
+              if (isset($block['attrs']['data'][$field_name])) {
+                  $content = $block['attrs']['data'][$field_name];
+                  break;
+              }
+          }
+      }
+  }
+
+  return $content; // Return the field value
+}

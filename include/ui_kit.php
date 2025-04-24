@@ -41,7 +41,7 @@ function ossarkButton($button, $classes) {
     return $output;
   }
 
-  /*
+/*
   =====================
     Block Previews
   =====================
