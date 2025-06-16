@@ -24,9 +24,9 @@ function ossarkButton($button, $classes) {
     $output = '';
 
     if(is_array($button)) {
-      $link = $button['url'] ?: '';
-      $target = $button['target'] ?: '_self';
-      $title = $button['title'] ?: 'Read more';
+      $link = isset($button['url']) ? $button['url'] : '';
+      $target = isset($button['target']) ? $button['target'] : '_self';
+      $title = isset($button['title']) ? $button['title'] : 'Read more';
     } else {
       $link = $button;
       $target = '_self';

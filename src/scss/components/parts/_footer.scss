@@ -1,10 +1,13 @@
+@use "../../include/mixins";
+@use "../../include/variables";
+
 .footer {
 	padding: 40px 0;
 	margin-top: 40px;
-	border-top: 1px solid $black;
+	border-top: 1px solid variables.$black;
 
 	&__row {
-		@include max-screen($mobile) {
+		@include mixins.max-screen(variables.$mobile) {
 			row-gap: 40px;
 		}
 		

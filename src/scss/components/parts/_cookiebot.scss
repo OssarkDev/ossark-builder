@@ -1,3 +1,5 @@
+@use "../../include/variables";
+
 
 // remove header logo, etc.
 #CybotCookiebotDialogHeader {
@@ -11,35 +13,35 @@
 
 // background color
 #CybotCookiebotDialogNav, .CybotCookiebotScrollContainer, .CybotCookiebotDialogBodyBottomWrapper, #CybotCookiebotDialogFooter {
-	background-color: $dim-grey !important;
+	background-color: variables.$dim-grey !important;
 }
 
 // buttons
 .CybotCookiebotDialogBodyButton {
 	background-color: transparent !important;
-	border: 1px solid $black !important;
+	border: 1px solid variables.$black !important;
 	border-radius: 40px !important;
-	color: $black !important;
+	color: variables.$black !important;
 }
 
 // text color
 .CybotCookiebotDialogNavItemLink, #CybotCookiebotDialogTabContent {
-	color: $black !important;
+	color: variables.$black !important;
 }
 
 // color of active tab
 .CybotCookiebotDialogActive {
-	border-bottom: 1px solid $orange !important;
+	border-bottom: 1px solid variables.$orange !important;
 }
 
 // toggle off color
 #CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonSlider {
-	background-color: $slate-grey !important;
+	background-color: variables.$slate-grey !important;
 }
 
 // toggle on color
 #CybotCookiebotDialog input:checked+.CybotCookiebotDialogBodyLevelButtonSlider {
-	background-color: $orange !important;
+	background-color: variables.$orange !important;
 }
 
 // remove fade at bottom of item

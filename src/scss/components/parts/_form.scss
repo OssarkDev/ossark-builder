@@ -1,10 +1,13 @@
+@use "../../include/mixins";
+@use "../../include/variables";
+
 .form {
 
     &__inner {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        @include max-screen($mobile) {
+        @include mixins.max-screen(variables.$mobile) {
             align-items: center;
         }
     }
@@ -17,7 +20,7 @@
         label {
             font-size: 16px !important;
             line-height: 24px !important;
-            color: $black;
+            color: variables.$black;
         }
     }
 
@@ -56,7 +59,7 @@
     vertical-align: baseline;
     box-sizing: border-box;
     background-color: transparent;
-    border-bottom: 2px solid $black;
+    border-bottom: 2px solid variables.$black;
     width: 100%;
   }
 
@@ -64,7 +67,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: $white;
+    color: variables.$white;
     text-transform: uppercase;
     z-index: 2;
     line-height: 32px !important;
@@ -97,12 +100,12 @@
   .wpcf7-form input[type="number"]:focus,
   .wpcf7-form input[type="date"]:focus,
   .wpcf7-form textarea:focus {
-    border-bottom-color: $black;
+    border-bottom-color: variables.$black;
     outline: none;
   }
 
 .wpcf7-form .wpcf7-not-valid-tip {
-    color: $error;
+    color: variables.$error;
     font-size: 14px;
     line-height: 24px;
     font-weight: 300;

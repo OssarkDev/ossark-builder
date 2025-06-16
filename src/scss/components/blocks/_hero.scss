@@ -1,3 +1,6 @@
+@use "../../include/mixins";
+@use "../../include/variables";
+
 .hero {
 	background-size: cover;
 	background-position: center center;
@@ -21,7 +24,7 @@
 	&__buttons {
 		display: flex;
 		gap: 24px;
-		@include max-screen($tablet) {
+		@include mixins.max-screen(variables.$tablet) {
 			flex-direction: column;
 		}
 	}

@@ -1,3 +1,5 @@
+@use "variables";
+
 // breakpoint mixin
 @mixin min-screen($size) {
     @media only screen and (min-width: $size) {
@@ -11,7 +13,7 @@
 }
 
 @mixin mobile {
-    @include max-screen($mobile) {
+    @include max-screen(variables.$mobile) {
         @content;
     }
 }
@@ -72,22 +74,22 @@
 // transition mixin
 @mixin transition($property) {
 	transition-property: $property;
-	transition-duration: $transition-length;
-	transition-timing-function: $transition-timing-function;
+	transition-duration: variables.$transition-length;
+	transition-timing-function: variables.$transition-timing-function;
 }
 
 // container mixin, for positioning absolute elements on the edge of the container
 @mixin container {
-    padding: $container-padding-desktop;
-    max-width: $container-max-width;
-    @include max-screen($tablet) {
-        padding: $container-padding-tablet;
+    padding: variables.$container-padding-desktop;
+    max-width: variables.$container-max-width;
+    @include max-screen(variables.$tablet) {
+        padding: variables.$container-padding-tablet;
     }
-    @include max-screen($mobile) {
-        padding: $container-padding-mobile;
+    @include max-screen(variables.$mobile) {
+        padding: variables.$container-padding-mobile;
     }
     @include min-screen($hd-screens) {
-        padding: $container-padding-hd-screens;
+        padding: variables.$container-padding-hd-screens;
     }
 }
 

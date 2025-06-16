@@ -1,3 +1,6 @@
+@use "../../include/mixins";
+@use "../../include/variables";
+
 .header {
     position: fixed;
     width: 100%;
@@ -13,8 +16,8 @@
     &__container {
         .row {
             align-items: center;
-            height: $header-height;
-            @include max-screen($tablet) {
+            height: variables.$header-height;
+            @include mixins.max-screen(variables.$tablet) {
                 display: flex;
                 justify-content: space-between;
                 flex-direction: row;
@@ -26,7 +29,7 @@
         z-index: 3;
         width: 120px;
         position: relative;
-        @include max-screen($mobile) {
+        @include mixins.max-screen(variables.$mobile) {
             width: 80px;
         }
         img {
@@ -47,7 +50,7 @@
             }
         }
 
-        @include max-screen($tablet) {
+        @include mixins.max-screen(variables.$tablet) {
             display: none;
         }
 
@@ -55,26 +58,26 @@
 
     &__cta {
         display: flex;
-        @include max-screen($tablet) {
+        @include mixins.max-screen(variables.$tablet) {
             display: none;
         }
     }
 
     &__hamburger {
         display: none;
-        @include max-screen($tablet) {
+        transition-duration: 0.5s;
+        @include mixins.max-screen(variables.$tablet) {
             display: flex;
 			flex-direction: column;
 			gap: 12px;
             z-index: 3;
         }
-        transition-duration: 0.5s;
 
 		span {
 			display: block;
 			width: 40px;
 			height: 2px;
-			background-color: $black;
+			background-color: variables.$black;
 			transition-duration: 0.5s;
 		}
 
@@ -105,7 +108,7 @@
             width: 100vh;
             height: 100vh;
             z-index: 2;
-            background-color: $white;
+            background-color: variables.$white;
             top: 0;
             left: 0;
             animation: showSection 0.25s ease-in both;
@@ -116,7 +119,7 @@
             height: 100vh;
             justify-content: center;
             align-items: center;
-            width: 100vw;
+            width: 100%;
             gap: 24px;
 
             &__item {

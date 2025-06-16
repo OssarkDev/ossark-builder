@@ -1,6 +1,6 @@
 import 'slick-carousel/slick/slick.scss';
 import 'slick-carousel';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 import './scss/index.scss'; // custom styles
 

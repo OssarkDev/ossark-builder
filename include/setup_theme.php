@@ -75,7 +75,7 @@ function remove_editor() {
 
 function remove_menu_items ()
 { 
-  //  remove_menu_page('edit.php'); // Posts
+   remove_menu_page('edit.php'); // Posts
    remove_menu_page('edit-comments.php'); // Comments
 }
 add_action('admin_menu', 'remove_menu_items'); 

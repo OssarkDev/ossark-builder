@@ -1,23 +1,23 @@
 // @import '_functions';
-@import 'include/_mixins';
-@import 'include/_variables';
-@import 'include/_fonts';
-@import 'include/_reset';
-@import 'include/_typography';
-@import 'include/_layout';
-@import 'include/_smooth-scroll';
-@import 'include/_animations';
-@import 'include/_helpers';
+@use 'include/_mixins';
+@use 'include/_variables';
+@use 'include/_fonts';
+@use 'include/_reset';
+@use 'include/_typography';
+@use 'include/_layout';
+@use 'include/_smooth-scroll';
+@use 'include/_animations';
+@use 'include/_helpers';
 
 // parts
-@import 'components/parts/_header';
-@import 'components/parts/_footer';
-@import 'components/parts/_buttons';
-@import 'components/parts/_cookiebot';
-@import 'components/parts/_form';
+@use 'components/parts/_header';
+@use 'components/parts/_footer';
+@use 'components/parts/_buttons';
+@use 'components/parts/_cookiebot';
+@use 'components/parts/_form';
 
 // blocks
-@import 'components/blocks/_hero';
-@import 'components/blocks/_pdf';
-@import 'components/blocks/_image-text';
-@import 'components/blocks/_video';
+@use 'components/blocks/_hero';
+@use 'components/blocks/_pdf';
+@use 'components/blocks/_image-text';
+@use 'components/blocks/_video';

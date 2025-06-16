@@ -1,3 +1,5 @@
+@use "../../include/variables";
+
 /*
 =================================================================
     Buttons
@@ -7,10 +9,10 @@
 .btn {
 	display: inline-block;
 	padding: 12px 24px;
-	border: 1px solid $black;
+	border: 1px solid variables.$black;
 	border-radius: 40px;
-	background-color: $white;
-	color: $black;
+	background-color: variables.$white;
+	color: variables.$black;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
@@ -35,15 +37,15 @@
 		height: 24px;
 	}
 	&:hover {
-		color: $white;
-		background-color: $black;
+		color: variables.$white;
+		background-color: variables.$black;
 
 		span {
-			color: $white;
+			color: variables.$white;
 		}
 
 		svg path {
-			fill: $white;
+			fill: variables.$white;
 		}
 	}
 
@@ -58,21 +60,21 @@
 		Blue button
 	*/
 	&.blue {
-		border: 1px solid $blue;
+		border: 1px solid variables.$blue;
 		background-color: transparent;
 		span {
-			color: $blue;
+			color: variables.$blue;
 		}
 		svg path {
-			fill: $blue;
+			fill: variables.$blue;
 		}
 		&:hover {
-			background-color: $blue;
+			background-color: variables.$blue;
 			span {
-				color: $white;
+				color: variables.$white;
 			}
 			svg path {
-				fill: $white;
+				fill: variables.$white;
 			}
 		}
 	}
@@ -90,14 +92,14 @@
 			position: absolute;
 			width: 0%;
 			height: 1px;
-			background-color: $blue;
+			background-color: variables.$blue;
 			bottom: 0px;
 			left: 0;
 		}
 	}
 	&:hover {
 		span {
-			color: $blue;
+			color: variables.$blue;
 			&:after {
 				width: 100%;
 			}

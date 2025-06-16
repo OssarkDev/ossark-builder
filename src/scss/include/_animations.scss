@@ -1,3 +1,5 @@
+@use "variables";
+
 // set queue of items for animation
 .delay-0 {
 	transition-delay: 0.050s;
@@ -90,7 +92,7 @@
 		display: block;
 		width: 0;
 		height: 8px;
-		background-color: $blue;
+		background-color: variables.$blue;
 		border-radius: 3px;
 		margin-top: 16px;
 		transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
