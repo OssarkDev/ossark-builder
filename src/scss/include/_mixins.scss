@@ -37,7 +37,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
+}
 
 // Font-size mixin, with IE7 & IE8 support, CSS tricks courtesy
 @mixin font-size($size: 16, $line: $size * 1.25) {
@@ -45,7 +45,7 @@
     line-height: ($line * 10) + px;
     font-size: $size + rem;
     line-height: $line + rem;
-  }
+}
 
 // add border radius
 @mixin border-radius($radius) {
@@ -70,12 +70,11 @@
     } 
 }
 
-
 // transition mixin
 @mixin transition($property) {
-	transition-property: $property;
-	transition-duration: variables.$transition-length;
-	transition-timing-function: variables.$transition-timing-function;
+    transition-property: $property;
+    transition-duration: variables.$transition-length;
+    transition-timing-function: variables.$transition-timing-function;
 }
 
 // container mixin, for positioning absolute elements on the edge of the container

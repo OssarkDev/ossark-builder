@@ -67,22 +67,70 @@
 
 // header
 @-webkit-keyframes hideHeader {
-	from {transform: translate(0, 0%);}
-	to {transform: translate(0, -100%);}
+	from {
+		transform: translate(0, 0%);
+	}
+	to {
+		transform: translate(0, -100%);
+	}
+}
+@keyframes hideHeader {
+	from {
+		transform: translate(0, 0%);
+	}
+	to {
+		transform: translate(0, -100%);
+	}
 }
 @-webkit-keyframes showHeader {
-	from {transform: translate(0, -100%);}
-	to {transform: translate(0, 0%);}
+	from {
+		transform: translate(0, -100%);
+	}
+	to {
+		transform: translate(0, 0%);
+	}
+}
+@keyframes showHeader {
+	from {
+		transform: translate(0, -100%);
+	}
+	to {
+		transform: translate(0, 0%);
+	}
 }
 
 // sections
 @-webkit-keyframes showSection {
-	from {opacity: 0;}
-	to {opacity: 1;}
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes showSection {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 @-webkit-keyframes hideSection {
-	from {opacity: 1;}
-	to {opacity: 0;}
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@keyframes hideSection {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 
 .line-draw {
@@ -122,10 +170,10 @@
 
 @keyframes dash {
 	from {
-	  stroke-dashoffset: 3000;
+		stroke-dashoffset: 3000;
 	}
 	to {
-	  stroke-dashoffset: 0;
+		stroke-dashoffset: 0;
 	}
 }
 
