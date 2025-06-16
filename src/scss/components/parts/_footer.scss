@@ -1,6 +1,7 @@
 @use "../../include/mixins";
 @use "../../include/variables";
 
+
 .footer {
 	padding: 40px 0;
 	margin-top: 40px;
@@ -24,7 +25,14 @@
 			flex-direction: column;
 
 			&__item {
-
+				span {
+					transition: color 0.15s ease-in-out;
+				}
+				&:hover {
+					span {
+						color: variables.$orange;
+					}
+				}
 			}
 		}
 
