@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-2">
                 <?php if($logo): ?>
-                    <a href="<?= get_site_url(); ?>" class="header__logo">
+                    <a href="<?= get_site_url(); ?>" class="header__logo" aria-label="Home">
                         <img src="<?= esc_url($logo['url']); ?>" alt="<?= $logo['alt']; ?>">
                     </a>
                 <?php endif; ?>

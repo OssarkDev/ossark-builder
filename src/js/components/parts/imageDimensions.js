@@ -1,13 +1,17 @@
 export function imageDimensions() {
     document.querySelectorAll("img").forEach((img) => {
         if (!img.hasAttribute("width") || !img.hasAttribute("height")) {
-            img.decode().then(() => {
-                img.setAttribute("width", img.naturalWidth);
-                img.setAttribute("height", img.naturalHeight);
-            }).catch(() => {
-                img.setAttribute("width", img.naturalWidth);
-                img.setAttribute("height", img.naturalHeight);
-            });
+            const setDimensions = () => {
+                if (img.naturalWidth > 1 && img.naturalHeight > 1) {
+                    img.setAttribute("width", img.naturalWidth);
+                    img.setAttribute("height", img.naturalHeight);
+                }
+            };
+            if (img.complete) {
+                setDimensions();
+            } else {
+                img.addEventListener("load", setDimensions, { once: true });
+            }
         }
     });
 }
