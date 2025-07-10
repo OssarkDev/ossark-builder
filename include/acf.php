@@ -177,6 +177,26 @@ function register_acf_block_types()
 		)
 	));
 
+	// text
+	acf_register_block_type(array(
+		'name' => 'text',
+		'title' => __('Text'),
+		'description'   => __('Text block'),
+		'render_template' => 'components/blocks/text.php',
+		'category' => 'content',
+		'icon' => 'block-default',
+		'keywords' => array('Text', 'Paragraph', 'Content'),
+		'mode' => 'edit',
+		'example'  => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'is_preview'    => true
+				)
+			)
+		)
+	));
+
 }
 
 
@@ -192,7 +212,8 @@ function allowed_block_types( $allowed_blocks, $post ) {
 	$all_blocks = [
 		'acf/form',
 		'acf/map',
-		'acf/ajax-test'
+		'acf/ajax-test',
+		'acf/text',
 	];
 	$article_blocks = [];
 	$services_blocks = [];
