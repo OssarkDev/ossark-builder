@@ -2,13 +2,32 @@
 
 /*
 	=====================
+		PHP Console.log
+	=====================	
+*/
+function console_log($data) {
+  $output = $data;
+  if (is_array($output))
+      $output = implode(',', $output);
+
+  echo "<script>console.log('Debug Objects: " . json_encode($output) . "' );</script>";
+}
+
+/*
+	=====================
 		Get SVG file content
 	=====================	
 */
 function get_inline_svg($name){
-  if($name):
-  return file_get_contents(get_template_directory().'/assets/icons/'.$name);
-  endif;
+  if ($name) {
+    $svg_path = get_template_directory() . '/assets/' . $name;
+    if (file_exists($svg_path)) {
+      return file_get_contents($svg_path);
+    } else {
+      console_log('SVG file not found:' . $svg_path);
+      return '';
+    }
+  }
   return '';
 }
 
@@ -58,20 +77,6 @@ function icon( $icon_name, $icon_mod = null ) {
 */
 // update_option( 'siteurl', 'http://example.com' );
 // update_option( 'home', 'http://example.com' );
-
-
-/*
-	=====================
-		PHP Console.log
-	=====================	
-*/
-function console_log($data) {
-  $output = $data;
-  if (is_array($output))
-      $output = implode(',', $output);
-
-  echo "<script>console.log('Debug Objects: " . json_encode($output) . "' );</script>";
-}
 
 
 
