@@ -12,41 +12,73 @@ export function scroll() {
     // Check if the device is a mobile device
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    // Adjust the threshold and rootMargin based on the device type
-    const threshold = isMobile ? $mobileThreshold : $laptopThreshold;
-    const rootMargin = isMobile ? $mobileMargin : $laptopMargin;
-
-    // Create an Intersection Observer instance
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const section = entry.target;
-                section.classList.add('in-view');
-                let dataCall = section.getAttribute('data-scroll-call');
-                let sectionClass = section.getAttribute('class'); // set class name as a variable to pass to the function
-                if (dataCall) {
-                    window[dataCall](sectionClass);
-                }
-            }
-            // If the section is not in view, remove the class only if data-scroll-switch is present
-            else {
-                const section = entry.target;
-                if (section.hasAttribute('data-scroll-switch')) {
-                    section.classList.remove('in-view');
-                }
-            }
-        });
-    }, {
-        threshold: threshold,
-        rootMargin: rootMargin,
-        root: null
-    });
+    // Default threshold and rootMargin based on the device type
+    const defaultThreshold = isMobile ? $mobileThreshold : $laptopThreshold;
+    const defaultRootMargin = isMobile ? $mobileMargin : $laptopMargin;
 
     // Get all sections with the 'data-scroll' attribute
     const sections = document.querySelectorAll('[data-scroll]');
 
-    // Observe each section
+    // Group sections by their custom threshold and rootMargin values
+    const observerConfigs = new Map();
+
     sections.forEach((section) => {
-        observer.observe(section);
+        // Check for custom offset on the section
+        const customOffset = section.getAttribute('data-scroll-offset');
+        
+        // Use custom offset to adjust rootMargin if provided, otherwise use defaults
+        let threshold = defaultThreshold;
+        let rootMargin = defaultRootMargin;
+        
+        if (customOffset) {
+            // Convert offset to rootMargin (positive offset = trigger earlier = positive margin)
+            rootMargin = `${customOffset}px`;
+        }
+        
+        // Create a key for this configuration
+        const configKey = `${threshold}-${rootMargin}`;
+        
+        // Add section to the appropriate config group
+        if (!observerConfigs.has(configKey)) {
+            observerConfigs.set(configKey, {
+                threshold: threshold,
+                rootMargin: rootMargin,
+                sections: []
+            });
+        }
+        observerConfigs.get(configKey).sections.push(section);
+    });
+
+    // Create observers for each unique configuration
+    observerConfigs.forEach((config) => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const section = entry.target;
+                    section.classList.add('in-view');
+                    let dataCall = section.getAttribute('data-scroll-call');
+                    let sectionClass = section.getAttribute('class'); // set class name as a variable to pass to the function
+                    if (dataCall) {
+                        window[dataCall](sectionClass);
+                    }
+                }
+                // If the section is not in view, remove the class only if data-scroll-switch is present
+                else {
+                    const section = entry.target;
+                    if (section.hasAttribute('data-scroll-switch')) {
+                        section.classList.remove('in-view');
+                    }
+                }
+            });
+        }, {
+            threshold: config.threshold,
+            rootMargin: config.rootMargin,
+            root: null
+        });
+
+        // Observe each section with this configuration
+        config.sections.forEach((section) => {
+            observer.observe(section);
+        });
     });
 }

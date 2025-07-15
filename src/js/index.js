@@ -3,7 +3,6 @@ import 'slick-carousel';
 import 'slick-carousel/slick/slick.scss';
 
 // custom JS
-import { headerAnimation } from './components/parts/header';
 import { lottie } from './components/parts/lottie';
 import { backToTop } from './components/parts/backToTop';
 import { shareButton } from './components/parts/shareButton';
@@ -21,7 +20,6 @@ import { imageDimensions } from './components/parts/imageDimensions';
 
 export function runAfterDomLoad() {
 	imageDimensions();
-	headerAnimation();
 	lottie();
 	backToTop();
 	shareButton();
