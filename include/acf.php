@@ -213,7 +213,7 @@ function allowed_block_types( $allowed_blocks, $post ) {
 		'acf/form',
 		'acf/map',
 		'acf/ajax-test',
-		'acf/text',
+		'acf/text'
 	];
 	$article_blocks = [];
 	$services_blocks = [];

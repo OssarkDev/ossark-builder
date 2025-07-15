@@ -6,6 +6,7 @@
             "key": "field_647097e75c4e1",
             "label": "Navigation",
             "name": "",
+            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -15,14 +16,15 @@
                 "class": "",
                 "id": ""
             },
-            "aria-label": "",
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6470973242de4",
             "label": "Navigation",
             "name": "navigation",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -32,7 +34,6 @@
                 "class": "",
                 "id": ""
             },
-            "aria-label": "",
             "layout": "table",
             "pagination": 0,
             "min": 0,
@@ -45,6 +46,7 @@
                     "key": "field_647098c95c4e3",
                     "label": "Menu Item",
                     "name": "menu_item",
+                    "aria-label": "",
                     "type": "link",
                     "instructions": "",
                     "required": 0,
@@ -54,7 +56,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "aria-label": "",
                     "return_format": "array",
                     "parent_repeater": "field_6470973242de4"
                 }
@@ -64,6 +65,7 @@
             "key": "field_64b2bb6e0703f",
             "label": "Header CTA",
             "name": "header_cta",
+            "aria-label": "",
             "type": "link",
             "instructions": "",
             "required": 0,
@@ -73,13 +75,13 @@
                 "class": "",
                 "id": ""
             },
-            "aria-label": "",
             "return_format": "array"
         },
         {
             "key": "field_647097b55c4df",
             "label": "Logo",
             "name": "",
+            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -89,14 +91,15 @@
                 "class": "",
                 "id": ""
             },
-            "aria-label": "",
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_647097d85c4e0",
             "label": "Logo",
             "name": "logo",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -106,7 +109,6 @@
                 "class": "",
                 "id": ""
             },
-            "aria-label": "",
             "return_format": "array",
             "library": "all",
             "min_width": "",
@@ -134,7 +136,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1715712557
+    "show_in_rest": false,
+    "modified": 1752581670
 }

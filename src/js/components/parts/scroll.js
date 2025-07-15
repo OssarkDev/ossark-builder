@@ -2,6 +2,7 @@ export function scroll() {
 
     // data-call-scroll="functionName" to call a function when the section is in view. 
     // Class name is passed to the function where this exists
+    // data-scroll-switch to remove the class when the section is not in view.
 
     const $mobileThreshold = 0.5;
     const $laptopThreshold = 0.2;
@@ -27,11 +28,13 @@ export function scroll() {
                     window[dataCall](sectionClass);
                 }
             }
-            // If the section is not in view remove the class
-            // else {
-            //     const section = entry.target;
-            //     section.classList.remove('in-view');
-            // }
+            // If the section is not in view, remove the class only if data-scroll-switch is present
+            else {
+                const section = entry.target;
+                if (section.hasAttribute('data-scroll-switch')) {
+                    section.classList.remove('in-view');
+                }
+            }
         });
     }, {
         threshold: threshold,
