@@ -95,6 +95,7 @@ p, .p, a, span, li, div {
 	font-size: variables.$default-font-size;
 	line-height: variables.$default-line-height;
 	font-weight: variables.$default-font-weight;
+	color: variables.$black;
 	@media (max-width: variables.$mobile) {
 		font-size: 14px;
 		line-height: 20px;

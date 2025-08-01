@@ -180,8 +180,8 @@ section, .section {
 @media(max-width: variables.$mobile) {
     @each $class, $class-name in list.zip(variables.$directions, variables.$directions-classname) {
         @each $laptop, $mobile in list.zip(variables.$laptop-change, variables.$mobile-change) {
-            .#{$class-name}-#{variables.$laptop} {
-                #{$class}: #{variables.$mobile}px;
+            .#{$class-name}-#{$laptop} {
+                #{$class}: #{$mobile}px;
             }
         }
     }
@@ -191,7 +191,7 @@ section, .section {
 @media(min-width: variables.$hd) {
     @each $class, $class-name in list.zip(variables.$directions, variables.$directions-classname) {
         @each $laptop, $desktop in list.zip(variables.$laptop-change, variables.$desktop-change) {
-            .#{$class-name}-#{variables.$laptop} {
+            .#{$class-name}-#{$laptop} {
                 #{$class}: #{$desktop}px;
             }
         }

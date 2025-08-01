@@ -50,3 +50,22 @@ function previewImage($block_name) {
   $block_name = str_replace('acf/', '', $block_name);
   echo '<img src="' . get_template_directory_uri() . '/assets/block-previews/' . $block_name . '.jpg" alt="Preview for block" width="100%" height="auto"/>';
 }
+
+/*
+  =====================
+    Get Part
+  =====================
+*/
+function get_part( $template, $args = [] ) {
+    $template_path = 'components/parts/' . $template . '.php';
+    $template = locate_template( $template_path );
+
+    if ( ! $template ) {
+        trigger_error( "Template not found: $template_path", E_USER_WARNING );
+        return;
+    }
+
+    // Isolate scope and extract args
+    extract( $args, EXTR_SKIP );
+    include $template;
+}
