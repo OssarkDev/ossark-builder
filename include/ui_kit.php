@@ -69,3 +69,21 @@ function get_part( $template, $args = [] ) {
     extract( $args, EXTR_SKIP );
     include $template;
 }
+
+/*
+  =====================
+    Get Block
+  =====================
+*/
+function get_block( $template, $args = [] ) {
+  $template_path = 'components/blocks/' . $template . '.php';
+  $template = locate_template( $template_path );
+
+  if ( ! $template ) {
+    trigger_error( "Block template not found: $template_path", E_USER_WARNING );
+    return;
+  }
+
+  extract( $args, EXTR_SKIP );
+  include $template;
+}

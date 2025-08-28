@@ -1,4 +1,5 @@
 @use "../../include/variables";
+@use "../../include/mixins";
 
 
 // remove header logo, etc.
@@ -51,5 +52,46 @@
 
 // remove widget from bottom left of site
 #CookiebotWidget {
+	display: none !important;
+}
+
+
+/* 
+=============================================
+https://www.freeprivacypolicy.com/free-cookie-consent/
+=============================================
+*/
+
+#termsfeed-com---nb {
+	background-color: variables.$black !important;
+	color: variables.$white !important;
+	right: 24px !important;
+	@include mixins.mobile {
+		bottom: 24px !important;
+		right: 50% !important;
+		transform: translateX(50%) !important;
+	}
+}
+#cc-nb-title > *, 
+.cc-nb-text-content > *, 
+.cc-nb-text > span > *, 
+.cc-nb-text-purposes > * {
+	color: variables.$white !important;
+	font-family: variables.$font-body !important;
+}
+#open_preferences_center {
+	display: none !important;
+}
+.cc-nb-main-container {
+	@include mixins.mobile {
+		padding: 12px !important;
+	}
+}
+
+.cc-nb-okagree, .cc-cp-foot-save {
+	background-color: variables.$blue !important;
+}
+
+.cc-cp-foot-byline {
 	display: none !important;
 }

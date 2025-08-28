@@ -18,20 +18,20 @@ main {
 
 section, .section {
     padding: variables.$section-margin-laptop 0;
-    &:first-child {
-        padding: calc(variables.$section-margin-laptop + variables.$header-height) 0 variables.$section-margin-laptop 0;
-    }
+    // &:first-child {
+    //     padding: calc(variables.$section-margin-laptop + variables.$header-height) 0 variables.$section-margin-laptop 0;
+    // }
     @media (max-width: variables.$mobile) {
         padding: variables.$section-margin-mobile 0;
-        &:first-child {
-            padding: calc(variables.$section-margin-mobile + variables.$header-height) 0 variables.$section-margin-mobile 0;
-        }
+        // &:first-child {
+        //     padding: calc(variables.$section-margin-mobile + variables.$header-height) 0 variables.$section-margin-mobile 0;
+        // }
     }
     @media (min-width: variables.$hd) {
         padding: variables.$section-margin-desktop 0;
-        &:first-child {
-            padding: calc(variables.$section-margin-desktop + variables.$header-height) 0 variables.$section-margin-desktop 0;
-        }
+        // &:first-child {
+        //     padding: calc(variables.$section-margin-desktop + variables.$header-height) 0 variables.$section-margin-desktop 0;
+        // }
     }
 }
 
@@ -52,7 +52,7 @@ section, .section {
     @media (min-width: variables.$hd) {
         padding: 0 variables.$container-padding-hd-screens;
         column-gap: variables.$grid-column-gap-desktop;
-        max-width: 1920px;
+        max-width: variables.$container-max-width;
     }
 }
 

@@ -148,3 +148,27 @@
 .link span:after {
 	transition: all 0.2s;
 }
+
+
+//split line
+.split-parent {
+	display: block;
+	overflow: hidden;
+	padding-bottom: 0.1em;
+}
+
+.split-child {
+	display: block;
+	white-space: nowrap;
+	transform: translateY(100%);
+	transition-property: transform;
+	transition-duration: 1s;
+	transition-timing-function: variables.$timing;
+}
+.split-lines {
+	&.in-view {
+		.split-child {
+			transform: translateY(0);
+		}
+	}
+}

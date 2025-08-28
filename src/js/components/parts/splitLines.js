@@ -51,16 +51,32 @@ export function splitLines() {
         // Clear the original text
         element.innerHTML = '';
 
-        lines.forEach(line => {
-            const parent = document.createElement('div');
-            parent.className = 'split-parent';
-            const lineDiv = document.createElement('div');
-            const lineIndex = lines.indexOf(line) + 4;
-            lineDiv.className = `split-child delay-${lineIndex}`;
-            lineDiv.textContent = line;
-            parent.appendChild(lineDiv);
-            element.appendChild(parent);
-        });
+            // Get all relevant computed font styles from parent
+            const computed = getComputedStyle(element);
+            const fontStyles = [
+                'color',
+                'font-weight',
+                'font-size',
+                'font-family',
+                'line-height',
+                'letter-spacing',
+                'font-style',
+                'text-align',
+            ];
+
+            lines.forEach(line => {
+                const parent = document.createElement('div');
+                parent.className = 'split-parent';                
+                const lineDiv = document.createElement('div');
+                const lineIndex = lines.indexOf(line) + 4;
+                lineDiv.className = `split-child delay-${lineIndex}`;
+                lineDiv.textContent = line;
+                fontStyles.forEach(style => {
+                    lineDiv.style[style] = computed.getPropertyValue(style);
+                });
+                parent.appendChild(lineDiv);
+                element.appendChild(parent);
+            });
 
         element.setAttribute('data-split-initialized', 'true');
     });

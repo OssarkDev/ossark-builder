@@ -100,8 +100,7 @@ $header-height: 80px;
     Transitions
 =================================================================
 */
-$transition-length: 0.75s;
-$transition-timing-function: cubic-bezier(.19,1,.22,1);
+$timing: 0.75s cubic-bezier(.19,1,.22,1);
 
 /*
 =================================================================
