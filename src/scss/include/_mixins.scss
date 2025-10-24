@@ -17,6 +17,16 @@
         @content;
     }
 }
+@mixin tablet {
+    @include max-screen(variables.$tablet) {
+        @content;
+    }
+}
+@mixin hd {
+    @include min-screen(variables.$hd-screens) {
+        @content;
+    }
+}
 
 // make an absolute image
 @mixin abs-img {

@@ -114,89 +114,55 @@ if (function_exists('acf_register_block_type')) {
 	Gutenberg blocks
 =====================
 */
+/*
+=====================
+	Gutenberg blocks
+=====================
+*/
 function register_acf_block_types()
 {
-
-	// form
-	acf_register_block_type(array(
-		'name' => 'form',
-		'title' => __('Form'),
-		'description'   => __('Contact Form'),
-		'render_template' => 'components/blocks/form.php',
-		'category' => 'content',
-		'icon' => 'block-default',
-		'keywords' => array('Contact', 'Form'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
+	$blocks = [
+		'hero-homepage' => 'Hero Homepage',
+		'hero-project' => 'Hero-Project',
+		'hero-news' => 'Hero-News',
+		'hero-about' => 'Hero-About',
+		'numbers' => 'Numbers',
+		'process' => 'Process',
+		'projects-featured' => 'Projects-Featured',
+		'projects-all' => 'Projects-All',
+		'news-featured' => 'News-Featured',
+		'news-all' => 'News-All',
+		'logos' => 'Logos',
+		'quote-slider' => 'Quote-Slider',
+		'quote' => 'Quote',
+		'text-white' => 'Text-White',
+		'list-items' => 'List-Items',
+		'cta' => 'CTA',
+		'image-slider' => 'Image-Slider',
+		'contact' => 'Contact',
+		'careers' => 'Careers',
+		'filter-items' => 'Filter-Items'
+	];
+	foreach ($blocks as $name => $title) {
+		acf_register_block_type(array(
+			'name' => $name,
+			'title' => __($title),
+			'description'   => __('Block for ' . $title),
+			'render_template' => 'components/blocks/' . $name . '.php',
+			'category' => 'content',
+			'icon' => 'block-default',
+			'keywords' => array($title),
+			'mode' => 'edit',
+			'example'  => array(
+				'attributes' => array(
+					'mode' => 'preview',
+					'data' => array(
+						'is_preview'    => true
+					)
 				)
 			)
-		)
-	));
-
-	// map
-	acf_register_block_type(array(
-		'name' => 'map',
-		'title' => __('Map'),
-		'description'   => __('Map component'),
-		'render_template' => 'components/blocks/map.php',
-		'category' => 'content',
-		'icon' => 'block-default',
-		'keywords' => array('Map', 'Location'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
-
-	// ajax test
-	acf_register_block_type(array(
-		'name' => 'ajax-test',
-		'title' => __('Ajax Test'),
-		'description'   => __('Ajax Test component'),
-		'render_template' => 'components/blocks/ajax-test.php',
-		'category' => 'content',
-		'icon' => 'block-default',
-		'keywords' => array('Ajax', 'Test'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
-
-	// text
-	acf_register_block_type(array(
-		'name' => 'text',
-		'title' => __('Text'),
-		'description'   => __('Text block'),
-		'render_template' => 'components/blocks/text.php',
-		'category' => 'content',
-		'icon' => 'block-default',
-		'keywords' => array('Text', 'Paragraph', 'Content'),
-		'mode' => 'edit',
-		'example'  => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'is_preview'    => true
-				)
-			)
-		)
-	));
-
+		));
+	}
 }
 
 

@@ -50,6 +50,7 @@
   .wpcf7-form input[type="tel"],
   .wpcf7-form input[type="number"],
   .wpcf7-form input[type="date"],
+  .wpcf7-form input[type="select"],
   .wpcf7-form textarea {
     margin: 0;
     padding: 0;
@@ -61,6 +62,31 @@
     background-color: transparent;
     border-bottom: 2px solid variables.$black;
     width: 100%;
+        // Placeholder styling - each selector needs to be separate
+    &::placeholder {
+        color: variables.$white;
+        opacity: 1;
+    }
+    
+    &::-webkit-input-placeholder {
+        color: variables.$white;
+        opacity: 1;
+    }
+    
+    &::-moz-placeholder {
+        color: variables.$white;
+        opacity: 1;
+    }
+    
+    &:-ms-input-placeholder {
+        color: variables.$white;
+        opacity: 1;
+    }
+    
+    &::-ms-input-placeholder {
+        color: variables.$white;
+        opacity: 1;
+    }
   }
 
   .wpcf7-form input[type="submit"] {
@@ -103,6 +129,40 @@
     border-bottom-color: variables.$black;
     outline: none;
   }
+
+.wpcf7-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: variables.$black;
+  color: variables.$white;
+  border: none;
+  border-bottom: 1px solid variables.$white;
+  padding-bottom: 12px !important;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.5;
+  cursor: pointer;
+  position: relative;
+  background-image: url('../assets/icons/chevron-white.svg');  
+  background-repeat: no-repeat;
+  background-position: right 1px center;
+  background-size: 16px;
+  white-space: break-spaces;
+
+  &:focus {
+    border-bottom-color: variables.$black;
+    outline: none;
+  }
+}
+
+.wpcf7-form select option {
+  background-color: variables.$black;
+  color: variables.$white;
+  cursor: pointer;
+  line-height: 2; // Use line-height for spacing instead of padding
+  font-size: inherit;
+}
 
 .wpcf7-form .wpcf7-not-valid-tip {
     color: variables.$error;

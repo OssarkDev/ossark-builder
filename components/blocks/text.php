@@ -2,6 +2,7 @@
 if (get_field('is_preview')) { 
     $name = $block['name'];
     previewImage($name);
+    return; // Exit early for preview
 } else {
     $text = get_field('text');
 ?>

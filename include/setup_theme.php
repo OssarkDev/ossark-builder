@@ -185,3 +185,9 @@ if (function_exists('add_image_size')) {
 // Remove <p> and <br/> from Contact Form 7
 add_filter('wpcf7_autop_or_not', '__return_false');
 
+/*
+	=====================
+		Remove Contact Form 7 auto p tags
+	=====================	
+*/
+add_filter('wpcf7_autop_or_not', '__return_false');
