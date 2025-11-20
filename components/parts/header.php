@@ -32,7 +32,7 @@
             <?php endif; ?>
             <?php if($header_cta): ?>
                 <div class="col-2 header__cta">
-                    <?= ossarkButton($header_cta , ''); ?>
+                    <?= get_button($header_cta , ''); ?>
                 </div>
             <?php endif; ?>
 

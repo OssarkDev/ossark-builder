@@ -20,7 +20,7 @@ function ui_title($title, $classes = '', $heading_size = '') {
     Button
   =====================
 */
-function ossarkButton($button, $classes) {
+function get_button($button, $classes) {
     $output = '';
 
     if(is_array($button)) {

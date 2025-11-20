@@ -1,11 +1,11 @@
 {
-    "key": "group_66a276dc3dc99",
-    "title": "Block : AJAX",
+    "key": "group_691f2683280ac",
+    "title": "Block: Thank You",
     "fields": [
         {
-            "key": "field_66a276dc60ec3",
-            "label": "example",
-            "name": "example",
+            "key": "field_691f26831125f",
+            "label": "Title",
+            "name": "title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -18,17 +18,35 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_691f268d11260",
+            "label": "Button",
+            "name": "button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
         }
     ],
     "location": [
         [
             {
-                "param": "block",
+                "param": "post_type",
                 "operator": "==",
-                "value": "acf\/ajax-test"
+                "value": "post"
             }
         ]
     ],
@@ -41,5 +59,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752581670
+    "display_title": "",
+    "modified": 1763649178
 }

@@ -122,26 +122,7 @@ if (function_exists('acf_register_block_type')) {
 function register_acf_block_types()
 {
 	$blocks = [
-		'hero-homepage' => 'Hero Homepage',
-		'hero-project' => 'Hero-Project',
-		'hero-news' => 'Hero-News',
-		'hero-about' => 'Hero-About',
-		'numbers' => 'Numbers',
-		'process' => 'Process',
-		'projects-featured' => 'Projects-Featured',
-		'projects-all' => 'Projects-All',
-		'news-featured' => 'News-Featured',
-		'news-all' => 'News-All',
-		'logos' => 'Logos',
-		'quote-slider' => 'Quote-Slider',
-		'quote' => 'Quote',
-		'text-white' => 'Text-White',
-		'list-items' => 'List-Items',
-		'cta' => 'CTA',
-		'image-slider' => 'Image-Slider',
-		'contact' => 'Contact',
-		'careers' => 'Careers',
-		'filter-items' => 'Filter-Items'
+		'thank-you' => 'Thank You',
 	];
 	foreach ($blocks as $name => $title) {
 		acf_register_block_type(array(
@@ -176,10 +157,7 @@ add_filter( 'allowed_block_types', 'allowed_block_types', 10, 2 );
 function allowed_block_types( $allowed_blocks, $post ) {
 
 	$all_blocks = [
-		'acf/form',
-		'acf/map',
-		'acf/ajax-test',
-		'acf/text'
+		'acf/thank-you',
 	];
 	$article_blocks = [];
 	$services_blocks = [];

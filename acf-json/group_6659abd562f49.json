@@ -41,51 +41,6 @@
             "append": ""
         },
         {
-            "key": "field_66a241d887986",
-            "label": "404 Subtitle",
-            "name": "404_subtitle",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66a241e287987",
-            "label": "404 Image",
-            "name": "404_image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
             "key": "field_66a241ed87988",
             "label": "404 Button",
             "name": "404_button",
@@ -178,5 +133,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752581670
+    "display_title": "",
+    "modified": 1763649115
 }
