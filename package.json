@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack --mode=development --config webpack.config.js",
-    "watch": "yarn build:dev --watch",
+    "dev": "npm run build:dev -- --watch",
     "build": "webpack --mode=production --config webpack.config.js"
   },
   "devDependencies": {
@@ -31,7 +31,7 @@
     "slick": "^1.12.2",
     "slick-carousel": "^1.8.1"
   },
-  "resolutions": {
+  "overrides": {
     "ajv": "^8.18.0",
     "immutable": "^5.1.5",
     "picomatch": "^2.3.2",

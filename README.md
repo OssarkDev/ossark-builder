@@ -7,7 +7,7 @@ A modern, reusable WordPress theme boilerplate built with **ACF blocks**, **Webp
 ## Requirements
 
 - **Node.js** 22+
-- **Yarn** 1.x
+- **npm** 10+
 - **WordPress** 6.x
 - **ACF Pro** plugin
 
@@ -17,19 +17,19 @@ A modern, reusable WordPress theme boilerplate built with **ACF blocks**, **Webp
 
 ```bash
 # Install dependencies
-yarn install
+npm install
 
 # Development (watch mode)
-yarn watch
+npm run dev
 
 # Development build (with source maps)
-yarn build:dev
+npm run build:dev
 
 # Production build (minified & compressed)
-yarn build
+npm run build
 ```
 
-> **Always run `yarn build` before deploying** — this minifies and compresses all assets.
+> **Always run `npm run build` before deploying** — this minifies and compresses all assets.
 
 ---
 

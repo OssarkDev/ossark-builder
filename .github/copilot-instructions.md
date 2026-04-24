@@ -17,9 +17,9 @@ This is a modern WordPress theme boilerplate built with **ACF blocks**, **Webpac
 ## Development Workflow
 
 ### Build Commands
-- `yarn watch` - Development mode with file watching
-- `yarn build` - Production build (required before deployment)
-- `yarn build:dev` - Development build with source maps
+- `npm run dev` - Development mode with file watching
+- `npm run build` - Production build (required before deployment)
+- `npm run build:dev` - Development build with source maps
 - Entry point: `src/main.js` → outputs to `dist/main.min.js`
 
 ### File Structure Patterns

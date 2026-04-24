@@ -23,14 +23,14 @@ jobs:
     - name: 🚚 Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
-        cache: 'yarn'
+        node-version: '22'
+        cache: 'npm'
     
     - name: 📦 Install dependencies
-      run: yarn install --frozen-lockfile
+      run: npm ci
     
     - name: 🔨 Build project
-      run: yarn build
+      run: npm run build
     
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -44,7 +44,6 @@ jobs:
           package-lock.json
           package.json
           README.md
-          yarn.lock
           .editorconfig
           webpack.config.js
           .gitignore
