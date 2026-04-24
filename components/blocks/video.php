@@ -17,9 +17,8 @@ if (get_field('is_preview')) {
                     <div data-scroll class="video__container fade-up">
                         <?php
                         // Convert YouTube URL to embed URL
-                        if (strpos($link, 'youtube.com') !== false) {
-                            parse_str(parse_url($link, PHP_URL_QUERY), $query);
-                            $link = 'https://www.youtube.com/embed/' . $query['v'];
+                        if (strpos($link, 'youtube.com') !== false || strpos($link, 'youtu.be') !== false) {
+                            $link = returnYoutubeUrl($link);
                         }
                         ?>
                         <iframe src="<?= $link; ?>" frameborder="0" allow="autoplay" allowfullscreen></iframe>

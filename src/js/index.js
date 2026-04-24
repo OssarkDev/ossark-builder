@@ -1,7 +1,3 @@
-// libs
-import 'slick-carousel';
-import 'slick-carousel/slick/slick.scss';
-
 // animations
 import { lottie } from './components/animations/lottie';
 import { splitText } from './components/animations/splitText';

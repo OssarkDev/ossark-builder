@@ -58,16 +58,14 @@ function previewImage($block_name) {
 */
 function get_part( $template, $args = [] ) {
     $template_path = 'components/parts/' . $template . '.php';
-    $template = locate_template( $template_path );
+    $resolved = locate_template( $template_path );
 
-    if ( ! $template ) {
+    if ( ! $resolved ) {
         trigger_error( "Template not found: $template_path", E_USER_WARNING );
         return;
     }
 
-    // Isolate scope and extract args
-    extract( $args, EXTR_SKIP );
-    include $template;
+    include $resolved;
 }
 
 /*
@@ -77,13 +75,12 @@ function get_part( $template, $args = [] ) {
 */
 function get_block( $template, $args = [] ) {
   $template_path = 'components/blocks/' . $template . '.php';
-  $template = locate_template( $template_path );
+  $resolved = locate_template( $template_path );
 
-  if ( ! $template ) {
+  if ( ! $resolved ) {
     trigger_error( "Block template not found: $template_path", E_USER_WARNING );
     return;
   }
 
-  extract( $args, EXTR_SKIP );
-  include $template;
+  include $resolved;
 }

@@ -18,7 +18,7 @@ function console_log($data) {
 		Get SVG file content
 	=====================	
 */
-function get_inline_svg($name){
+function get_svg($name){
   if ($name) {
     $svg_path = get_template_directory() . '/assets/' . $name;
     if (file_exists($svg_path)) {

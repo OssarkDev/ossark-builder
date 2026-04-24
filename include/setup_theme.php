@@ -25,12 +25,7 @@ function add_taxonomies_to_pages() {
 }
 
   
-/*
-	=====================
-		Don't scale down large images
-	=====================	
-*/
-add_filter( 'big_image_size_threshold', '__return_false' );
+
 
 
 /*
@@ -44,27 +39,7 @@ return 'low';
 add_filter( 'wpseo_metabox_prio', 'yoasttobottom');
 
 
-/*
-  =====================
-    Remove editor from pages where it's not needed
-  =====================	
-*/
-function remove_editor() {
-  if (isset($_GET['post'])) {
-      $id = $_GET['post'];
-      $template = get_post_meta($id, '_wp_page_template', true);
-      switch ($template) {
-          case 'start-page.php':
-          case 'info-page.php':
-          case 'front-page.php':
-          remove_post_type_support('page', 'editor');
-          break;
-          default :
-          // Don't remove any other template.
-          break;
-      }
-  }
-}
+
 
 
 /*
@@ -101,19 +76,14 @@ add_image_size( 'figure_1600', 1600, 9999 );
 		Svg and json support
 	=====================	
 */
-function cc_mime_types($mimes) {
+add_filter('upload_mimes', 'ossark_custom_mime_types');
+function ossark_custom_mime_types($mimes) {
   $mimes['svg'] = 'image/svg+xml';
   $mimes['json'] = 'application/json';
+  $mimes['webp'] = 'image/webp';
+  $mimes['woff'] = 'font/woff';
+  $mimes['woff2'] = 'font/woff2';
   return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
-
-
-add_filter( 'upload_mimes', 'svg_upload_allow' );
-function svg_upload_allow( $mimes ) {
-$mimes['svg']  = 'image/svg+xml';
-
-return $mimes;
 }
 add_filter( 'wp_check_filetype_and_ext', 'fix_svg_mime_type', 10, 5 );
 
@@ -159,7 +129,9 @@ add_filter('show_admin_bar', '__return_false');
 //add_role( 'member', 'Member', array( 'read' => true, 'level_0' => true ) );
 
 // stop WordPress auto update
-define( 'WP_AUTO_UPDATE_CORE', false );
+if ( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
+  define( 'WP_AUTO_UPDATE_CORE', false );
+}
 
 // Add theme support for selective refresh for widgets.
 add_theme_support('customize-selective-refresh-widgets');
@@ -179,15 +151,5 @@ add_theme_support(
   )
 );
 
-if (function_exists('add_image_size')) {
-}
-
 // Remove <p> and <br/> from Contact Form 7
-add_filter('wpcf7_autop_or_not', '__return_false');
-
-/*
-	=====================
-		Remove Contact Form 7 auto p tags
-	=====================	
-*/
 add_filter('wpcf7_autop_or_not', '__return_false');

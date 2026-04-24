@@ -1,5 +1,5 @@
 @use "sass:list";
-@use "variables";
+@use "shared" as *;
 
 /*
 =================================================================
@@ -8,7 +8,7 @@
 */
 
 body {
-    background-color: variables.$white;
+    background-color: $white;
 }
 
 main {
@@ -17,20 +17,20 @@ main {
 }
 
 section, .section {
-    padding: variables.$section-margin-laptop 0;
+    padding: $section-margin-laptop 0;
     // &:first-child {
-    //     padding: calc(variables.$section-margin-laptop + variables.$header-height) 0 variables.$section-margin-laptop 0;
+    //     padding: calc($section-margin-laptop + $header-height) 0 $section-margin-laptop 0;
     // }
-    @media (max-width: variables.$mobile) {
-        padding: variables.$section-margin-mobile 0;
+    @media (max-width: $mobile) {
+        padding: $section-margin-mobile 0;
         // &:first-child {
-        //     padding: calc(variables.$section-margin-mobile + variables.$header-height) 0 variables.$section-margin-mobile 0;
+        //     padding: calc($section-margin-mobile + $header-height) 0 $section-margin-mobile 0;
         // }
     }
-    @media (min-width: variables.$hd) {
-        padding: variables.$section-margin-desktop 0;
+    @media (min-width: $hd) {
+        padding: $section-margin-desktop 0;
         // &:first-child {
-        //     padding: calc(variables.$section-margin-desktop + variables.$header-height) 0 variables.$section-margin-desktop 0;
+        //     padding: calc($section-margin-desktop + $header-height) 0 $section-margin-desktop 0;
         // }
     }
 }
@@ -40,19 +40,19 @@ section, .section {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0 variables.$container-padding-desktop;
-    @media (max-width: variables.$tablet) {
-        padding: 0 variables.$container-padding-tablet;
-        column-gap: variables.$grid-column-gap-tablet;
+    padding: 0 $container-padding-desktop;
+    @media (max-width: $tablet) {
+        padding: 0 $container-padding-tablet;
+        column-gap: $grid-column-gap-tablet;
     }
-    @media (max-width: variables.$mobile) {
-        padding: 0 variables.$container-padding-mobile;
-        column-gap: variables.$grid-column-gap-mobile;
+    @media (max-width: $mobile) {
+        padding: 0 $container-padding-mobile;
+        column-gap: $grid-column-gap-mobile;
     }
-    @media (min-width: variables.$hd) {
-        padding: 0 variables.$container-padding-hd-screens;
-        column-gap: variables.$grid-column-gap-desktop;
-        max-width: variables.$container-max-width;
+    @media (min-width: $hd) {
+        padding: 0 $container-padding-hd-screens;
+        column-gap: $grid-column-gap-desktop;
+        max-width: $container-max-width;
     }
 }
 
@@ -62,17 +62,17 @@ section, .section {
     width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(variables.$grid-columns-desktop, 1fr);
-    column-gap: variables.$grid-column-gap-desktop;
+    grid-template-columns: repeat($grid-columns-desktop, 1fr);
+    column-gap: $grid-column-gap-desktop;
     // mobile
-    @media (max-width: variables.$mobile) {
+    @media (max-width: $mobile) {
         display: flex;
         flex-direction: column;
     }
     // tablet
-    @media (min-width: variables.$mobile) and (max-width: variables.$tablet) {
-        grid-template-columns: repeat(variables.$grid-columns-tablet, 1fr);
-        column-gap: variables.$grid-column-gap-tablet;
+    @media (min-width: $mobile) and (max-width: $tablet) {
+        grid-template-columns: repeat($grid-columns-tablet, 1fr);
+        column-gap: $grid-column-gap-tablet;
     }
 }
 
@@ -86,7 +86,7 @@ section, .section {
     justify-content: space-between;
     align-items: center;
     // mobile
-    @media (max-width: variables.$mobile) {
+    @media (max-width: $mobile) {
         flex-direction: column;
     }
 }
@@ -98,7 +98,7 @@ section, .section {
 */
 
 // create all grid column classes for dekstop
-@for $i from 1 through variables.$grid-columns-desktop {
+@for $i from 1 through $grid-columns-desktop {
 	.col-#{$i} {
 		grid-column: span #{$i};
         display: flex;
@@ -107,8 +107,8 @@ section, .section {
         position: relative;
 	}
 	// create all grid column offset classes
-	@for $j from 1 through calc(variables.$grid-columns-desktop - $i) {
-		@if $i < variables.$grid-columns-desktop {
+	@for $j from 1 through calc($grid-columns-desktop - $i) {
+		@if $i < $grid-columns-desktop {
 			.col-#{$i}-offset-#{$j} {
 				display: flex;
                 flex-direction: column;
@@ -116,7 +116,7 @@ section, .section {
                 position: relative;
 				grid-column-start: #{$j + 1};
 				grid-column-end: #{$i + $j + 1};
-                @media(max-width: variables.$mobile) {
+                @media(max-width: $mobile) {
                     width: 100%;
                 }
 			}
@@ -125,10 +125,10 @@ section, .section {
 }
 
 // create all grid column classes for dekstop
-@for $i from 1 through variables.$grid-columns-desktop {
+@for $i from 1 through $grid-columns-desktop {
 	.col-#{$i} {
 		grid-column: span #{$i};
-        @media(max-width: variables.$mobile) {
+        @media(max-width: $mobile) {
             width: 100%;
         }
 	}
@@ -144,8 +144,8 @@ section, .section {
 // }
 
 // create all grid column classes for tablet
-@for $i from 1 through variables.$grid-columns-tablet {
-    @media (max-width: variables.$tablet) {
+@for $i from 1 through $grid-columns-tablet {
+    @media (max-width: $tablet) {
         .col-md-#{$i} {
             grid-column: span #{$i};
         }
@@ -168,8 +168,8 @@ section, .section {
 */
 
 // create all padding and margin classes
-@each $space in variables.$spacing {
-    @each $class, $class-name in list.zip(variables.$directions, variables.$directions-classname) {
+@each $space in $spacing {
+    @each $class, $class-name in list.zip($directions, $directions-classname) {
         .#{$class-name}-#{$space} {
             #{$class}: #{$space}px;
         }
@@ -177,9 +177,9 @@ section, .section {
 }
 
 // override certain padding and margin classes for mobile
-@media(max-width: variables.$mobile) {
-    @each $class, $class-name in list.zip(variables.$directions, variables.$directions-classname) {
-        @each $laptop, $mobile in list.zip(variables.$laptop-change, variables.$mobile-change) {
+@media(max-width: $mobile) {
+    @each $class, $class-name in list.zip($directions, $directions-classname) {
+        @each $laptop, $mobile in list.zip($laptop-change, $mobile-change) {
             .#{$class-name}-#{$laptop} {
                 #{$class}: #{$mobile}px;
             }
@@ -188,9 +188,9 @@ section, .section {
 }
 
 // override certain padding and margin classes for large screens
-@media(min-width: variables.$hd) {
-    @each $class, $class-name in list.zip(variables.$directions, variables.$directions-classname) {
-        @each $laptop, $desktop in list.zip(variables.$laptop-change, variables.$desktop-change) {
+@media(min-width: $hd) {
+    @each $class, $class-name in list.zip($directions, $directions-classname) {
+        @each $laptop, $desktop in list.zip($laptop-change, $desktop-change) {
             .#{$class-name}-#{$laptop} {
                 #{$class}: #{$desktop}px;
             }

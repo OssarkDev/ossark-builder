@@ -1,6 +1,9 @@
 export function numbers() {
-    let numbers = document.querySelectorAll('.project-hero__numbers__list__item__amount h2');
-    numbers.forEach(number => {
+    const numberElements = document.querySelectorAll('[data-animate-number]');
+
+    if (!numberElements.length) return;
+
+    numberElements.forEach(number => {
         let target = parseInt(number.innerText);
         let count = 0;
         let increment = target / 100;

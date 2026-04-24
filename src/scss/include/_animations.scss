@@ -1,4 +1,4 @@
-@use "variables";
+@use "shared" as *;
 
 /*
 =================================================================
@@ -91,7 +91,7 @@
 		transform: translateY(100%);
 		transition-property: transform;
 		transition-duration: 0.8s;
-		transition-timing-function: variables.$timing;
+		transition-timing-function: $timing;
 	}
 	&.in-view {
 		& > * {
@@ -113,7 +113,7 @@
 	transform: translateY(100%);
 	transition-property: transform;
 	transition-duration: 1s;
-	transition-timing-function: variables.$timing;
+	transition-timing-function: $timing;
 }
 
 .split-lines {
@@ -137,7 +137,7 @@
 		display: block;
 		width: 0;
 		height: 8px;
-		background-color: variables.$blue;
+		background-color: $blue;
 		border-radius: 3px;
 		margin-top: 16px;
 		transition-property: width;

@@ -1,5 +1,8 @@
 export function typewriter(speed = 200) {
     const elements = document.querySelectorAll('.typewriter');
+
+    if (!elements.length) return;
+
     elements.forEach(el => {
         const fullText = el.getAttribute('data-text');
         let index = 0;

@@ -16,7 +16,7 @@
                 <?php if ($logo): ?>
                 <div class="col-2 col-md-6 footer__logo">
                     <a href="<?= get_site_url(); ?>">
-                        <img src="<?= $logo['url'] ?? ''; ?>" alt="<?= $image['alt'] ?? ''; ?>">
+                        <img src="<?= $logo['url'] ?? ''; ?>" alt="<?= $logo['alt'] ?? ''; ?>">
                     </a>
                 </div>
                 <?php endif; ?>

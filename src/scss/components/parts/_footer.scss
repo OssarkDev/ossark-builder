@@ -1,14 +1,13 @@
-@use "../../include/mixins";
-@use "../../include/variables";
+@use "shared" as *;
 
 
 .footer {
 	padding: 40px 0;
 	margin-top: 40px;
-	border-top: 1px solid variables.$black;
+	border-top: 1px solid $black;
 
 	&__row {
-		@include mixins.max-screen(variables.$mobile) {
+		@include max-screen($mobile) {
 			row-gap: 40px;
 		}
 		
@@ -30,7 +29,7 @@
 				}
 				&:hover {
 					span {
-						color: variables.$orange;
+						color: $orange;
 					}
 				}
 			}

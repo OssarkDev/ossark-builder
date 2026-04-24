@@ -1,5 +1,4 @@
-@use "../../include/mixins";
-@use "../../include/variables";
+@use "shared" as *;
 
 .header {
     // position: fixed;
@@ -11,8 +10,8 @@
     &__container {
         .row {
             align-items: center;
-            height: variables.$header-height;
-            @include mixins.max-screen(variables.$tablet) {
+            height: $header-height;
+            @include max-screen($tablet) {
                 display: flex;
                 justify-content: space-between;
                 flex-direction: row;
@@ -24,7 +23,7 @@
         z-index: 3;
         width: 120px;
         position: relative;
-        @include mixins.max-screen(variables.$mobile) {
+        @include max-screen($mobile) {
             width: 80px;
         }
         img {
@@ -45,7 +44,7 @@
             }
         }
 
-        @include mixins.max-screen(variables.$tablet) {
+        @include max-screen($tablet) {
             display: none;
         }
 
@@ -53,7 +52,7 @@
 
     &__cta {
         display: flex;
-        @include mixins.max-screen(variables.$tablet) {
+        @include max-screen($tablet) {
             display: none;
         }
     }
@@ -61,7 +60,7 @@
     &__hamburger {
         display: none;
         transition-duration: 0.5s;
-        @include mixins.max-screen(variables.$tablet) {
+        @include max-screen($tablet) {
             display: flex;
 			flex-direction: column;
 			gap: 12px;
@@ -72,7 +71,7 @@
 			display: block;
 			width: 40px;
 			height: 2px;
-			background-color: variables.$black;
+			background-color: $black;
 			transition-duration: 0.5s;
 		}
 
@@ -102,7 +101,7 @@
             width: 100%;
             height: 100vh;
             z-index: 2;
-            background-color: variables.$white;
+            background-color: $white;
             top: 0;
             left: 0;
             animation: showSection 0.25s ease-in both;

@@ -1,42 +1,39 @@
-import $ from 'jquery';
-
 export function testAjax() {
-    var block = $('.ajax-example');
-    var container = block.find('.ajax-container');
-    var button = block.find('.ajax-button');
-    var id = 0;
-    var data = {};
+    const block = document.querySelector('.ajax-example');
+
+    if (!block) return;
+
+    const container = block.querySelector('.ajax-container');
+    const buttons = block.querySelectorAll('.ajax-button');
+    let id = 0;
 
     function getAjaxData() {
-        data.action = 'test_ajax';
-        data.id = id;
+        container.classList.add('loading');
 
-        container.addClass('loading');
+        const formData = new FormData();
+        formData.append('action', 'test_ajax');
+        formData.append('id', id);
 
-        $.ajax({
-            url: customjs_ajax_object.ajax_url,
-            type: 'POST',
-            data: data,
-            // on success, replace the content of the container with the response
-            success: function(response) {
-                if (response) {
-                    container.html('');
-                    container.html(response);
-                    setTimeout(function() {
-                        container.removeClass('loading');
-                    }, 500);
-                }
-            },
-            error: function(error) {
-                console.error(error);
-            }
+        fetch(customjs_ajax_object.ajax_url, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(html => {
+            container.innerHTML = html;
+            setTimeout(() => {
+                container.classList.remove('loading');
+            }, 500);
+        })
+        .catch(error => {
+            console.error(error);
         });
     }
 
-    // When the button is clicked, get the data-id attribute and assign it to the 'id' variable and call the 'getAjaxData' function
-    button.on('click', function() {
-        var buttonId = $(this).data('id');
-        id = buttonId;
-        getAjaxData();
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            id = button.dataset.id;
+            getAjaxData();
+        });
     });
 }

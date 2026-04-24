@@ -77,8 +77,13 @@ add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css', 100 );
 function contactform7_dequeue_scripts() {
   $check_cf7 = false;
 
-  if( is_page('contact') ) {
-      $check_cf7 = true;
+  // Check if current page content contains a CF7 shortcode or block
+  global $post;
+  if ( is_a( $post, 'WP_Post' ) ) {
+      if ( has_shortcode( $post->post_content, 'contact-form-7' ) 
+        || has_block( 'contact-form-7/contact-form-selector', $post ) ) {
+          $check_cf7 = true;
+      }
   }
 
   if( !$check_cf7 ) {

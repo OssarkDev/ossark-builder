@@ -1,6 +1,8 @@
 export function activeMenuItem() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.header__nav__list a');
+
+    if (!navLinks.length) return;
     
     // Remove any existing active classes first
     document.querySelectorAll('.header__nav__list__item.active')

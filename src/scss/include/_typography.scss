@@ -1,16 +1,16 @@
-@use "variables";
+@use "shared" as *;
 
 // headings
 h1,h2,h3,h4,h5,h6,
 .h1,.h2,.h3,.h4,.h5 {
-	font-family: variables.$font-heading;
+	font-family: $font-heading;
 }
 // body
 body, html {
-	font-family: variables.$font-body;
-	font-size: variables.$default-font-size;
-	line-height: variables.$default-line-height;
-	font-weight: variables.$default-font-weight;
+	font-family: $font-body;
+	font-size: $default-font-size;
+	line-height: $default-line-height;
+	font-weight: $default-font-weight;
 	font-style: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -32,8 +32,8 @@ h1,.h1, h1 > * > * {
 	font-size: 60px;
 	line-height: 64px;
 	font-weight: 600;
-	font-family: variables.$font-heading;
-	@media (max-width: variables.$mobile) {
+	font-family: $font-heading;
+	@media (max-width: $mobile) {
 		font-size: 40px;
 		line-height: 44px;
 	}
@@ -42,8 +42,8 @@ h2,.h2,h2 > * > * {
 	font-size: 48px;
 	line-height: 48px;
 	font-weight: 600;
-	font-family: variables.$font-heading;
-	@media (max-width: variables.$mobile) {
+	font-family: $font-heading;
+	@media (max-width: $mobile) {
 		font-size: 40px;
 		line-height: 44px;
 	}
@@ -52,8 +52,8 @@ h3,.h3,h3 > * > * {
 	font-size: 40px;
 	line-height: 40px;
 	font-weight: 400;
-	font-family: variables.$font-heading;
-	@media (max-width: variables.$mobile) {
+	font-family: $font-heading;
+	@media (max-width: $mobile) {
 		font-size: 32px;
 		line-height: 36px;
 	}
@@ -62,8 +62,8 @@ h4,.h4,h4 > * > * {
 	font-size: 32px;
 	line-height: 38px;
 	font-weight: 500;
-	font-family: variables.$font-heading;
-	@media (max-width: variables.$mobile) {
+	font-family: $font-heading;
+	@media (max-width: $mobile) {
 		font-size: 28px;
 		line-height: 32px;
 	}
@@ -72,8 +72,8 @@ h5,.h5,h5 > * > * {
 	font-size: 24px;
 	line-height: 32px;
 	font-weight: 500;
-	font-family: variables.$font-heading;
-	@media (max-width: variables.$mobile) {
+	font-family: $font-heading;
+	@media (max-width: $mobile) {
 		font-size: 20px;
 		line-height: 28px;
 	}
@@ -82,7 +82,7 @@ h6,.h6,h6 > * > * {
 	font-size: 24px;
 	line-height: 32px;
 	font-weight: 400;
-	font-family: variables.$font-heading;
+	font-family: $font-heading;
 }
 
 /*
@@ -91,12 +91,12 @@ h6,.h6,h6 > * > * {
 =================================================================
 */
 p, .p, a, span, li, div, input, button, textarea {
-	font-family: variables.$font-body;
-	font-size: variables.$default-font-size;
-	line-height: variables.$default-line-height;
-	font-weight: variables.$default-font-weight;
-	color: variables.$black;
-	@media (max-width: variables.$mobile) {
+	font-family: $font-body;
+	font-size: $default-font-size;
+	line-height: $default-line-height;
+	font-weight: $default-font-weight;
+	color: $black;
+	@media (max-width: $mobile) {
 		font-size: 14px;
 		line-height: 20px;
 	}
@@ -110,7 +110,7 @@ ul, ol {
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: 400;
-	@media (max-width: variables.$mobile) {
+	@media (max-width: $mobile) {
 		font-size: 18px;
 	}
 }
@@ -131,7 +131,7 @@ ul, ol {
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: 700;
-	color: variables.$sky-blue;
+	color: $sky-blue;
 	text-transform: uppercase;
 }
 
@@ -158,6 +158,6 @@ ul, ol {
 
 .text {
 	&-white {
-		color: variables.$white;
+		color: $white;
 	}
 }

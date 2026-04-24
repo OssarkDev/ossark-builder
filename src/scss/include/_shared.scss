@@ -1,0 +1,5 @@
+// Shared module — import once with: @use "shared" as *
+// Forwards variables + mixins so every partial gets both
+// without needing two separate @use statements.
+@forward "variables";
+@forward "mixins";

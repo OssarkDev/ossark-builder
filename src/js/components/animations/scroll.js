@@ -59,20 +59,21 @@
 
 export function scroll() {
 
-    const $mobileThreshold = 0.5;
+    const sections = document.querySelectorAll('[data-scroll]');
+
+    if (!sections.length) return;
+
+    const $mobileThreshold = 0.1;
     const $laptopThreshold = 0.2;
-    const $mobileMargin = '40px';
+    const $mobileMargin = '0px';
     const $laptopMargin = '-200px';
 
     // Check if the device is a mobile device
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isMobile = window.innerWidth <= 992;
 
     // Default threshold and rootMargin based on the device type
     const defaultThreshold = isMobile ? $mobileThreshold : $laptopThreshold;
     const defaultRootMargin = isMobile ? $mobileMargin : $laptopMargin;
-
-    // Get all sections with the 'data-scroll' attribute
-    const sections = document.querySelectorAll('[data-scroll]');
 
     // Group sections by their custom threshold and rootMargin values
     const observerConfigs = new Map();

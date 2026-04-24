@@ -1,6 +1,8 @@
 export function scrollToAnchor() {
 	const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
+	if (!anchorLinks.length) return;
+
 	anchorLinks.forEach(link => {
 		link.addEventListener('click', (event) => {
 			event.preventDefault();
@@ -11,7 +13,6 @@ export function scrollToAnchor() {
 				window.scrollTo({
 					top: targetPosition,
 					behavior: 'smooth',
-					duration: 2000 // Adjust the duration value as needed
 				});
 			}
 		});

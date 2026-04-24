@@ -1,5 +1,4 @@
-@use "../../include/variables";
-@use "../../include/mixins";
+@use "shared" as *;
 
 
 // remove header logo, etc.
@@ -14,35 +13,35 @@
 
 // background color
 #CybotCookiebotDialogNav, .CybotCookiebotScrollContainer, .CybotCookiebotDialogBodyBottomWrapper, #CybotCookiebotDialogFooter {
-	background-color: variables.$dim-grey !important;
+	background-color: $dim-grey !important;
 }
 
 // buttons
 .CybotCookiebotDialogBodyButton {
 	background-color: transparent !important;
-	border: 1px solid variables.$black !important;
+	border: 1px solid $black !important;
 	border-radius: 40px !important;
-	color: variables.$black !important;
+	color: $black !important;
 }
 
 // text color
 .CybotCookiebotDialogNavItemLink, #CybotCookiebotDialogTabContent {
-	color: variables.$black !important;
+	color: $black !important;
 }
 
 // color of active tab
 .CybotCookiebotDialogActive {
-	border-bottom: 1px solid variables.$orange !important;
+	border-bottom: 1px solid $orange !important;
 }
 
 // toggle off color
 #CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonSlider {
-	background-color: variables.$slate-grey !important;
+	background-color: $slate-grey !important;
 }
 
 // toggle on color
 #CybotCookiebotDialog input:checked+.CybotCookiebotDialogBodyLevelButtonSlider {
-	background-color: variables.$orange !important;
+	background-color: $orange !important;
 }
 
 // remove fade at bottom of item
@@ -63,10 +62,10 @@ https://www.freeprivacypolicy.com/free-cookie-consent/
 */
 
 #termsfeed-com---nb {
-	background-color: variables.$black !important;
-	color: variables.$white !important;
+	background-color: $black !important;
+	color: $white !important;
 	right: 24px !important;
-	@include mixins.mobile {
+	@include mobile {
 		bottom: 24px !important;
 		right: 50% !important;
 		transform: translateX(50%) !important;
@@ -76,20 +75,20 @@ https://www.freeprivacypolicy.com/free-cookie-consent/
 .cc-nb-text-content > *, 
 .cc-nb-text > span > *, 
 .cc-nb-text-purposes > * {
-	color: variables.$white !important;
-	font-family: variables.$font-body !important;
+	color: $white !important;
+	font-family: $font-body !important;
 }
 #open_preferences_center {
 	display: none !important;
 }
 .cc-nb-main-container {
-	@include mixins.mobile {
+	@include mobile {
 		padding: 12px !important;
 	}
 }
 
 .cc-nb-okagree, .cc-cp-foot-save {
-	background-color: variables.$blue !important;
+	background-color: $blue !important;
 }
 
 .cc-cp-foot-byline {

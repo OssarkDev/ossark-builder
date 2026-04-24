@@ -1,18 +1,18 @@
 export function video() {
-    let videos = $('.video__container');
+    const videos = document.querySelectorAll('.video__container');
 
-    videos.each(function() {
-        let video = $(this);
+    if (!videos.length) return;
 
-        video.on('click', function() {
-            video.addClass('active');
-            let iframe = video.find('iframe');
-            if (iframe.length) {
-                let src = iframe.attr('src');
-                let separator = src.includes('?') ? '&' : '?';
-                iframe.attr('src', src + separator + 'autoplay=1');
-                setTimeout(function() {
-                    video.addClass('hide');
+    videos.forEach(container => {
+        container.addEventListener('click', () => {
+            container.classList.add('active');
+            const iframe = container.querySelector('iframe');
+            if (iframe) {
+                const src = iframe.getAttribute('src');
+                const separator = src.includes('?') ? '&' : '?';
+                iframe.setAttribute('src', src + separator + 'autoplay=1');
+                setTimeout(() => {
+                    container.classList.add('hide');
                 }, 2000);
             }
         });

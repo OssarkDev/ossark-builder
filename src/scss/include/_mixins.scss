@@ -1,4 +1,4 @@
-@use "variables";
+@use "variables" as *;
 
 // breakpoint mixin
 @mixin min-screen($size) {
@@ -13,17 +13,17 @@
 }
 
 @mixin mobile {
-    @include max-screen(variables.$mobile) {
+    @include max-screen($mobile) {
         @content;
     }
 }
 @mixin tablet {
-    @include max-screen(variables.$tablet) {
+    @include max-screen($tablet) {
         @content;
     }
 }
 @mixin hd {
-    @include min-screen(variables.$hd-screens) {
+    @include min-screen($hd-screens) {
         @content;
     }
 }
@@ -83,22 +83,22 @@
 // transition mixin
 @mixin transition($property) {
     transition-property: $property;
-    transition-duration: variables.$transition-length;
-    transition-timing-function: variables.$transition-timing-function;
+    transition-duration: $transition-length;
+    transition-timing-function: $transition-timing-function;
 }
 
 // container mixin, for positioning absolute elements on the edge of the container
 @mixin container {
-    padding: variables.$container-padding-desktop;
-    max-width: variables.$container-max-width;
-    @include max-screen(variables.$tablet) {
-        padding: variables.$container-padding-tablet;
+    padding: $container-padding-desktop;
+    max-width: $container-max-width;
+    @include max-screen($tablet) {
+        padding: $container-padding-tablet;
     }
-    @include max-screen(variables.$mobile) {
-        padding: variables.$container-padding-mobile;
+    @include max-screen($mobile) {
+        padding: $container-padding-mobile;
     }
     @include min-screen($hd-screens) {
-        padding: variables.$container-padding-hd-screens;
+        padding: $container-padding-hd-screens;
     }
 }
 

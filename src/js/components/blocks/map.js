@@ -1,4 +1,6 @@
 export function map() {
+    if (!document.querySelector('.acf-map')) return;
+
     (function( $ ) {
 
         /**

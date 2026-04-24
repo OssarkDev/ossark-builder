@@ -83,7 +83,7 @@ add_action('acf/init', 'map_acf_init');
 	Add custom block category
 =====================
 */
-add_filter('block_categories', function ($categories, $post) {
+add_filter('block_categories_all', function ($categories, $editor_context) {
 	$arr = array_merge(
 		array(
 			array(
@@ -121,6 +121,9 @@ if (function_exists('acf_register_block_type')) {
 */
 function register_acf_block_types()
 {
+	// Add new blocks here as: 'block-folder-name' => 'Block Title'
+	// Template must exist at components/blocks/{block-folder-name}.php
+	// e.g. 'text' => 'Text', 'video' => 'Video'
 	$blocks = [
 		'thank-you' => 'Thank You',
 	];
@@ -152,23 +155,23 @@ function register_acf_block_types()
 	Remove default blocks / only show:
 =====================
 */
-add_filter( 'allowed_block_types', 'allowed_block_types', 10, 2 );
+add_filter( 'allowed_block_types_all', 'allowed_block_types', 10, 2 );
 
-function allowed_block_types( $allowed_blocks, $post ) {
+function allowed_block_types( $allowed_blocks, $editor_context ) {
 
 	$all_blocks = [
 		'acf/thank-you',
 	];
 	$article_blocks = [];
 	$services_blocks = [];
+
+	$post_type = $editor_context->post ? $editor_context->post->post_type : '';
   
-	switch( $post->post_type ) {
+	switch( $post_type ) {
 		case 'article':
 		return $article_blocks;
-		break;
 	   	case 'services':
 		return $services_blocks;
-		break;
 	  	default:
 		return $all_blocks;
   }

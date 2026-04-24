@@ -1,12 +1,11 @@
 const path = require("path");
-//const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const babelConfig = require("./babel.config.json");
 const WebpackMessages = require('webpack-messages');
 const TerserPlugin = require("terser-webpack-plugin");
-// const CompressionPlugin = require("compression-webpack-plugin");
 
-const config = (dir = __dirname) => ({
+const config = (dir = __dirname, mode = 'production') => ({
+    devtool: mode === 'development' ? 'source-map' : false,
     stats: "summary", // sets console output
     entry: {
         main: "./src/main.js",
@@ -52,17 +51,6 @@ const config = (dir = __dirname) => ({
             filename: "[name].min.css",
             chunkFilename: "[id].css",
         }),
-        // new CopyPlugin([
-        //     {
-        //         from: path.resolve(dir, "./src/img/**/*"),
-        //         context: path.resolve(dir, "./src/img"),
-        //         to: "./img",
-        //     },
-        // ]),
-        // new CompressionPlugin({
-        //     algorithm: "brotliCompress",
-        //     test: /\.js(\?.*)?$/i,
-        //   }),
         new WebpackMessages({
             name: 'production',
             logger: str => console.log(`>> ${str}`)
@@ -75,7 +63,7 @@ const config = (dir = __dirname) => ({
                     {
                         test: /\.js$/,
                         exclude: /node_modules/,
-                        include: path.resolve(dir, "./src/js"),
+                        include: path.resolve(dir, "./src"),
                         use: {
                             loader: "babel-loader",
                             options: babelConfig,
@@ -100,37 +88,20 @@ const config = (dir = __dirname) => ({
                                 loader: "sass-loader",
                                 options: {
                                     sassOptions: {
-                                        includePaths: [
-                                            "./src/sass",
-                                            "./node_modules",
+                                        loadPaths: [
+                                            path.resolve(dir, "./src/scss/include"),
+                                            path.resolve(dir, "./node_modules"),
                                         ],
                                     },
+                                    // Short import paths — files can @use "shared" as * to get
+                                    // variables + mixins without lengthy relative paths.
+                                    // additionalData only affects the webpack entry file, not
+                                    // files loaded by Sass's own @use system, so each partial
+                                    // must have its own @use "shared" as *.
                                 },
                             },
                         ],
                     },
-                    // {
-                    //     include: /\.(jpg|png|gif|svg)$/,
-                    //     loader: require.resolve("file-loader"),
-                    //     options: {
-                    //         name: "[path][name].[ext]",
-                    //         context: path.resolve("./src/img"),
-                    //     },
-                    //     exclude: /src\/font/,
-                    // },
-                    // {
-                    //     test: /\.(otf|ttf|woff2?|svg|eot)$/,
-                    //     loader: require.resolve("file-loader"),
-                    //     options: {
-                    //         name: "./fonts/[name].[ext]",
-                    //     },
-                    //     exclude: /src\/img/,
-                    // },
-                    // {
-                    //     test: /\.svg$/,
-                    //     include: path.resolve(dir, "./assets/images/icons"),
-                    //     use: ['svg-sprite-loader', 'svgo-loader']
-                    // },
                 ],
             },
         ],

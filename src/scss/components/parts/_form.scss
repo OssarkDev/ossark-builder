@@ -1,5 +1,4 @@
-@use "../../include/mixins";
-@use "../../include/variables";
+@use "shared" as *;
 
 .form {
 
@@ -7,7 +6,7 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-        @include mixins.max-screen(variables.$mobile) {
+        @include max-screen($mobile) {
             align-items: center;
         }
     }
@@ -20,7 +19,7 @@
         label {
             font-size: 16px !important;
             line-height: 24px !important;
-            color: variables.$black;
+            color: $black;
         }
     }
 
@@ -60,31 +59,31 @@
     vertical-align: baseline;
     box-sizing: border-box;
     background-color: transparent;
-    border-bottom: 2px solid variables.$black;
+    border-bottom: 2px solid $black;
     width: 100%;
         // Placeholder styling - each selector needs to be separate
     &::placeholder {
-        color: variables.$white;
+        color: $white;
         opacity: 1;
     }
     
     &::-webkit-input-placeholder {
-        color: variables.$white;
+        color: $white;
         opacity: 1;
     }
     
     &::-moz-placeholder {
-        color: variables.$white;
+        color: $white;
         opacity: 1;
     }
     
     &:-ms-input-placeholder {
-        color: variables.$white;
+        color: $white;
         opacity: 1;
     }
     
     &::-ms-input-placeholder {
-        color: variables.$white;
+        color: $white;
         opacity: 1;
     }
   }
@@ -93,7 +92,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    color: variables.$white;
+    color: $white;
     text-transform: uppercase;
     z-index: 2;
     line-height: 32px !important;
@@ -126,7 +125,7 @@
   .wpcf7-form input[type="number"]:focus,
   .wpcf7-form input[type="date"]:focus,
   .wpcf7-form textarea:focus {
-    border-bottom-color: variables.$black;
+    border-bottom-color: $black;
     outline: none;
   }
 
@@ -134,10 +133,10 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: variables.$black;
-  color: variables.$white;
+  background-color: $black;
+  color: $white;
   border: none;
-  border-bottom: 1px solid variables.$white;
+  border-bottom: 1px solid $white;
   padding-bottom: 12px !important;
   width: 100%;
   box-sizing: border-box;
@@ -151,21 +150,21 @@
   white-space: break-spaces;
 
   &:focus {
-    border-bottom-color: variables.$black;
+    border-bottom-color: $black;
     outline: none;
   }
 }
 
 .wpcf7-form select option {
-  background-color: variables.$black;
-  color: variables.$white;
+  background-color: $black;
+  color: $white;
   cursor: pointer;
   line-height: 2; // Use line-height for spacing instead of padding
   font-size: inherit;
 }
 
 .wpcf7-form .wpcf7-not-valid-tip {
-    color: variables.$error;
+    color: $error;
     font-size: 14px;
     line-height: 24px;
     font-weight: 300;

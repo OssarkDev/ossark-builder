@@ -1,5 +1,4 @@
-@use "../../include/mixins";
-@use "../../include/variables";
+@use "shared" as *;
 
 .thank-you {
     position: relative;

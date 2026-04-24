@@ -91,8 +91,5 @@ function debounce(fn, delay) {
     };
 }
 
-// Initial run
-splitLines();
-
 // Re-run on resize (debounced)
 window.addEventListener('resize', debounce(splitLines, 200));
