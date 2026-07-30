@@ -1,16 +1,28 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /*
 	=====================
 		PHP Console.log
 	=====================	
 */
+// Debug-only: emit data to the browser console. No-op unless WP_DEBUG is on.
 function console_log($data) {
-  $output = $data;
-  if (is_array($output))
-      $output = implode(',', $output);
+  if ( ! ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ) {
+    return;
+  }
 
-  echo "<script>console.log('Debug Objects: " . json_encode($output) . "' );</script>";
+  $json = wp_json_encode( $data );
+  if ( false === $json ) {
+    return;
+  }
+
+  printf(
+    '<script>console.log(%s, %s);</script>',
+    wp_json_encode( 'Debug Objects:' ),
+    $json
+  );
 }
 
 /*
@@ -114,6 +126,10 @@ function returnYoutubeUrl($url){
 function get_acf_block_data($post_id, $block_name, $field_name) {
   $post = get_post($post_id); // Retrieve the post object
   $content = '';
+
+  if (!$post) {
+      return $content;
+  }
 
   if (has_blocks($post->post_content)) {
       $blocks = parse_blocks($post->post_content); // Parse all blocks

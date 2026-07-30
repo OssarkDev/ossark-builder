@@ -13,12 +13,15 @@ import { shareButton } from './components/parts/shareButton';
 import { slider } from './components/blocks/slider';
 import { hamburger } from './components/parts/hamburger';
 import { formSuccessRedirect } from './components/parts/contact';
-import { video } from './components/blocks/video';
 import { scrollToAnchor } from './components/parts/scrollToAnchor';
 import { activeMenuItem } from './components/parts/activeMenuItem';
-import { testAjax } from './components/parts/testAjax';
+// import { testAjax } from './components/parts/testAjax'; // demo code — enable only while testing AJAX
 import { map } from './components/blocks/map';
 import { imageDimensions } from './components/parts/imageDimensions';
+
+// Auto-run colocated block JS: components/blocks/{slug}/{slug}.js
+// Each file must `export default` an init function.
+const blockScripts = require.context('../../components/blocks', true, /\.js$/);
 
 export function runAfterDomLoad() {
 	imageDimensions();
@@ -33,10 +36,14 @@ export function runAfterDomLoad() {
 	slider();
 	hamburger();
 	formSuccessRedirect();
-	video();
 	scrollToAnchor();
 	activeMenuItem();
-	testAjax();
+	// testAjax();
 	map();
 	parallax();
+
+	blockScripts.keys().forEach(key => {
+		const mod = blockScripts(key);
+		if (typeof mod.default === 'function') mod.default();
+	});
 }

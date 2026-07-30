@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /*
 	=====================
 		Send all traffic to coming soon page

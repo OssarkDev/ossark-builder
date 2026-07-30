@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /*
 	=====================
 		Register post types
@@ -10,10 +12,10 @@ function create_posttypes() {
     register_post_type('work',
        array(
         'labels' => array(
-            'name' => __('Work'),
-            'all_items' => __('All Works'),
-            'singular_name' => __('Work'),
-            'add_new_item' => __('Add New Work')
+            'name' => __( 'Work', 'ossark-builder' ),
+            'all_items' => __( 'All Works', 'ossark-builder' ),
+            'singular_name' => __( 'Work', 'ossark-builder' ),
+            'add_new_item' => __( 'Add New Work', 'ossark-builder' )
         ),
         'public' => true,
         'show_ui' => true,

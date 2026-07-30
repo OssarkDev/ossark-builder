@@ -1,4 +1,6 @@
-export function video() {
+// Colocated block JS — auto-run via require.context in src/js/index.js.
+// Must export default an init function.
+export default function video() {
     const videos = document.querySelectorAll('.video__container');
 
     if (!videos.length) return;
@@ -18,4 +20,3 @@ export function video() {
         });
     });
 }
-

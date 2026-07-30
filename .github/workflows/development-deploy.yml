@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: 🚚 Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '22'
         cache: 'npm'
@@ -41,12 +41,20 @@ jobs:
         server-dir: wp-content/themes/${{ env.THEME_NAME }}/
         exclude: |
           **/node_modules/**
-          package-lock.json
-          package.json
-          README.md
-          .editorconfig
-          webpack.config.js
-          .gitignore
-          .github
-          .git
+          **/src/**
           **/config/**
+          **/scripts/**
+          **/.git/**
+          **/.github/**
+          **/.vscode/**
+          **/.idea/**
+          **/.history/**
+          package.json
+          package-lock.json
+          webpack.config.js
+          .editorconfig
+          .gitignore
+          .env*
+          README.md
+          *.log
+          *.tmp

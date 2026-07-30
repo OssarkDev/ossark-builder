@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /*
   =====================
     Clean
@@ -33,7 +35,7 @@ add_action( 'after_setup_theme', 'wp_theme_setup' );
   =====================
 */
 function fb_disable_feed() {
-  wp_die( __('No feed available,please visit our <a href="'. get_bloginfo('url') .'">homepage</a>!') );
+  wp_die( __( 'No feed available, please visit our <a href="' . esc_url( get_bloginfo( 'url' ) ) . '">homepage</a>!', 'ossark-builder' ) );
   }
    
   add_action('do_feed', 'fb_disable_feed', 1);
@@ -58,7 +60,7 @@ add_filter('xmlrpc_enabled', '__return_false');
 */
 //REMOVE GUTENBERG BLOCK LIBRARY CSS FROM LOADING ON FRONTEND
 function remove_wp_block_library_css() {
-  wp_dequeue_style( 'classic-theme-styles-css' );
+  wp_dequeue_style( 'classic-theme-styles' );
   wp_dequeue_style( 'wp-block-library' );
   wp_dequeue_style( 'wp-block-library-theme' );
   wp_dequeue_style( 'wc-block-style' );

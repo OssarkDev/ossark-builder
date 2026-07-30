@@ -1,30 +1,60 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 
 /*
   =====================
-    Make Gutenber blocks full width
+    Block editor styles (iframed canvas)
   =====================
 */
-add_action('admin_head', 'my_custom_width_gutenberg');
+// Styles that must load INSIDE the block-editor iframe.
+//   - assets/editor-styles.css: hand-written editor-only overrides
+//     (canvas chrome, ACF field wrappers, forced .in-view visibility,
+//      appender fixes)
+//   - dist/editor.min.css: SCSS bundle mirroring the frontend design
+//     tokens/typography/grid/block styles so the WYSIWYG matches
+//     production. Loaded second so it can layer on top.
+add_action('after_setup_theme', function () {
+    add_theme_support('editor-styles');
+    add_editor_style('assets/editor-styles.css');
 
-function my_custom_width_gutenberg() {
-    echo '<style>
-    .wp-block{
-        max-width: 95% !important;
+    if ( file_exists( get_template_directory() . '/dist/editor.min.css' ) ) {
+        add_editor_style( 'dist/editor.min.css' );
     }
-    .acf-block-body .acf-block-fields {
-      border: 2px solid #000 !important;
-	  border-radius: 10px;
+});
+
+/*
+  =====================
+    Block editor chrome (outer admin UI)
+  =====================
+*/
+// Styles + JS that run on the outer editor page (draggable inspector
+// sidebar) — these must NOT go through add_editor_style() because they
+// target elements that live outside the iframe.
+add_action('enqueue_block_editor_assets', function () {
+    $css_path = get_template_directory() . '/assets/editor.css';
+    $js_path  = get_template_directory() . '/assets/editor.js';
+
+    if (file_exists($css_path)) {
+        wp_enqueue_style(
+            'ossark-editor-chrome',
+            get_template_directory_uri() . '/assets/editor.css',
+            array(),
+            filemtime($css_path)
+        );
     }
-	.editor-styles-wrapper {
-		background-color: #FFF !important;
-	}
-	.button, .page-title-action {
-		border-radius: 40px !important;
-	}
-  </style>';
-}
+
+    if (file_exists($js_path)) {
+        wp_enqueue_script(
+            'ossark-editor-chrome',
+            get_template_directory_uri() . '/assets/editor.js',
+            array(),
+            filemtime($js_path),
+            true
+        );
+    }
+});
 
 /*
 =====================
@@ -42,23 +72,23 @@ if( function_exists('acf_add_options_page') ) {
 	));
 
 	acf_add_options_sub_page([
-		'page_title' => "Header",
-		'menu_title' => __("Header"),
-		'menu_slug' => "header",
+		'page_title' => 'Header',
+		'menu_title' => __( 'Header', 'ossark-builder' ),
+		'menu_slug' => 'header',
 		'parent' => 'theme-options'
 	]);
 
 	acf_add_options_sub_page([
-		'page_title' => "Footer",
-		'menu_title' => __("Footer"),
-		'menu_slug' => "footer",
+		'page_title' => 'Footer',
+		'menu_title' => __( 'Footer', 'ossark-builder' ),
+		'menu_slug' => 'footer',
 		'parent' => 'theme-options'
 	]);
 
 	acf_add_options_sub_page([
-		'page_title' => "Scripts",
-		'menu_title' => __("Scripts"),
-		'menu_slug' => "scripts",
+		'page_title' => 'Scripts',
+		'menu_title' => __( 'Scripts', 'ossark-builder' ),
+		'menu_slug' => 'scripts',
 		'parent' => 'theme-options'
 	]);
 
@@ -105,75 +135,56 @@ add_filter('block_categories_all', function ($categories, $editor_context) {
 }, 10, 2);
 
 if (function_exists('acf_register_block_type')) {
-	add_action('acf/init', 'register_acf_block_types');
+	add_action('init', 'ossark_register_blocks_from_json');
 }
 
 
 /*
 =====================
-	Gutenberg blocks
+	Gutenberg blocks — auto-discovery from block.json manifests
 =====================
+	Every folder under components/blocks/ that contains a block.json
+	is auto-registered. Add a new block by dropping a new folder in.
+	No PHP changes required.
 */
-/*
-=====================
-	Gutenberg blocks
-=====================
-*/
-function register_acf_block_types()
-{
-	// Add new blocks here as: 'block-folder-name' => 'Block Title'
-	// Template must exist at components/blocks/{block-folder-name}.php
-	// e.g. 'text' => 'Text', 'video' => 'Video'
-	$blocks = [
-		'thank-you' => 'Thank You',
-	];
-	foreach ($blocks as $name => $title) {
-		acf_register_block_type(array(
-			'name' => $name,
-			'title' => __($title),
-			'description'   => __('Block for ' . $title),
-			'render_template' => 'components/blocks/' . $name . '.php',
-			'category' => 'content',
-			'icon' => 'block-default',
-			'keywords' => array($title),
-			'mode' => 'edit',
-			'example'  => array(
-				'attributes' => array(
-					'mode' => 'preview',
-					'data' => array(
-						'is_preview'    => true
-					)
-				)
-			)
-		));
+function ossark_register_blocks_from_json() {
+	$blocks_dir = get_template_directory() . '/components/blocks';
+
+	if ( ! is_dir( $blocks_dir ) ) {
+		return;
+	}
+
+	foreach ( glob( $blocks_dir . '/*/block.json' ) as $manifest ) {
+		register_block_type( dirname( $manifest ) );
 	}
 }
 
 
 /*
 =====================
-	Remove default blocks / only show:
+	Whitelist allowed blocks
 =====================
+	Derived from the same block.json manifests the registrar discovers —
+	dropping a new block folder in makes it available automatically.
+	Add core block names to $extra_blocks per project if needed.
 */
 add_filter( 'allowed_block_types_all', 'allowed_block_types', 10, 2 );
 
 function allowed_block_types( $allowed_blocks, $editor_context ) {
 
-	$all_blocks = [
-		'acf/thank-you',
-	];
-	$article_blocks = [];
-	$services_blocks = [];
+	$all_blocks = [];
 
-	$post_type = $editor_context->post ? $editor_context->post->post_type : '';
-  
-	switch( $post_type ) {
-		case 'article':
-		return $article_blocks;
-	   	case 'services':
-		return $services_blocks;
-	  	default:
-		return $all_blocks;
-  }
+	foreach ( glob( get_template_directory() . '/components/blocks/*/block.json' ) as $manifest ) {
+		$data = json_decode( file_get_contents( $manifest ), true );
+		if ( ! empty( $data['name'] ) ) {
+			$all_blocks[] = $data['name'];
+		}
+	}
+
+	$extra_blocks = [
+		// 'core/paragraph',
+	];
+
+	return array_merge( $all_blocks, $extra_blocks );
 }
 

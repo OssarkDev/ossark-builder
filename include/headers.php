@@ -1,4 +1,7 @@
 <?php
+
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Security Hardening
  * ──────────────────
@@ -68,7 +71,6 @@ function ossark_send_csp_header(): void {
     $directives = [
         "default-src"     => "'none'",
         "script-src"      => "'self' 'nonce-{$nonce}' 'strict-dynamic'"
-                           . " https://code.jquery.com"
                            . " https://maps.googleapis.com"
                            . " https://www.google.com"
                            . " https://www.gstatic.com"
@@ -180,10 +182,11 @@ add_filter( 'wp_inline_script_attributes', 'ossark_script_nonce_attribute' );
 
 /**
  * Map of WP script handles → SRI hashes.
+ * jQuery now served from same-origin (WP bundled) so no hash needed.
  */
 function ossark_sri_hashes(): array {
     return [
-        'jquery' => 'sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=', // jQuery 3.7.0
+        // 'handle' => 'sha256-...',
     ];
 }
 

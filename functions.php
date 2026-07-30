@@ -1,16 +1,26 @@
 <?php
 
-require_once ('include/cleanup.php');
-require_once ('include/setup_theme.php');
-require_once ('include/acf.php');
-require_once ('include/custom_post_types.php');
-require_once ('include/enqueue_scripts.php');
-require_once ('include/theme_functions.php');
-require_once ('include/headers.php');
-require_once ('include/ui_kit.php');
-require_once ('include/coming_soon.php');
-require_once ('include/debug.php');
-// require_once ('include/custom_taxonomies.php');
-// require_once ('include/theme_ajax.php');
-// require_once ('include/woocommerce.php');
+defined( 'ABSPATH' ) || exit;
+
+$ossark_theme_includes = [
+    'cleanup',
+    'setup_theme',
+    'acf',
+    'custom_post_types',
+    'enqueue_scripts',
+    'theme_functions',
+    'headers',
+    'ui_kit',
+    'coming_soon',
+    'debug',
+    // 'custom_taxonomies',
+    // 'theme_ajax',
+    // 'woocommerce',
+];
+
+foreach ( $ossark_theme_includes as $ossark_theme_include ) {
+    require_once get_template_directory() . '/include/' . $ossark_theme_include . '.php';
+}
+
+unset( $ossark_theme_include, $ossark_theme_includes );
 

@@ -51,27 +51,18 @@ This is a modern WordPress theme boilerplate built with **ACF blocks**, **Webpac
 
 ## ACF Block System
 
-### Block Registration Pattern
-Blocks auto-register from array in `include/acf.php`:
-```php
-$blocks = [
-    'thank-you' => 'Thank You',
-    // Add new blocks: 'block-folder-name' => 'Block Title'
-    // Template must exist at components/blocks/{block-folder-name}.php
-];
-```
-- Templates: `components/blocks/{block-name}.php`
-- ACF fields: Auto-sync to `acf-json/` directory
-- Allowed blocks per post type configured in `allowed_block_types_all` filter
+### Block Registration (block.json auto-discovery)
+Blocks are colocated under `components/blocks/{slug}/` with a `block.json` manifest. `ossark_register_blocks_from_json()` in `include/acf.php` globs the folder on `init` and calls `register_block_type()` on each `block.json`. To add a block:
+1. Create `components/blocks/{slug}/block.json` (`apiVersion: 3`, `name: "acf/{slug}"`, `acf.mode: "auto"`, `acf.renderTemplate: "render.php"`).
+2. Create `components/blocks/{slug}/render.php` — the render template.
+3. (Optional) Create `components/blocks/{slug}/_{slug}.scss` — auto-imported via `require.context` in `src/main.js` and `src/editor.js`.
+4. Add the slug to the whitelist in the `allowed_block_types_all` filter in `include/acf.php`.
+- ACF fields: Auto-sync to `acf-json/` directory.
 
 ### Block Template Structure
 ```php
-<?php 
-if (get_field('is_preview')) { 
-    previewImage($block['name']);
-    return;
-}
-$field = get_field('field_name');
+<?php
+$field = get_field( 'field_name' );
 ?>
 <section data-scroll class="block-name">
     <!-- Bootstrap grid structure -->
@@ -149,7 +140,7 @@ Modular includes from `include/` directory:
 - `cleanup.php` - WP bloat removal, conditional CF7 script loading
 - `setup_theme.php` - Theme config, image settings, SVG/JSON/WebP uploads, admin cleanup
 - `headers.php` - Security headers (CSP with nonces, SRI, universal headers)
-- `ui_kit.php` - Reusable UI components (`get_button`, `get_part`, `get_block`, `previewImage`)
+- `ui_kit.php` - Reusable UI components (`get_image`, `get_button`, `get_part`, `get_block`)
 - `woocommerce.php` - WooCommerce support (commented out by default)
 - `coming_soon.php` - Coming soon mode via ACF toggle
 - `debug.php` - Debug mode toggle
@@ -157,7 +148,7 @@ Modular includes from `include/` directory:
 ### Helper Functions
 - `get_svg($name)` - Load SVGs from `assets/`
 - `console_log($data)` - PHP debugging to browser console
-- `previewImage($name)` - ACF block previews
+- `get_image($image, $args)` - Render an ACF image field with attributes
 - `get_button($button, $classes)` - Render ACF link as button
 - `get_part($template, $args)` - Include a part template with args
 - `get_block($template, $args)` - Include a block template with args

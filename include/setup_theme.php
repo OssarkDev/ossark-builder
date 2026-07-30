@@ -1,5 +1,38 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
+/*
+  =====================
+    Theme setup
+  =====================
+*/
+add_action( 'after_setup_theme', function () {
+    load_theme_textdomain( 'ossark-builder', get_template_directory() . '/languages' );
+
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'responsive-embeds' );
+    add_theme_support( 'align-wide' );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'customize-selective-refresh-widgets' );
+    add_theme_support( 'html5', [
+        'comment-list',
+        'comment-form',
+        'search-form',
+        'gallery',
+        'caption',
+        'style',
+        'script',
+    ] );
+    add_theme_support( 'custom-logo', [
+        'height'      => 40,
+        'width'       => 100,
+        'flex-width'  => true,
+        'flex-height' => true,
+    ] );
+} );
+
 /*
   =====================
     Add Categories and Tags to pages
@@ -111,16 +144,11 @@ function fix_svg_mime_type( $data, $file, $filename, $mimes, $real_mime = '' ){
 
 
 // adds title to <head>
-add_theme_support( 'title-tag' );
-
 // featured images
-add_theme_support( 'post-thumbnails' );
+// (title-tag, post-thumbnails, custom-logo, html5, etc. registered in after_setup_theme above)
 
 // remove p tags from wysiwyg
 // remove_filter ('acf_the_content', 'wpautop');
-
-//remove extra WP styling (header)
-add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
 
 // disable admin bar
 add_filter('show_admin_bar', '__return_false');
@@ -132,24 +160,6 @@ add_filter('show_admin_bar', '__return_false');
 if ( ! defined( 'WP_AUTO_UPDATE_CORE' ) ) {
   define( 'WP_AUTO_UPDATE_CORE', false );
 }
-
-// Add theme support for selective refresh for widgets.
-add_theme_support('customize-selective-refresh-widgets');
-
-/**
- * Add support for core custom logo.
- *
- * @link https://codex.wordpress.org/Theme_Logo
- */
-add_theme_support(
-  'custom-logo',
-  array(
-    'height' => 40,
-    'width' => 100,
-    'flex-width' => true,
-    'flex-height' => true,
-  )
-);
 
 // Remove <p> and <br/> from Contact Form 7
 add_filter('wpcf7_autop_or_not', '__return_false');

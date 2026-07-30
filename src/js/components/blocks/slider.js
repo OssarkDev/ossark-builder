@@ -2,6 +2,13 @@ export function slider() {
 	const sliders = document.querySelectorAll('.image-slider__slider');
 	if (!sliders.length) return;
 
+	// Slick is lazy-loaded so pages without sliders never pay for it.
+	import(/* webpackChunkName: "slick" */ 'slick-carousel').then(() => {
+		initSliders();
+	});
+}
+
+function initSliders() {
 	$('.image-slider__slider').each(function() {
 		let slider = $(this);
 		let next = slider.siblings('.image-slider__arrows').find('.image-slider__arrows__next');

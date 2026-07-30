@@ -68,6 +68,16 @@ section, .section {
     @media (max-width: $mobile) {
         display: flex;
         flex-direction: column;
+        gap: $row-gap-mobile;
+
+        &.sm-grid {
+            display: grid;
+            grid-template-columns: repeat($grid-columns-mobile, 1fr);
+            gap: $grid-column-gap-mobile;
+            > [class*="col-"] {
+                width: auto;
+            }
+        }
     }
     // tablet
     @media (min-width: $mobile) and (max-width: $tablet) {
@@ -134,14 +144,14 @@ section, .section {
 	}
 }
 
-// // create all grid column classes for mobile
-// @for $i from 1 through $grid-columns-mobile {
-// 	@media(max-width: $mobile) {
-// 		.col-sm-#{$i} {
-// 			grid-column: span #{$i};
-// 		}
-// 	}
-// }
+// create all grid column classes for mobile
+@for $i from 1 through $grid-columns-mobile {
+	@media(max-width: $mobile) {
+		.col-sm-#{$i} {
+			grid-column: span #{$i};
+		}
+	}
+}
 
 // create all grid column classes for tablet
 @for $i from 1 through $grid-columns-tablet {

@@ -14,7 +14,5 @@
 @use 'components/parts/_cookiebot';
 @use 'components/parts/_form';
 
-// blocks
-@use 'components/blocks/_video';
-@use 'components/blocks/_text';
-@use 'components/blocks/_thank-you';
+// Block SCSS is auto-imported from components/blocks/*/_*.scss via
+// require.context in src/main.js.

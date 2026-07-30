@@ -1,0 +1,20 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/text",
+    "title": "Text",
+    "description": "Rich text content block.",
+    "category": "content",
+    "icon": "editor-paragraph",
+    "keywords": ["text", "content", "paragraph"],
+    "textdomain": "ossark-builder",
+    "supports": {
+        "jsx": true,
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php"
+    }
+}

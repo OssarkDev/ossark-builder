@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /*
   =====================
     Enable debug mode - uncomment to use

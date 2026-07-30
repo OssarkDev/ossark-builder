@@ -1,7 +1,16 @@
 /*
 Theme Name: OSSARK Custom Theme
+Theme URI: https://ossark.ie/
 Author: Ossian Moore
 Author URI: https://ossark.ie/
-Version: 2.1
+Description: Modern WordPress theme boilerplate built with ACF blocks, Webpack bundling and a component-based architecture. Bootstrap-like grid, SCSS pipeline, hardened security headers.
+Version: 3.0
+Requires at least: 6.3
+Tested up to: 6.6
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: ossark-builder
+Domain Path: /languages
+Tags: acf, block-editor, custom-blocks, webpack, scss
 */

@@ -1,8 +1,12 @@
 import 'slick-carousel/slick/slick.scss';
-import 'slick-carousel';
 import Lenis from 'lenis';
 
 import './scss/index.scss'; // custom styles
+
+// Auto-import every _*.scss inside components/blocks/*/ — colocated block
+// styles. Add a new block folder and its stylesheet is picked up automatically.
+const blockStyles = require.context('../components/blocks', true, /_[^/]+\.scss$/);
+blockStyles.keys().forEach(blockStyles);
 
 import { runAfterDomLoad } from './js';
 

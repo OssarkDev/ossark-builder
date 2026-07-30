@@ -1,0 +1,83 @@
+/* ─── Draggable block inspector sidebar ─────────────────
+   Adds a 6px vertical grab handle on the left edge of the
+   block inspector sidebar. Width is driven by a CSS variable
+   on <body>; editor.js updates the variable and persists it.
+─────────────────────────────────────────────────────────── */
+
+body {
+    /* Default width — overridden by editor.js from localStorage */
+    --ossark-inspector-width: 320px;
+}
+
+/* Widen the block inspector sidebar */
+.interface-interface-skeleton__sidebar {
+    width: var(--ossark-inspector-width) !important;
+    max-width: 50vw !important;
+    min-width: 240px !important;
+    position: relative;
+}
+
+/* Make every immediate child of the sidebar stretch to fill it
+   (inspector panels, ACF field groups, block settings tabs).
+   Without this the inner panels stay at ~280px and the extra
+   width is just empty whitespace. */
+.interface-interface-skeleton__sidebar > *,
+.interface-interface-skeleton__sidebar .block-editor-block-inspector,
+.interface-interface-skeleton__sidebar .interface-complementary-area,
+.interface-interface-skeleton__sidebar .components-panel,
+.interface-interface-skeleton__sidebar .components-panel__body,
+.interface-interface-skeleton__sidebar .acf-fields,
+.interface-interface-skeleton__sidebar .acf-field {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Give the canvas the corresponding room. WP wraps the canvas
+   in .interface-interface-skeleton__content which flex-grows to
+   fill leftover space — nothing to force here — but the iframe
+   inside sometimes has a hard-coded width in inline style. */
+.interface-interface-skeleton__content,
+.edit-post-visual-editor,
+.edit-post-visual-editor__content-area {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+.edit-post-visual-editor iframe,
+.editor-canvas-container iframe,
+iframe[name="editor-canvas"] {
+    width: 100% !important;
+}
+
+/* Vertical grab handle on the left edge of the sidebar */
+.interface-interface-skeleton__sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    cursor: ew-resize;
+    background: transparent;
+    transition: background-color 0.15s ease;
+    z-index: 30;
+}
+
+.interface-interface-skeleton__sidebar::before:hover,
+body.ossark-resizing .interface-interface-skeleton__sidebar::before {
+    background: #007cba;
+}
+
+/* While dragging: disable text selection + iframe pointer events
+   so the mouse doesn't get stolen by the editor iframe */
+body.ossark-resizing,
+body.ossark-resizing * {
+    user-select: none !important;
+}
+
+body.ossark-resizing iframe {
+    pointer-events: none !important;
+}

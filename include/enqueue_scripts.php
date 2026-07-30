@@ -1,4 +1,7 @@
 <?php
+
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Enqueue scripts and styles.
  */
@@ -10,25 +13,21 @@ function enqueue_scripts() {
     $style_path = get_stylesheet_directory().'/dist/main.min.css';
 
     // styles
-    wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array());
+    wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
     wp_enqueue_style( 'mincss', get_template_directory_uri() . '/dist/main.min.css',  array(), filemtime( $style_path ), 'all');
 
-    // remove old jquery
-    wp_deregister_script( 'jquery' );
-
-    // add latest jquery
-    wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.7.0.min.js', false, null, true );
+    // use WordPress-bundled jQuery (currently 3.7.x); no CDN dependency
     wp_enqueue_script( 'jquery' );
 
+    // vendors first (Slick needs jQuery), then main which depends on both
+    wp_enqueue_script( 'vendors', get_template_directory_uri() . '/dist/vendors.min.js', array('jquery'), filemtime( $vendors_js_path ), array( 'strategy' => 'defer', 'in_footer' => true ) );
+
     // custom js
-    wp_enqueue_script( 'main', get_template_directory_uri() . '/dist/main.min.js', array('jquery'), filemtime( $js_path ) , true);
-    
-    // vendors
-    wp_enqueue_script( 'vendors', get_template_directory_uri() . '/dist/vendors.min.js', false , filemtime( $vendors_js_path ) , true);
+    wp_enqueue_script( 'main', get_template_directory_uri() . '/dist/main.min.js', array('jquery', 'vendors'), filemtime( $js_path ), array( 'strategy' => 'defer', 'in_footer' => true ) );
 
     //send PHP variables to JS
     wp_localize_script( 'main', 'customjs_ajax_object',
-        array( 
+        array(
             'ajax_url' => admin_url( 'admin-ajax.php' ),
             'ajax_nonce' => wp_create_nonce( "secure_nonce_name" ),
             'site_url' => get_site_url(),

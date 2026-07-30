@@ -1,0 +1,161 @@
+/* ─── Canvas chrome ─────────────────────────────────── */
+
+/*
+   Let the theme's own .container padding handle horizontal
+   space. Capping .wp-block at 95% AND padding the body AND
+   the container was triple-stacking the padding, which
+   crushed rows/cols in the editor iframe.
+*/
+.wp-block {
+    max-width: 100% !important;
+}
+
+/* Ensure the post-content wrapper itself also fills the canvas
+   so blocks aren't clipped to a fixed reading width. */
+.wp-block-post-content,
+.editor-styles-wrapper .wp-block-post-content,
+.editor-styles-wrapper .block-editor-block-list__layout {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* White canvas background */
+body.editor-styles-wrapper,
+.editor-styles-wrapper {
+    background-color: #fff !important;
+}
+
+/*
+   OPTIONAL — force desktop layout regardless of iframe width.
+   Uncomment to make the iframe scroll horizontally on narrow
+   editor panels and always render the desktop grid.
+*/
+/*
+.editor-styles-wrapper {
+    min-width: 1440px !important;
+}
+*/
+
+/* ACF block field wrapper — v2 selector kept for parity;
+   v3 uses .acf-block-component, so we cover both. */
+.acf-block-body .acf-block-fields,
+.acf-block-component .acf-fields {
+    border: 2px solid #000 !important;
+    border-radius: 10px;
+}
+
+/* ─── Reset patches for iframe ──────────────────────── */
+
+/*
+   Zero out any body padding — the theme's .container already
+   provides responsive horizontal padding, so extra body
+   padding double-stacks and crushes the grid.
+*/
+body.editor-styles-wrapper {
+    padding: 0 !important;
+    line-height: 1.5 !important;
+    overflow-x: visible !important;
+}
+
+/* ─── Editor breathing room ─────────────────────────── */
+/*
+   Vertical spacing so the post title isn't glued to the top
+   of the iframe and the first block has room to breathe.
+*/
+.editor-styles-wrapper .wp-block-post-title,
+.editor-styles-wrapper .editor-post-title {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+}
+
+/* Push the first block down from the title */
+.editor-styles-wrapper .wp-block-post-title + .wp-block,
+.editor-styles-wrapper .editor-post-title + .wp-block,
+.editor-styles-wrapper .block-editor-block-list__layout > .wp-block:first-child {
+    margin-top: 40px !important;
+}
+
+/* ─── Block appender (+) at the bottom ──────────────── */
+/*
+   WP hides the appender in several states (block selected,
+   parent block active, mouse away, etc). Force-show every
+   variant across every state.
+*/
+.block-list-appender,
+.block-editor-block-list__layout > .block-list-appender,
+.wp-block-post-content > .block-list-appender,
+.block-editor-default-block-appender,
+.block-editor-button-block-appender,
+.block-editor-inserter__toggle,
+.block-editor-inserter,
+.editor-styles-wrapper .block-list-appender,
+.editor-styles-wrapper .block-editor-default-block-appender {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    pointer-events: auto !important;
+}
+
+/* Give the trailing appender breathing room + a subtle
+   background so it's easy to spot even when a block above
+   is selected. */
+.block-editor-block-list__layout > .block-list-appender,
+.wp-block-post-content > .block-list-appender,
+.editor-styles-wrapper > .block-list-appender {
+    margin-top: 40px !important;
+    padding: 16px 0 !important;
+    border-top: 1px dashed rgba(0, 0, 0, 0.15) !important;
+}
+
+/* The toggle button itself — a bit more prominent */
+.block-list-appender .block-editor-inserter__toggle,
+.block-editor-default-block-appender .block-editor-inserter__toggle {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-flex !important;
+}
+
+/* ─── Force scroll animations visible in editor ─────── */
+/*
+   scroll.js adds .in-view on IntersectionObserver, but no
+   JS runs inside the editor iframe. Without these overrides,
+   every animated block would render invisible.
+*/
+.fade-in,
+.fade-up,
+.img-up,
+.img-show img,
+[data-scroll] {
+    opacity: 1 !important;
+    transform: none !important;
+    scale: 1 !important;
+}
+
+/* Split-line / split-text wrappers stay visible too */
+.split-line,
+.split-line__inner,
+.split-text__word,
+.split-text__word__inner {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* ─── Kill sticky / fixed / parallax in editor ──────── */
+/*
+   If any block uses position: sticky/fixed or a JS-driven
+   parallax transform, it'll behave oddly in the iframe.
+*/
+.hero,
+[data-parallax-root],
+[data-parallax-speed] {
+    position: relative !important;
+    transform: none !important;
+}
+
+/* ─── Media reset ───────────────────────────────────── */
+/* Cap images inside the editor so they don't blow past
+   the block width just because reset.scss says width:100%. */
+.editor-styles-wrapper img {
+    max-width: 100%;
+    height: auto;
+}

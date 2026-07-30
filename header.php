@@ -27,6 +27,7 @@ visits us at ossark.ie
 </head>
 
 <body>
+<?php wp_body_open(); ?>
 <?php
     $body_scripts = get_field('body_scripts', 'option');
     if ($body_scripts) {

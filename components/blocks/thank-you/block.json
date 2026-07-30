@@ -1,0 +1,20 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "acf/thank-you",
+    "title": "Thank You",
+    "description": "Confirmation / thank-you block with title and CTA button.",
+    "category": "content",
+    "icon": "yes-alt",
+    "keywords": ["thank you", "confirmation", "success"],
+    "textdomain": "ossark-builder",
+    "supports": {
+        "jsx": true,
+        "align": false,
+        "anchor": true
+    },
+    "acf": {
+        "mode": "auto",
+        "renderTemplate": "render.php"
+    }
+}

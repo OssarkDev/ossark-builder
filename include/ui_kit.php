@@ -1,18 +1,27 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 /*
   =====================
     Title
   =====================
 */
-function ui_title($title, $classes = '', $heading_size = '') {
-    if (!empty($title)) {
-        echo '<div class="' . esc_attr($classes) . '">';
-        echo '<' . esc_html($heading_size) . '>';
-        echo esc_html($title);
-        echo '</' . esc_html($heading_size) . '>';
-        echo '</div>';
+function ui_title($title, $classes = '', $heading_size = 'h2') {
+    if (empty($title)) {
+        return;
     }
+
+    $allowed = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span'];
+    $tag = in_array(strtolower((string) $heading_size), $allowed, true) ? strtolower($heading_size) : 'h2';
+
+    printf(
+        '<div class="%s"><%s>%s</%s></div>',
+        esc_attr($classes),
+        $tag,
+        esc_html($title),
+        $tag
+    );
 }
 
 /*
@@ -20,35 +29,79 @@ function ui_title($title, $classes = '', $heading_size = '') {
     Button
   =====================
 */
-function get_button($button, $classes) {
-    $output = '';
-
-    if(is_array($button)) {
-      $link = isset($button['url']) ? $button['url'] : '';
-      $target = isset($button['target']) ? $button['target'] : '_self';
-      $title = isset($button['title']) ? $button['title'] : 'Read more';
+function get_button($button, $classes = '') {
+    if (is_array($button)) {
+      $link = $button['url'] ?? '';
+      $target = $button['target'] ?? '_self';
+      $title = $button['title'] ?? 'Read more';
     } else {
       $link = $button;
       $target = '_self';
       $title = 'Read more';
     }
-    
-    $output .= 
-      '<a href="'. $link . '" target="'. $target .'" class="btn '. $classes .'">
-      <span>'. $title .'</span>
-      </a>';
-  
-    return $output;
+
+    if (empty($link)) {
+      return '';
+    }
+
+    $rel = ('_blank' === $target) ? ' rel="noopener noreferrer"' : '';
+
+    return sprintf(
+      '<a href="%s" target="%s"%s class="btn %s"><span>%s</span></a>',
+      esc_url($link),
+      esc_attr($target),
+      $rel,
+      esc_attr($classes),
+      esc_html($title)
+    );
   }
 
 /*
   =====================
-    Block Previews
+    Image
   =====================
 */
-function previewImage($block_name) {
-  $block_name = str_replace('acf/', '', $block_name);
-  echo '<img src="' . get_template_directory_uri() . '/assets/block-previews/' . $block_name . '.jpg" alt="Preview for block" width="100%" height="auto"/>';
+function get_image($image, $classes = '', $size = 'full', $lazy = true) {
+    if (empty($image)) {
+        return '';
+    }
+
+    $attr = [];
+    if (!empty($classes)) {
+        $attr['class'] = $classes;
+    }
+    if ($lazy) {
+        $attr['loading'] = 'lazy';
+        $attr['decoding'] = 'async';
+    }
+
+    if (is_array($image) && !empty($image['ID'])) {
+        return wp_get_attachment_image($image['ID'], $size, false, $attr);
+    }
+
+    if (is_numeric($image)) {
+        return wp_get_attachment_image((int) $image, $size, false, $attr);
+    }
+
+    $url = '';
+    $alt = '';
+    if (is_array($image)) {
+        $url = isset($image['sizes'][$size]) ? $image['sizes'][$size] : (isset($image['url']) ? $image['url'] : '');
+        $alt = isset($image['alt']) ? $image['alt'] : '';
+    } elseif (is_string($image)) {
+        $url = $image;
+    }
+
+    if (empty($url)) {
+        return '';
+    }
+
+    $attr_string = '';
+    foreach ($attr as $key => $value) {
+        $attr_string .= ' ' . esc_attr($key) . '="' . esc_attr($value) . '"';
+    }
+
+    return '<img src="' . esc_url($url) . '" alt="' . esc_attr($alt) . '"' . $attr_string . ' />';
 }
 
 /*
@@ -73,8 +126,9 @@ function get_part( $template, $args = [] ) {
     Get Block
   =====================
 */
+// Includes a block's render.php from components/blocks/{template}/render.php.
 function get_block( $template, $args = [] ) {
-  $template_path = 'components/blocks/' . $template . '.php';
+  $template_path = 'components/blocks/' . $template . '/render.php';
   $resolved = locate_template( $template_path );
 
   if ( ! $resolved ) {

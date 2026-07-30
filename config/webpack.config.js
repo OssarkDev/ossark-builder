@@ -9,6 +9,7 @@ const config = (dir = __dirname, mode = 'production') => ({
     stats: "summary", // sets console output
     entry: {
         main: "./src/main.js",
+        editor: "./src/editor.js",
         // more entry points if you want to manually split JS into chunks
     },
     output: {
@@ -41,7 +42,9 @@ const config = (dir = __dirname, mode = 'production') => ({
                 commons: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
-                    chunks: 'all'
+                    // 'initial' only — async chunks (e.g. lazy-loaded lottie)
+                    // stay in their own files instead of bloating vendors
+                    chunks: 'initial'
                 }
             }
         },

@@ -172,33 +172,26 @@ Functions for `data-scroll-call` must be on the `window` object.
 
 ## ACF Blocks
 
+Blocks are colocated under `components/blocks/{slug}/` and auto-registered by `ossark_register_blocks_from_json()` in `include/acf.php`.
+
 ### Registering a New Block
 
-1. Add to the `$blocks` array in `include/acf.php`:
-   ```php
-   $blocks = [
-       'my-block' => 'My Block',
-   ];
-   ```
-2. Create the template at `components/blocks/my-block.php`
-3. Add ACF fields — they auto-sync to `acf-json/`
-4. Add the block slug to the `$all_blocks` array in the `allowed_block_types_all` filter
+1. Create `components/blocks/{slug}/block.json` with `apiVersion: 3`, `name: "acf/{slug}"`, and an `acf` section pointing at `render.php`.
+2. Create `components/blocks/{slug}/render.php` for the template.
+3. Add ACF fields — they auto-sync to `acf-json/`.
+4. Add the slug (e.g. `acf/my-block`) to the whitelist array in the `allowed_block_types_all` filter.
 
 ### Block Template Structure
 
 ```php
-<?php 
-if (get_field('is_preview')) { 
-    previewImage($block['name']);
-    return;
-}
-$field = get_field('field_name');
+<?php
+$field = get_field( 'field_name' );
 ?>
 <section data-scroll class="my-block">
     <div class="container">
         <div class="row">
             <div class="col-10-offset-1">
-                <?php if ($field): ?>
+                <?php if ( $field ) : ?>
                     <?= $field; ?>
                 <?php endif; ?>
             </div>
@@ -216,7 +209,7 @@ $field = get_field('field_name');
 | `acf.php` | Block registration, categories, options pages, allowed blocks |
 | `enqueue_scripts.php` | jQuery CDN, main.min.js, vendors, CSS |
 | `theme_functions.php` | Utility functions (`get_svg`, `console_log`, `excerpt`, `returnYoutubeUrl`) |
-| `ui_kit.php` | `get_button()`, `get_part()`, `get_block()`, `previewImage()` |
+| `ui_kit.php` | `get_image()`, `get_button()`, `get_part()`, `get_block()` |
 | `custom_post_types.php` | Custom post type definitions |
 | `custom_taxonomies.php` | Custom taxonomies (commented out by default) |
 | `cleanup.php` | WP bloat removal, conditional CF7 script loading |
