@@ -27,6 +27,12 @@ npm run build:dev
 
 # Production build (minified & compressed)
 npm run build
+
+# Scaffold a new block folder (blocks/{slug}/)
+npm run make:block -- {slug} ["Title"] [--js]
+
+# Scaffold a new part folder (components/{slug}/)
+npm run make:part -- {slug} ["Title"]
 ```
 
 > **Always run `npm run build` before deploying** — this minifies and compresses all assets.
@@ -37,23 +43,22 @@ npm run build
 
 ```
 assets/              → Images, icons, fonts, block previews, form templates
-components/
-  blocks/            → ACF Gutenberg block templates
-  parts/             → Reusable PHP partials (header, footer, etc.)
+blocks/              → ACF Gutenberg block templates
+components/          → Reusable PHP partials (header, footer, etc.)
 config/              → Webpack & Babel configuration
 include/             → PHP functionality modules
 src/
   main.js            → Entry point (vendor imports, Lenis, SCSS)
   js/
-    index.js          → Imports & calls all JS components
-    components/
+    index.js          → Imports & calls all JS modules
+    modules/
       animations/     → scroll, splitLines, splitText, numbers, typewriter, parallax, lottie
-      blocks/         → slider, video, map
-      parts/          → hamburger, backToTop, contact, scrollToAnchor, etc.
+      ui/             → hamburger, backToTop, contact, scrollToAnchor, etc.
+      vendor/         → slider, map (library wiring)
   scss/
     index.scss        → Main SCSS entry
     include/          → Variables, mixins, shared, layout, reset, fonts, animations
-    components/       → Block & part styles
+    global/           → Global element styles (buttons, form, cookiebot)
 templates/           → WordPress page templates
 acf-json/            → ACF field group JSON (auto-synced)
 ```
@@ -172,12 +177,12 @@ Functions for `data-scroll-call` must be on the `window` object.
 
 ## ACF Blocks
 
-Blocks are colocated under `components/blocks/{slug}/` and auto-registered by `ossark_register_blocks_from_json()` in `include/acf.php`.
+Blocks are colocated under `blocks/{slug}/` and auto-registered by `ossark_register_blocks_from_json()` in `include/acf.php`.
 
 ### Registering a New Block
 
-1. Create `components/blocks/{slug}/block.json` with `apiVersion: 3`, `name: "acf/{slug}"`, and an `acf` section pointing at `render.php`.
-2. Create `components/blocks/{slug}/render.php` for the template.
+1. Create `blocks/{slug}/block.json` with `apiVersion: 3`, `name: "acf/{slug}"`, and an `acf` section pointing at `{slug}.php`.
+2. Create `blocks/{slug}/{slug}.php` for the template.
 3. Add ACF fields — they auto-sync to `acf-json/`.
 4. Add the slug (e.g. `acf/my-block`) to the whitelist array in the `allowed_block_types_all` filter.
 
@@ -199,6 +204,19 @@ $field = get_field( 'field_name' );
     </div>
 </section>
 ```
+
+---
+
+## PHP Parts
+
+Parts are reusable PHP partials colocated under `components/{slug}/` — each folder holds `{slug}.php` and an auto-imported `_{slug}.scss` (frontend + editor), mirroring the blocks pattern.
+
+### Registering a New Part
+
+1. Run `npm run make:part -- {slug} ["Title"]` (or create `components/{slug}/{slug}.php` and `components/{slug}/_{slug}.scss` by hand).
+2. Render it anywhere with `get_part( '{slug}' )`, optionally passing `get_part( '{slug}', [ 'title' => '…' ] )`.
+
+The colocated SCSS is picked up automatically via `require.context` in `src/main.js` and `src/editor.js` — no `@use` wiring needed.
 
 ---
 

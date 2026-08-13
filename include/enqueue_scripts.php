@@ -34,6 +34,20 @@ function enqueue_scripts() {
             'theme_url' => get_template_directory_uri()
         )
     );
+
+    // Google Maps JS API — only load when an API key has been set.
+    if ( function_exists( 'get_field' ) ) {
+        $maps_key = get_field( 'google_maps_api_key', 'option' );
+        if ( ! empty( $maps_key ) ) {
+            wp_enqueue_script(
+                'google-maps',
+                'https://maps.googleapis.com/maps/api/js?key=' . rawurlencode( $maps_key ),
+                array(),
+                null,
+                array( 'in_footer' => true )
+            );
+        }
+    }
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 

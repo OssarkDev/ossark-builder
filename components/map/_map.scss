@@ -1,0 +1,12 @@
+@use "shared" as *;
+
+.acf-map {
+    width: 100%;
+    height: 400px;
+
+    // Google Maps sizes its own tiles/images — undo the global img reset.
+    img {
+        max-width: none !important;
+        object-fit: fill;
+    }
+}

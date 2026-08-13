@@ -7,12 +7,10 @@
 @use 'include/_animations';
 @use 'include/_helpers';
 
-// parts
-@use 'components/parts/_header';
-@use 'components/parts/_footer';
-@use 'components/parts/_buttons';
-@use 'components/parts/_cookiebot';
-@use 'components/parts/_form';
+// global element styles
+@use 'global/_buttons';
+@use 'global/_cookiebot';
+@use 'global/_form';
 
-// Block SCSS is auto-imported from components/blocks/*/_*.scss via
-// require.context in src/main.js.
+// Part SCSS colocated in components/*/_*.scss and block SCSS in blocks/*/_*.scss
+// are auto-imported via require.context in src/main.js.

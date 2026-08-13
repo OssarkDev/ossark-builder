@@ -4,9 +4,9 @@
 This is a modern WordPress theme boilerplate built with **ACF blocks**, **Webpack bundling**, and **component-based architecture**. The theme uses a Bootstrap-like grid system with custom SCSS/JS workflow. It is designed as a reusable starting point for WordPress projects.
 
 ### Key Directories
-- `components/blocks/` - ACF Gutenberg blocks (PHP templates)
-- `components/parts/` - Reusable PHP partials (header, footer, etc.)
-- `src/js/components/` - Modular JavaScript components (vanilla JS preferred)
+- `blocks/` - ACF Gutenberg blocks (PHP templates)
+- `components/` - Reusable PHP partials (header, footer, etc.)
+- `src/js/modules/` - Modular JavaScript (animations, ui, vendor — vanilla JS preferred)
 - `src/scss/` - SASS styles with component organization
 - `include/` - PHP functionality modules
 - `acf-json/` - ACF field definitions (auto-synced)
@@ -52,12 +52,16 @@ This is a modern WordPress theme boilerplate built with **ACF blocks**, **Webpac
 ## ACF Block System
 
 ### Block Registration (block.json auto-discovery)
-Blocks are colocated under `components/blocks/{slug}/` with a `block.json` manifest. `ossark_register_blocks_from_json()` in `include/acf.php` globs the folder on `init` and calls `register_block_type()` on each `block.json`. To add a block:
-1. Create `components/blocks/{slug}/block.json` (`apiVersion: 3`, `name: "acf/{slug}"`, `acf.mode: "auto"`, `acf.renderTemplate: "render.php"`).
-2. Create `components/blocks/{slug}/render.php` — the render template.
-3. (Optional) Create `components/blocks/{slug}/_{slug}.scss` — auto-imported via `require.context` in `src/main.js` and `src/editor.js`.
+Blocks are colocated under `blocks/{slug}/` with a `block.json` manifest. `ossark_register_blocks_from_json()` in `include/acf.php` globs the folder on `init` and calls `register_block_type()` on each `block.json`. To add a block:
+1. Create `blocks/{slug}/block.json` (`apiVersion: 3`, `name: "acf/{slug}"`, `acf.mode: "auto"`, `acf.renderTemplate: "{slug}.php"`).
+2. Create `blocks/{slug}/{slug}.php` — the render template.
+3. (Optional) Create `blocks/{slug}/_{slug}.scss` — auto-imported via `require.context` in `src/main.js` and `src/editor.js`.
 4. Add the slug to the whitelist in the `allowed_block_types_all` filter in `include/acf.php`.
 - ACF fields: Auto-sync to `acf-json/` directory.
+- Scaffold with `npm run make:block -- {slug} ["Title"] [--js]`.
+
+### PHP Parts (components/)
+Parts mirror the blocks pattern: each part is colocated under `components/{slug}/` with `{slug}.php` + an auto-imported `_{slug}.scss` (frontend + editor via `require.context` in `src/main.js`/`src/editor.js`). Render with `get_part( '{slug}' )`. Scaffold with `npm run make:part -- {slug} ["Title"]`.
 
 ### Block Template Structure
 ```php
@@ -150,8 +154,8 @@ Modular includes from `include/` directory:
 - `console_log($data)` - PHP debugging to browser console
 - `get_image($image, $args)` - Render an ACF image field with attributes
 - `get_button($button, $classes)` - Render ACF link as button
-- `get_part($template, $args)` - Include a part template with args
-- `get_block($template, $args)` - Include a block template with args
+- `get_part($template, $args)` - Include a part template from `components/{template}/{template}.php`
+- `get_block($template, $args)` - Include a block template from `blocks/{template}/{template}.php`
 - `returnYoutubeUrl($url)` - Convert any YouTube URL format to embed URL
 - `excerpt($limit, $post_id)` - Truncated excerpt
 - `get_acf_block_data($post_id, $block_name, $field_name)` - Read ACF block field from post content

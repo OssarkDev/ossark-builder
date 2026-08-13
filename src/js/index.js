@@ -1,27 +1,27 @@
 // animations
-import { lottie } from './components/animations/lottie';
-import { splitText } from './components/animations/splitText';
-import { scroll } from './components/animations/scroll';
-import { splitLines } from './components/animations/splitLines';
-import { numbers } from './components/animations/numbers';
-import { typewriter } from './components/animations/typewriter';
-import { parallax } from './components/animations/parallax';
+import { lottie } from './modules/animations/lottie';
+import { splitText } from './modules/animations/splitText';
+import { scroll } from './modules/animations/scroll';
+import { splitLines } from './modules/animations/splitLines';
+import { numbers } from './modules/animations/numbers';
+import { typewriter } from './modules/animations/typewriter';
+import { parallax } from './modules/animations/parallax';
 
 // custom JS
-import { backToTop } from './components/parts/backToTop';
-import { shareButton } from './components/parts/shareButton';
-import { slider } from './components/blocks/slider';
-import { hamburger } from './components/parts/hamburger';
-import { formSuccessRedirect } from './components/parts/contact';
-import { scrollToAnchor } from './components/parts/scrollToAnchor';
-import { activeMenuItem } from './components/parts/activeMenuItem';
-// import { testAjax } from './components/parts/testAjax'; // demo code — enable only while testing AJAX
-import { map } from './components/blocks/map';
-import { imageDimensions } from './components/parts/imageDimensions';
+import { backToTop } from './modules/ui/backToTop';
+import { shareButton } from './modules/ui/shareButton';
+import { slider } from './modules/vendor/slider';
+import { hamburger } from './modules/ui/hamburger';
+import { formSuccessRedirect } from './modules/ui/contact';
+import { scrollToAnchor } from './modules/ui/scrollToAnchor';
+import { activeMenuItem } from './modules/ui/activeMenuItem';
+// import { testAjax } from './modules/ui/testAjax'; // demo code — enable only while testing AJAX
+import { map } from './modules/vendor/map';
+import { imageDimensions } from './modules/ui/imageDimensions';
 
-// Auto-run colocated block JS: components/blocks/{slug}/{slug}.js
+// Auto-run colocated block JS: blocks/{slug}/{slug}.js
 // Each file must `export default` an init function.
-const blockScripts = require.context('../../components/blocks', true, /\.js$/);
+const blockScripts = require.context('../../blocks', true, /\.js$/);
 
 export function runAfterDomLoad() {
 	imageDimensions();

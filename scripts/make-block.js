@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Scaffold a new ACF block folder under components/blocks/{slug}/.
+ * Scaffold a new ACF block folder under blocks/{slug}/.
  *
  * Usage:
  *   npm run make:block -- hero
@@ -8,10 +8,10 @@
  *   npm run make:block -- hero "Hero Banner" --js --category=hero --icon=cover-image
  *
  * Generates:
- *   components/blocks/{slug}/block.json   — auto-registered on init
- *   components/blocks/{slug}/render.php   — render template
- *   components/blocks/{slug}/_{slug}.scss — auto-imported (frontend + editor)
- *   components/blocks/{slug}/{slug}.js    — (--js only) auto-run block JS
+ *   blocks/{slug}/block.json   — auto-registered on init
+ *   blocks/{slug}/{slug}.php   — render template
+ *   blocks/{slug}/_{slug}.scss — auto-imported (frontend + editor)
+ *   blocks/{slug}/{slug}.js    — (--js only) auto-run block JS
  *
  * No further wiring needed: registration, whitelisting, SCSS and JS
  * pickup are all glob/require.context driven.
@@ -42,10 +42,10 @@ const icon = getFlag('icon', 'block-default');
 const withJs = flags.includes('--js');
 
 const themeRoot = path.resolve(__dirname, '..');
-const blockDir = path.join(themeRoot, 'components', 'blocks', slug);
+const blockDir = path.join(themeRoot, 'blocks', slug);
 
 if (fs.existsSync(blockDir)) {
-	console.error(`Block already exists: components/blocks/${slug}/`);
+	console.error(`Block already exists: blocks/${slug}/`);
 	process.exit(1);
 }
 
@@ -66,7 +66,7 @@ const blockJson = `{
     },
     "acf": {
         "mode": "auto",
-        "renderTemplate": "render.php"
+        "renderTemplate": "${slug}.php"
     }
 }
 `;
@@ -105,15 +105,15 @@ export default function ${slug.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase()
 
 fs.mkdirSync(blockDir, { recursive: true });
 fs.writeFileSync(path.join(blockDir, 'block.json'), blockJson);
-fs.writeFileSync(path.join(blockDir, 'render.php'), renderPhp);
+fs.writeFileSync(path.join(blockDir, `${slug}.php`), renderPhp);
 fs.writeFileSync(path.join(blockDir, `_${slug}.scss`), scss);
 if (withJs) {
 	fs.writeFileSync(path.join(blockDir, `${slug}.js`), js);
 }
 
-console.log(`Created components/blocks/${slug}/`);
+console.log(`Created blocks/${slug}/`);
 console.log('  block.json');
-console.log('  render.php');
+console.log(`  ${slug}.php`);
 console.log(`  _${slug}.scss`);
 if (withJs) console.log(`  ${slug}.js`);
 console.log('\nNext steps:');

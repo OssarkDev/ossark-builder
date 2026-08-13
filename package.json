@@ -13,7 +13,8 @@
     "build:dev": "webpack --mode=development --config webpack.config.js",
     "dev": "npm run build:dev -- --watch",
     "build": "webpack --mode=production --config webpack.config.js",
-    "make:block": "node scripts/make-block.js"
+    "make:block": "node scripts/make-block.js",
+    "make:part": "node scripts/make-part.js"
   },
   "browserslist": [
     "defaults",

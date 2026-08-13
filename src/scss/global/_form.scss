@@ -1,0 +1,216 @@
+@use "shared" as *;
+
+/*
+=================================================================
+    Forms (Contact Form 7)
+=================================================================
+    A light reset + base styling for CF7 forms, covering every
+    input type. Edit the knobs below to restyle every field at
+    once. Field markup lives in /assets/forms/*.html.
+*/
+
+// ── Editable knobs ───────────────────────────────────────────
+$form-gap:           24px;         // vertical space between fields
+$form-item-gap:      8px;          // space between a label and its field
+$form-text:          $black;       // field + label text
+$form-placeholder:   $stone-grey;  // placeholder text
+$form-border:        $silver;      // field border
+$form-border-focus:  $black;       // field border on focus
+$form-accent:        $sky-blue;    // checkbox / radio / range / submit
+$form-radius:        4px;          // field corner radius
+$form-field-padding: 12px 16px;    // input + textarea padding
+// ─────────────────────────────────────────────────────────────
+
+/*
+    Layout helpers — wrap fields in .form__item; group fields
+    side by side with .form__row (stacks on mobile).
+*/
+.form {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: $form-gap;
+    }
+
+    &__row {
+        display: flex;
+        gap: $form-gap;
+
+        .form__item {
+            flex: 1;
+        }
+
+        @include max-screen($mobile) {
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: $form-item-gap;
+
+        label {
+            color: $form-text;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+
+    &__submit {
+        margin-top: $form-item-gap;
+    }
+}
+
+.wpcf7-form {
+    margin: 0;
+    padding: 0;
+
+    // Text-like fields, textarea and select share one look.
+    // :not() keeps this future-proof — new input types inherit it.
+    input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]),
+    textarea,
+    select {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding: $form-field-padding;
+        font: inherit;
+        color: $form-text;
+        background-color: transparent;
+        border: 1px solid $form-border;
+        border-radius: $form-radius;
+        transition: border-color 0.2s ease;
+
+        &::placeholder {
+            color: $form-placeholder;
+            opacity: 1;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $form-border-focus;
+        }
+    }
+
+    textarea {
+        min-height: 140px;
+        resize: vertical;
+    }
+
+    // Custom dropdown arrow (inline SVG, no asset dependency).
+    select {
+        appearance: none;
+        cursor: pointer;
+        padding-right: 40px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 16px;
+
+        &[multiple] {
+            min-height: 120px;
+            padding-right: 16px;
+            background-image: none;
+        }
+    }
+
+    // Checkbox / radio / acceptance groups.
+    .wpcf7-checkbox,
+    .wpcf7-radio,
+    .wpcf7-acceptance {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+    }
+
+    .wpcf7-list-item {
+        margin: 0;
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        accent-color: $form-accent;
+        cursor: pointer;
+    }
+
+    // File upload + range.
+    input[type="file"] {
+        width: 100%;
+        font: inherit;
+        color: $form-text;
+        cursor: pointer;
+    }
+
+    input[type="range"] {
+        width: 100%;
+        accent-color: $form-accent;
+        cursor: pointer;
+    }
+
+    // Submit — add class:btn in the tag to use the theme button instead.
+    input[type="submit"] {
+        display: inline-block;
+        padding: 12px 32px;
+        font: inherit;
+        color: $white;
+        background-color: $form-accent;
+        border: none;
+        border-radius: $form-radius;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    // Validation.
+    .wpcf7-not-valid {
+        border-color: $error !important;
+    }
+
+    .wpcf7-not-valid-tip {
+        margin-top: 6px;
+        color: $error;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .wpcf7-spinner {
+        display: none;
+    }
+}
+
+// Response message shown below the form after submit.
+.wpcf7-response-output {
+    margin: $form-gap 0 0;
+    padding: 12px 16px;
+    border: 1px solid $form-border;
+    border-radius: $form-radius;
+    font-size: 14px;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.spam .wpcf7-response-output {
+    border-color: $error;
+    color: $error;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+    border-color: $success;
+    color: $success;
+}

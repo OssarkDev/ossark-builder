@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -18,10 +24,6 @@ time, mark, audio, video {
   font: inherit;
   font-weight: 400;
   vertical-align: baseline;
-}
-
-.always-none{
-  display: none
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -68,8 +70,8 @@ a {
   text-decoration: none;
 }
 
-body {
-  overflow-x: hidden;
+ul, ol {
+  list-style: none;
 }
 
 img {
@@ -86,8 +88,10 @@ button {
   border: 0;
   background-color: transparent;
 
-  &:focus {
-    outline: none;
+  // Keep the design clean on click, but show a ring for keyboard users.
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 }
 
@@ -100,11 +104,4 @@ strong, b {
 }
 em, i {
   font-style: italic;
-}
-.toolbar {
-  display: none !important;
-}
-
-.grecaptcha-badge {
-  visibility: hidden
 }

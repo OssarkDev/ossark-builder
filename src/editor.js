@@ -2,7 +2,12 @@
 // The tiny sibling dist/editor.min.js is not enqueued anywhere.
 import './scss/editor.scss';
 
-// Auto-import every _*.scss inside components/blocks/*/ so block styles
+// Auto-import every _*.scss inside blocks/*/ so block styles
 // also cascade inside the block-editor iframe.
-const blockStyles = require.context('../components/blocks', true, /_[^/]+\.scss$/);
+const blockStyles = require.context('../blocks', true, /_[^/]+\.scss$/);
 blockStyles.keys().forEach(blockStyles);
+
+// Auto-import every _*.scss inside components/*/ so part styles
+// also cascade inside the block-editor iframe.
+const partStyles = require.context('../components', true, /_[^/]+\.scss$/);
+partStyles.keys().forEach(partStyles);

@@ -173,12 +173,29 @@ section, .section {
 
 /*
 =================================================================
-    Spacing
+    Spacing — 4px grid scale
 =================================================================
+    Padding/margin utilities generated on a 4px baseline so any
+    4px-grid design has a matching token. Steps stay fine (4px) for
+    small values and widen as they grow to keep the output lean.
+
+        0–64   → 4px steps   (.mt-4 … .mt-64)
+        64–120 → 8px steps   (.mt-72 … .mt-120)
+
+    e.g. .mt-4, .pb-24, .p-120
 */
 
+// Build the 4px scale (capped at 120).
+$spacing-scale: ();
+@for $i from 0 through 16 {
+    $spacing-scale: list.append($spacing-scale, $i * 4); // 0–64
+}
+@for $i from 1 through 7 {
+    $spacing-scale: list.append($spacing-scale, 64 + $i * 8); // 72–120
+}
+
 // create all padding and margin classes
-@each $space in $spacing {
+@each $space in $spacing-scale {
     @each $class, $class-name in list.zip($directions, $directions-classname) {
         .#{$class-name}-#{$space} {
             #{$class}: #{$space}px;
@@ -186,23 +203,41 @@ section, .section {
     }
 }
 
-// override certain padding and margin classes for mobile
-@media(max-width: $mobile) {
+/*
+    Responsive spacing — laptop token : (mobile, large-screen).
+    Larger tokens tighten on mobile and open up on HD screens; every
+    key is a value from $spacing-scale so no orphan classes are made.
+    All values stay on the 4px grid.
+*/
+$spacing-responsive: (
+    32:  (24,  40),
+    40:  (32,  48),
+    48:  (32,  64),
+    56:  (40,  72),
+    64:  (48,  80),
+    72:  (56,  96),
+    80:  (56,  104),
+    96:  (72,  128),
+    120: (80,  160),
+);
+
+// override select spacing classes for mobile
+@media (max-width: $mobile) {
     @each $class, $class-name in list.zip($directions, $directions-classname) {
-        @each $laptop, $mobile in list.zip($laptop-change, $mobile-change) {
-            .#{$class-name}-#{$laptop} {
-                #{$class}: #{$mobile}px;
+        @each $token, $sizes in $spacing-responsive {
+            .#{$class-name}-#{$token} {
+                #{$class}: #{list.nth($sizes, 1)}px;
             }
         }
     }
 }
 
-// override certain padding and margin classes for large screens
-@media(min-width: $hd) {
+// override select spacing classes for large screens
+@media (min-width: $hd) {
     @each $class, $class-name in list.zip($directions, $directions-classname) {
-        @each $laptop, $desktop in list.zip($laptop-change, $desktop-change) {
-            .#{$class-name}-#{$laptop} {
-                #{$class}: #{$desktop}px;
+        @each $token, $sizes in $spacing-responsive {
+            .#{$class-name}-#{$token} {
+                #{$class}: #{list.nth($sizes, 2)}px;
             }
         }
     }

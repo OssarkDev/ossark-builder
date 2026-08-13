@@ -35,6 +35,6 @@ visits us at ossark.ie
     }
 ?>
 
-<?php get_template_part('components/parts/header'); ?>
+<?php get_part('header'); ?>
 
 <main id="main">

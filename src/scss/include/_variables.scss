@@ -83,15 +83,11 @@ $grid-column-gap-desktop: 32px;
 $grid-column-gap-hd-screens: 40px;
 $row-gap-mobile: 24px;
 
-// set all 8 grid spacings used in the design for margin and padding
-$spacing: 16 24 40 56 72 80 152 216;
+// direction properties + matching class prefixes for the generated
+// spacing utilities (see _layout.scss for the 4px scale and responsive map)
 $directions: padding padding-top padding-right padding-bottom padding-left margin margin-top margin-right margin-bottom margin-left;
 $directions-classname: p pt pr pb pl m mt mr mb ml;
 
-// add desktop sizes and corresponding mobile sizes
-$laptop-change: 32 40 56 80 120;
-$mobile-change: 24 32 40 56 80;
-$desktop-change: 32 48 80 96 160;
 // header
 $header-height: 80px;
 

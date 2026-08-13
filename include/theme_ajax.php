@@ -19,7 +19,7 @@ function test_ajax() {
     );
 
     // Load the template part with the $args
-    get_template_part('components/parts/ajax-example', '', $args);
+    get_part('ajax-example', $args);
 
     // Get the output buffer and clean it
     wp_die();

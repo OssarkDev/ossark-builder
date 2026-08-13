@@ -1,6 +1,20 @@
 export function map() {
     if (!document.querySelector('.acf-map')) return;
 
+    // The Google Maps API loads asynchronously — wait until it's ready.
+    if (!window.google || !window.google.maps) {
+        let attempts = 0;
+        const ready = setInterval(() => {
+            if (window.google && window.google.maps) {
+                clearInterval(ready);
+                map();
+            } else if (++attempts > 100) {
+                clearInterval(ready); // give up after ~10s
+            }
+        }, 100);
+        return;
+    }
+
     (function( $ ) {
 
         /**

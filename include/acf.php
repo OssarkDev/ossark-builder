@@ -101,7 +101,7 @@ if( function_exists('acf_add_options_page') ) {
 =====================
 */
 function map_acf_init() {
-	$api_key = get_field('google_map_api_key', 'option');
+	$api_key = get_field('google_maps_api_key', 'option');
 	acf_update_setting('google_api_key', $api_key);
 }
 add_action('acf/init', 'map_acf_init');
@@ -143,12 +143,12 @@ if (function_exists('acf_register_block_type')) {
 =====================
 	Gutenberg blocks — auto-discovery from block.json manifests
 =====================
-	Every folder under components/blocks/ that contains a block.json
+	Every folder under blocks/ that contains a block.json
 	is auto-registered. Add a new block by dropping a new folder in.
 	No PHP changes required.
 */
 function ossark_register_blocks_from_json() {
-	$blocks_dir = get_template_directory() . '/components/blocks';
+	$blocks_dir = get_template_directory() . '/blocks';
 
 	if ( ! is_dir( $blocks_dir ) ) {
 		return;
@@ -174,7 +174,7 @@ function allowed_block_types( $allowed_blocks, $editor_context ) {
 
 	$all_blocks = [];
 
-	foreach ( glob( get_template_directory() . '/components/blocks/*/block.json' ) as $manifest ) {
+	foreach ( glob( get_template_directory() . '/blocks/*/block.json' ) as $manifest ) {
 		$data = json_decode( file_get_contents( $manifest ), true );
 		if ( ! empty( $data['name'] ) ) {
 			$all_blocks[] = $data['name'];

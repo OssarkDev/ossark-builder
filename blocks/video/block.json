@@ -15,6 +15,6 @@
     },
     "acf": {
         "mode": "auto",
-        "renderTemplate": "render.php"
+        "renderTemplate": "video.php"
     }
 }

@@ -1,16 +1,19 @@
 // Editor bundle — loaded inside the Gutenberg iframe via add_editor_style().
-// Pulls the same design tokens/typography/grid/block styles as the frontend
-// so the block editor WYSIWYG matches production. Front-end-only chrome
-// (site header, footer, cookiebot) is intentionally excluded.
+// Mirrors the frontend fully (global tokens, parts and blocks) so the block
+// editor WYSIWYG matches production.
 
 @use 'include/_fonts';
+@use 'include/_reset';
 @use 'include/_typography';
 @use 'include/_layout';
-@use 'include/_helpers';
+@use 'include/_smooth-scroll';
 @use 'include/_animations';
+@use 'include/_helpers';
 
-@use 'components/parts/_buttons';
-@use 'components/parts/_form';
+// Global part styles (no components/{slug}/ folder of their own)
+@use 'global/_buttons';
+@use 'global/_cookiebot';
+@use 'global/_form';
 
-// Block SCSS is auto-imported from components/blocks/*/_*.scss via
-// require.context in src/editor.js.
+// Part SCSS colocated in components/*/_*.scss and block SCSS in blocks/*/_*.scss
+// are auto-imported via require.context in src/editor.js.

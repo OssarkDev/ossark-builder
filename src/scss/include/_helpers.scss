@@ -20,3 +20,15 @@
         text-align: right !important;
     }
 }
+
+.always-none {
+    display: none;
+}
+
+.toolbar {
+    display: none !important;
+}
+
+.grecaptcha-badge {
+    visibility: hidden;
+}

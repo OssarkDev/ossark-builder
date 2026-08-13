@@ -3,10 +3,15 @@ import Lenis from 'lenis';
 
 import './scss/index.scss'; // custom styles
 
-// Auto-import every _*.scss inside components/blocks/*/ — colocated block
+// Auto-import every _*.scss inside blocks/*/ — colocated block
 // styles. Add a new block folder and its stylesheet is picked up automatically.
-const blockStyles = require.context('../components/blocks', true, /_[^/]+\.scss$/);
+const blockStyles = require.context('../blocks', true, /_[^/]+\.scss$/);
 blockStyles.keys().forEach(blockStyles);
+
+// Auto-import every _*.scss inside components/*/ — colocated part
+// styles. Add a new part folder and its stylesheet is picked up automatically.
+const partStyles = require.context('../components', true, /_[^/]+\.scss$/);
+partStyles.keys().forEach(partStyles);
 
 import { runAfterDomLoad } from './js';
 

@@ -1,12 +1,12 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "acf/thank-you",
-    "title": "Thank You",
-    "description": "Confirmation / thank-you block with title and CTA button.",
+    "name": "acf/text",
+    "title": "Text",
+    "description": "Rich text content block.",
     "category": "content",
-    "icon": "yes-alt",
-    "keywords": ["thank you", "confirmation", "success"],
+    "icon": "editor-paragraph",
+    "keywords": ["text", "content", "paragraph"],
     "textdomain": "ossark-builder",
     "supports": {
         "jsx": true,
@@ -15,6 +15,6 @@
     },
     "acf": {
         "mode": "auto",
-        "renderTemplate": "render.php"
+        "renderTemplate": "text.php"
     }
 }

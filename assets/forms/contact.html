@@ -1,33 +1,110 @@
-<!-- form with first name and last name -->
+<!--
+  Contact Form 7 boilerplate — one field of every type.
+  Copy the blocks you need. Conventions:
+    .form__inner  → wraps the whole form (flex column, gap)
+    .form__item   → wraps a label + field
+    .form__row    → places fields side by side (stacks on mobile)
+  A trailing * on a tag (e.g. [text*]) makes the field required.
+  Styling lives in src/scss/global/_form.scss.
+-->
 
 <div class="form__inner">
-	<div class="form__names">
+
+	<!-- Text — side by side -->
+	<div class="form__row">
 		<div class="form__item">
 			<label>First name</label>
-			[text* first-name autocomplete:name placeholder "First Name"]
+			[text* first-name autocomplete:given-name placeholder "First name"]
 		</div>
 		<div class="form__item">
 			<label>Last name</label>
-			[text* last-name autocomplete:name placeholder "Last Name"] 
+			[text* last-name autocomplete:family-name placeholder "Last name"]
 		</div>
 	</div>
-	<div class="form__item">
-		<label>Company</label>
-		[text* company placeholder "Company"]
-	</div>
+
+	<!-- Email -->
 	<div class="form__item">
 		<label>Email</label>
-		[email* email autocomplete:email placeholder "Email"]
+		[email* email autocomplete:email placeholder "you@example.com"]
 	</div>
+
+	<!-- Telephone -->
 	<div class="form__item">
 		<label>Phone</label>
-		[tel* phone placeholder "Contact Number"]
+		[tel phone autocomplete:tel placeholder "Phone number"]
 	</div>
+
+	<!-- URL -->
+	<div class="form__item">
+		<label>Website</label>
+		[url website placeholder "https://"]
+	</div>
+
+	<!-- Number -->
+	<div class="form__item">
+		<label>Number of guests</label>
+		[number guests min:1 max:20 placeholder "1"]
+	</div>
+
+	<!-- Date -->
+	<div class="form__item">
+		<label>Preferred date</label>
+		[date preferred-date]
+	</div>
+
+	<!-- Dropdown (include_blank adds an empty first option) -->
+	<div class="form__item">
+		<label>Subject</label>
+		[select* subject include_blank "General enquiry" "Sales" "Support"]
+	</div>
+
+	<!-- Multi-select -->
+	<div class="form__item">
+		<label>Interests</label>
+		[select interests multiple "Design" "Development" "SEO" "Hosting"]
+	</div>
+
+	<!-- Radio buttons -->
+	<div class="form__item">
+		<label>How did you hear about us?</label>
+		[radio referral use_label_element "Search" "Social media" "Referral"]
+	</div>
+
+	<!-- Checkboxes -->
+	<div class="form__item">
+		<label>Services required</label>
+		[checkbox services use_label_element "Branding" "Website" "Marketing"]
+	</div>
+
+	<!-- Textarea -->
 	<div class="form__item">
 		<label>Message</label>
-		[textarea message placeholder "Message"]
+		[textarea message placeholder "Your message"]
 	</div>
+
+	<!-- File upload -->
+	<div class="form__item">
+		<label>Attachment</label>
+		[file attachment limit:5mb filetypes:pdf|doc|docx|jpg|png]
+	</div>
+
+	<!-- Range slider -->
+	<div class="form__item">
+		<label>Budget (k)</label>
+		[range budget min:1 max:100 step:1]
+	</div>
+
+	<!-- Hidden field -->
+	[hidden source default:"contact-page"]
+
+	<!-- Acceptance / consent checkbox -->
+	<div class="form__item">
+		[acceptance consent] I agree to the <a href="/privacy-policy">privacy policy</a>. [/acceptance]
+	</div>
+
+	<!-- Submit (add class:btn to use the theme button style) -->
 	<div class="form__submit">
-		[submit class:btn "Submit"]
+		[submit "Send message"]
 	</div>
+
 </div>

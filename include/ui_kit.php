@@ -110,7 +110,7 @@ function get_image($image, $classes = '', $size = 'full', $lazy = true) {
   =====================
 */
 function get_part( $template, $args = [] ) {
-    $template_path = 'components/parts/' . $template . '.php';
+    $template_path = 'components/' . $template . '/' . $template . '.php';
     $resolved = locate_template( $template_path );
 
     if ( ! $resolved ) {
@@ -126,9 +126,9 @@ function get_part( $template, $args = [] ) {
     Get Block
   =====================
 */
-// Includes a block's render.php from components/blocks/{template}/render.php.
+// Includes a block's render template from blocks/{template}/{template}.php.
 function get_block( $template, $args = [] ) {
-  $template_path = 'components/blocks/' . $template . '/render.php';
+  $template_path = 'blocks/' . $template . '/' . $template . '.php';
   $resolved = locate_template( $template_path );
 
   if ( ! $resolved ) {

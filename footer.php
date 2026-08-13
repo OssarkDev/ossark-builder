@@ -1,6 +1,6 @@
 </main>
 
-<?php get_template_part('components/parts/footer'); ?>
+<?php get_part('footer'); ?>
 
 <?php
     $footer_scripts = get_field('footer_scripts', 'option');

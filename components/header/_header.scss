@@ -1,0 +1,60 @@
+@use "shared" as *;
+
+.header {
+    // position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+    transition: 0.5s;
+
+    &__container {
+        .row {
+            align-items: center;
+            height: $header-height;
+            @include max-screen($tablet) {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+        }
+    }
+
+    &__logo {
+        z-index: 3;
+        width: 120px;
+        position: relative;
+        @include max-screen($mobile) {
+            width: 80px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__nav {
+
+        &__list {
+            display: flex;
+            justify-content: center;
+            &__item {
+                margin-right: 24px;
+                span {}
+
+            }
+        }
+
+        @include max-screen($tablet) {
+            display: none;
+        }
+
+    }
+
+    &__cta {
+        display: flex;
+        @include max-screen($tablet) {
+            display: none;
+        }
+    }
+
+}
