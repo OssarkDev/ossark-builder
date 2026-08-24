@@ -112,33 +112,59 @@ add_image_size( 'figure_1600', 1600, 9999 );
 add_filter('upload_mimes', 'ossark_custom_mime_types');
 function ossark_custom_mime_types($mimes) {
   $mimes['svg'] = 'image/svg+xml';
+  $mimes['svgz'] = 'image/svg+xml';
   $mimes['json'] = 'application/json';
   $mimes['webp'] = 'image/webp';
   $mimes['woff'] = 'font/woff';
   $mimes['woff2'] = 'font/woff2';
   return $mimes;
 }
+
 add_filter( 'wp_check_filetype_and_ext', 'fix_svg_mime_type', 10, 5 );
-
 function fix_svg_mime_type( $data, $file, $filename, $mimes, $real_mime = '' ){
+  if ( ! empty( $data['ext'] ) && ! empty( $data['type'] ) ) {
+    return $data;
+  }
 
-  if( version_compare( $GLOBALS['wp_version'], '5.1.0', '>=' ) )
-    $dosvg = in_array( $real_mime, [ 'image/svg', 'image/svg+xml' ] );
-  else
-    $dosvg = ( '.svg' === strtolower( substr($filename, -4) ) );
-  if( $dosvg ){
+  $filetype = wp_check_filetype( $filename, $mimes );
 
-    if( current_user_can('manage_options') ){
-
-      $data['ext']  = 'svg';
-      $data['type'] = 'image/svg+xml';
-    }
-    else {
-      $data['ext'] = $type_and_ext['type'] = false;
-    }
+  if ( 'svg' === $filetype['ext'] || 'image/svg+xml' === $filetype['type'] ) {
+    $data['ext']  = 'svg';
+    $data['type'] = 'image/svg+xml';
   }
 
   return $data;
+}
+
+// Display SVG thumbnail previews in WordPress Media Library
+add_filter( 'wp_prepare_attachment_for_js', 'ossark_svg_media_library_preview', 10, 3 );
+function ossark_svg_media_library_preview( $response, $attachment, $meta ) {
+  if ( $response['mime'] === 'image/svg+xml' ) {
+    $response['image'] = [
+      'src' => $response['url'],
+    ];
+    $response['sizes'] = [
+      'full' => [
+        'url' => $response['url'],
+      ],
+    ];
+  }
+  return $response;
+}
+
+/*
+	=====================
+		Add .wp-text class to WYSIWYG editors (TinyMCE body_class)
+	=====================	
+*/
+add_filter( 'tiny_mce_before_init', 'ossark_tinymce_add_wp_text_class' );
+function ossark_tinymce_add_wp_text_class( $mce_init ) {
+  if ( empty( $mce_init['body_class'] ) ) {
+    $mce_init['body_class'] = 'wp-text';
+  } else {
+    $mce_init['body_class'] .= ' wp-text';
+  }
+  return $mce_init;
 }
 
 

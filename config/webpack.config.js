@@ -42,9 +42,9 @@ const config = (dir = __dirname, mode = 'production') => ({
                 commons: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
-                    // 'initial' only — async chunks (e.g. lazy-loaded lottie)
-                    // stay in their own files instead of bloating vendors
-                    chunks: 'initial'
+                    // 'initial' on main chunk only — async chunks (e.g. lazy-loaded lottie)
+                    // stay in their own files, and editor bundle stays self-contained
+                    chunks: chunk => chunk.name === 'main'
                 }
             }
         },

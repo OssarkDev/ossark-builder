@@ -44,6 +44,15 @@ body.editor-styles-wrapper,
     border-radius: 10px;
 }
 
+/* Ensure ACF WYSIWYG editor iframe body has .wp-text flex styling applied */
+body.wp-text,
+.acf-field-wysiwyg .wp-editor-area,
+.acf-field-wysiwyg .mce-content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 /* ─── Reset patches for iframe ──────────────────────── */
 
 /*
@@ -159,3 +168,86 @@ body.editor-styles-wrapper {
     max-width: 100%;
     height: auto;
 }
+
+/* ─── Template Parts Live Preview in Editor ─────────── */
+
+.ossark-editor-template-parts {
+    display: block;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.ossark-editor-template-parts--before {
+    margin-bottom: 30px;
+}
+
+.ossark-editor-template-parts--after {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.ossark-editor-template-part {
+    position: relative;
+    border: 1px dashed rgba(34, 113, 177, 0.4);
+    border-radius: 6px;
+    margin-bottom: 24px;
+    background: transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ossark-editor-template-part:hover {
+    border-color: rgba(34, 113, 177, 0.8);
+    box-shadow: 0 2px 8px rgba(34, 113, 177, 0.08);
+}
+
+.ossark-editor-template-part__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1e1e1e;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 10px;
+    user-select: none;
+    pointer-events: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.ossark-editor-template-part__badge-tag {
+    background: #2271b1;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+.ossark-editor-template-part__badge-name {
+    font-family: monospace;
+    font-weight: 600;
+    color: #f0f0f1;
+}
+
+.ossark-editor-template-part__badge-file {
+    color: #9ca3af;
+    font-size: 10px;
+}
+
+.ossark-editor-template-part__body {
+    position: relative;
+    width: 100%;
+}
+
+.ossark-editor-template-part__body a,
+.ossark-editor-template-part__body button {
+    pointer-events: none;
+}
+

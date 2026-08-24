@@ -225,6 +225,7 @@ The colocated SCSS is picked up automatically via `require.context` in `src/main
 | File | Purpose |
 |------|---------|
 | `acf.php` | Block registration, categories, options pages, allowed blocks |
+| `editor_template_parts.php` | Auto-detects and renders `get_part()` calls in single/page templates inside Gutenberg canvas |
 | `enqueue_scripts.php` | jQuery CDN, main.min.js, vendors, CSS |
 | `theme_functions.php` | Utility functions (`get_svg`, `console_log`, `excerpt`, `returnYoutubeUrl`) |
 | `ui_kit.php` | `get_image()`, `get_button()`, `get_part()`, `get_block()` |

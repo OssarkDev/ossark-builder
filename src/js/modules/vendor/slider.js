@@ -1,16 +1,21 @@
-export function slider() {
-	const sliders = document.querySelectorAll('.image-slider__slider');
-	if (!sliders.length) return;
+import $ from 'jquery';
 
-	// Slick is lazy-loaded so pages without sliders never pay for it.
-	import(/* webpackChunkName: "slick" */ 'slick-carousel').then(() => {
-		initSliders();
-	});
-}
+export function initSlider(context = document) {
+	const $context = $(context);
+	const $sliders = $context.hasClass('image-slider__slider')
+		? $context
+		: $context.find('.image-slider__slider');
 
-function initSliders() {
-	$('.image-slider__slider').each(function() {
+	if (!$sliders.length) return;
+
+	$sliders.each(function() {
 		let slider = $(this);
+
+		// If re-rendered in the editor, teardown existing slick instance first
+		if (slider.hasClass('slick-initialized')) {
+			slider.slick('unslick');
+		}
+
 		let next = slider.siblings('.image-slider__arrows').find('.image-slider__arrows__next');
 		let prev = slider.siblings('.image-slider__arrows').find('.image-slider__arrows__prev');
 		let counter = slider.siblings('.image-slider__numbers');
@@ -58,5 +63,15 @@ function initSliders() {
 			draggable: true,
 			accessibility: false,
 		});
+	});
+}
+
+export function slider() {
+	const sliders = document.querySelectorAll('.image-slider__slider');
+	if (!sliders.length) return;
+
+	// Slick is lazy-loaded so pages without sliders never pay for it.
+	import(/* webpackChunkName: "slick" */ 'slick-carousel').then(() => {
+		initSlider();
 	});
 }

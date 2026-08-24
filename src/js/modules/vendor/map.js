@@ -2,10 +2,10 @@ export function map() {
     if (!document.querySelector('.acf-map')) return;
 
     // The Google Maps API loads asynchronously — wait until it's ready.
-    if (!window.google || !window.google.maps) {
+    if (!window.google || !window.google.maps || !window.google.maps.Map) {
         let attempts = 0;
         const ready = setInterval(() => {
-            if (window.google && window.google.maps) {
+            if (window.google && window.google.maps && window.google.maps.Map) {
                 clearInterval(ready);
                 map();
             } else if (++attempts > 100) {
@@ -33,10 +33,10 @@ export function map() {
             // Find marker elements within map.
             var $markers = $el.find('.marker');
         
-            // Create gerenic map.
+            // Create generic map.
             var mapArgs = {
                 zoom        : $el.data('zoom') || 16,
-                mapTypeId   : google.maps.MapTypeId.ROADMAP
+                mapTypeId   : (google.maps.MapTypeId && google.maps.MapTypeId.ROADMAP) ? google.maps.MapTypeId.ROADMAP : 'roadmap'
             };
             var map = new google.maps.Map( $el[0], mapArgs );
         

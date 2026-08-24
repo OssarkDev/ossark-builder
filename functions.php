@@ -11,6 +11,7 @@ $ossark_theme_includes = [
     'theme_functions',
     'headers',
     'ui_kit',
+    'editor_template_parts',
     'coming_soon',
     'debug',
     // 'custom_taxonomies',

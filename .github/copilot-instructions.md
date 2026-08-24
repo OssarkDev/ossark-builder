@@ -124,7 +124,7 @@ Variables and mixins are available globally via `@use "shared" as *;` in any SCS
 
 ### Variable System
 Configure in `src/scss/include/_variables.scss`:
-- Breakpoints: `$mobile: 576px`, `$tablet: 992px`, `$laptop: 1440px`
+- Breakpoints: `$mobile: 768px`, `$tablet: 1024px`, `$laptop: 1440px`
 - Grid columns and spacing for each breakpoint
 - Color palette and typography
 
@@ -137,6 +137,7 @@ Configure in `src/scss/include/_variables.scss`:
 ### Functions.php Structure
 Modular includes from `include/` directory:
 - `acf.php` - Block registration, categories, options pages, allowed blocks
+- `editor_template_parts.php` - Auto-detects and renders `get_part()` calls in single/page templates inside Gutenberg canvas
 - `enqueue_scripts.php` - Asset loading (jQuery CDN, main.min.js, vendors, CSS)
 - `theme_functions.php` - Utility functions
 - `custom_post_types.php` - CPT definitions
@@ -150,7 +151,7 @@ Modular includes from `include/` directory:
 - `debug.php` - Debug mode toggle
 
 ### Helper Functions
-- `get_svg($name)` - Load SVGs from `assets/`
+- `get_svg($name)` - Load SVGs from `assets/icons/`
 - `console_log($data)` - PHP debugging to browser console
 - `get_image($image, $args)` - Render an ACF image field with attributes
 - `get_button($button, $classes)` - Render ACF link as button

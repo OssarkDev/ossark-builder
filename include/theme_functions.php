@@ -32,7 +32,8 @@ function console_log($data) {
 */
 function get_svg($name){
   if ($name) {
-    $svg_path = get_template_directory() . '/assets/' . $name;
+    $file_name = (substr($name, -4) === '.svg') ? $name : $name . '.svg';
+    $svg_path  = get_template_directory() . '/assets/icons/' . $file_name;
     if (file_exists($svg_path)) {
       return file_get_contents($svg_path);
     } else {

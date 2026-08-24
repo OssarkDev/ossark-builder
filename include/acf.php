@@ -26,15 +26,15 @@ add_action('after_setup_theme', function () {
 
 /*
   =====================
-    Block editor chrome (outer admin UI)
+    Block editor chrome (outer admin UI) & scripts
   =====================
 */
-// Styles + JS that run on the outer editor page (draggable inspector
-// sidebar) — these must NOT go through add_editor_style() because they
-// target elements that live outside the iframe.
+// Styles + JS that run in the block editor (draggable inspector
+// sidebar, ACF block preview JS like Slick slider init).
 add_action('enqueue_block_editor_assets', function () {
-    $css_path = get_template_directory() . '/assets/editor.css';
-    $js_path  = get_template_directory() . '/assets/editor.js';
+    $css_path        = get_template_directory() . '/assets/editor.css';
+    $js_path         = get_template_directory() . '/assets/editor.js';
+    $dist_editor_js  = get_template_directory() . '/dist/editor.min.js';
 
     if (file_exists($css_path)) {
         wp_enqueue_style(
@@ -51,6 +51,16 @@ add_action('enqueue_block_editor_assets', function () {
             get_template_directory_uri() . '/assets/editor.js',
             array(),
             filemtime($js_path),
+            true
+        );
+    }
+
+    if (file_exists($dist_editor_js)) {
+        wp_enqueue_script(
+            'ossark-editor-bundle',
+            get_template_directory_uri() . '/dist/editor.min.js',
+            array('jquery', 'wp-blocks', 'wp-dom-ready', 'wp-edit-post', 'wp-data', 'wp-element'),
+            filemtime($dist_editor_js),
             true
         );
     }
