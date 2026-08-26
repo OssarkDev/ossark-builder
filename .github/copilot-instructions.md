@@ -16,6 +16,11 @@ This is a modern WordPress theme boilerplate built with **ACF blocks**, **Webpac
 
 ## Development Workflow
 
+### Versioning & Changelog (Boilerplate Maintenance)
+- **Always update `CHANGELOG.md`** with every meaningful change or feature addition to keep upgrade history clear.
+- **Update theme version in `style.css`** (`Version: X.XX`) and sync with `package.json` (`"version": "X.Y.Z"`) when introducing updates.
+- Group changelog entries under standard headings (`Added`, `Changed`, `Fixed`, `Removed`) and provide a step-by-step **Migration Recipe** for significant features so older client themes can easily be upgraded.
+
 ### Build Commands
 - `npm run dev` - Development mode with file watching
 - `npm run build` - Production build (required before deployment)
