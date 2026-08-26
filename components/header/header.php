@@ -6,24 +6,24 @@
 ?>
     <div class="container header__container">
         <div class="row">
-            <div class="col-2">
+            <div class="col-2 header__logo-col">
                 <?php if($logo): ?>
                     <a href="<?= get_site_url(); ?>" class="header__logo" aria-label="Home">
-                        <img src="<?= esc_url($logo['url']); ?>" alt="<?= $logo['alt']; ?>">
+                        <img src="<?= esc_url($logo['url']); ?>" alt="<?= esc_attr($logo['alt']); ?>">
                     </a>
                 <?php endif; ?>
             </div>
             <?php if($menu): ?>
-                <nav class="col-8 header__nav">
+                <nav class="col-8 header__nav" aria-label="Main Navigation">
                     <div class="header__nav__list">
                         <?php foreach($menu as $item): ?>
                             <?php
                             $name = $item['menu_item']['title'];
                             $link = $item['menu_item']['url'];
                             ?>
-                            <a href="<?= $link; ?>" class="header__nav__list__item">
+                            <a href="<?= esc_url($link); ?>" class="header__nav__list__item">
                                 <span>
-                                    <?= $name; ?>
+                                    <?= esc_html($name); ?>
                                 </span>
                             </a>
                         <?php endforeach; ?>

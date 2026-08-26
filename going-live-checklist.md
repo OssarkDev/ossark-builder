@@ -1,0 +1,24 @@
+- [ ] 404
+- [ ] Thank you page
+- [ ] Clean up theme - remove js and other items that are not needed
+- [ ] Check and transfer all DNS records
+- [ ] Put all content and code on staging
+- [ ] Push to Live
+- [ ] Add Analytics
+- [ ] Add Search console
+- [ ] Add sitemap to search console
+- [ ] Add sitemap to bing
+- [ ] Add Security
+- [ ] Add caching
+- [ ] Use webp images
+- [ ] Add Lazy loading
+- [ ] Remove any unsafe users / add new passwords
+- [ ] Create users for client
+- [ ] Check SEO meta
+- [ ] Check email servers
+- [ ] Check forms
+- [ ] Cookie Integration
+- [ ] Privacy Policy
+- [ ] Favicon
+- [ ] ACF Yoast plugin
+- [ ] Add reCAPTCHA - https://www.google.com/u/1/recaptcha/admin/create

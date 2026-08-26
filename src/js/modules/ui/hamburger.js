@@ -45,7 +45,13 @@ export function hamburger() {
 	
 	// Event listeners
 	hamburgerButton.addEventListener('click', toggleMenu);
-	
+	hamburgerButton.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			toggleMenu();
+		}
+	});
+
 	// Close menu when clicking outside
 	document.addEventListener('click', (e) => {
 		if (isMenuOpen && 
@@ -65,7 +71,7 @@ export function hamburger() {
 	
 	// Close menu on window resize (if screen becomes larger)
 	window.addEventListener('resize', () => {
-		if (window.innerWidth > 768 && isMenuOpen) { // Adjust breakpoint as needed
+		if (window.innerWidth > 1024 && isMenuOpen) {
 			closeMenu();
 		}
 	});

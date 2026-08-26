@@ -1,18 +1,30 @@
 @use "shared" as *;
 
+@keyframes showSection {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .header__hamburger {
     display: none;
     transition-duration: 0.5s;
+    cursor: pointer;
+
     @include max-screen($tablet) {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        justify-content: center;
+        gap: 8px;
         z-index: 3;
     }
 
     span {
         display: block;
-        width: 40px;
+        width: 30px;
         height: 2px;
         background-color: $black;
         transition-duration: 0.5s;
@@ -21,17 +33,15 @@
     &.open {
         span:nth-child(2) {
             transition-duration: 0.5s;
+            opacity: 0;
             background: transparent;
         }
         span:nth-child(1) {
-            transform: rotateZ(45deg) scaleX(1) translate(11px, 12px);
+            transform: rotateZ(45deg) scaleX(1) translate(7px, 7px);
         }
         span:nth-child(3) {
-            transform: rotateZ(-45deg) scaleX(1) translate(8px, -9px);
+            transform: rotateZ(-45deg) scaleX(1) translate(7px, -7px);
         }
-    }
-    &:hover {
-        cursor: pointer;
     }
 }
 
@@ -39,7 +49,7 @@
     display: none;
     &.open {
         display: block;
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 100vh;
         z-index: 2;
@@ -58,7 +68,16 @@
         gap: 24px;
 
         &__item {
+            font-size: 20px;
+            color: $black;
 
+            span {
+                transition: color 0.2s ease;
+            }
+
+            &:hover span {
+                color: $orange;
+            }
         }
     }
 }

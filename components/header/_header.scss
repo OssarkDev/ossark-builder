@@ -2,6 +2,7 @@
 
 .header {
     // position: fixed;
+    position: relative;
     width: 100%;
     top: 0;
     z-index: 2;
@@ -15,7 +16,18 @@
                 display: flex;
                 justify-content: space-between;
                 flex-direction: row;
+                flex-wrap: nowrap;
+
+                > [class*="col-"] {
+                    width: auto;
+                }
             }
+        }
+    }
+
+    &__logo-col {
+        @include max-screen($tablet) {
+            width: auto;
         }
     }
 
@@ -23,6 +35,7 @@
         z-index: 3;
         width: 120px;
         position: relative;
+        display: block;
         @include max-screen($mobile) {
             width: 80px;
         }
@@ -45,15 +58,16 @@
         }
 
         @include max-screen($tablet) {
-            display: none;
+            display: none !important;
         }
 
     }
 
     &__cta {
         display: flex;
+        justify-content: flex-end;
         @include max-screen($tablet) {
-            display: none;
+            display: none !important;
         }
     }
 
