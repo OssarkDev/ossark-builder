@@ -17,7 +17,34 @@ Theme version is tracked in `style.css` (`Version: X.XX`) and `package.json` (`"
 
 ---
 
-## [3.21.0] - 2026-08-24 (Kelbuild Update)
+## [3.22.0] - 2026-09-15 (Custom Cookie Banner)
+
+### Added
+- **Custom cookie consent banner** (replaces Cookiebot): a lightweight, self-contained, informational notice bar managed entirely from Theme Options.
+  - `include/cookie_banner.php`: renders the banner on `wp_footer`, but only when the feature is enabled AND the visitor has not yet dismissed it (server-side `$_COOKIE['cookie_consent']` check — no flash, nothing output for returning visitors).
+  - `components/cookie-banner/cookie-banner.php` + `_cookie-banner.scss`: accessible fixed bottom bar (`role="dialog"`, `aria-live`), message, optional "learn more" link and accept button. SCSS auto-imported via `require.context`.
+  - `src/js/modules/ui/cookie-banner.js`: wires the accept button, stores `cookie_consent` for 365 days (`SameSite=Lax`) and removes the bar.
+  - `src/js/modules/ui/cookie.js`: refactored from demo code into reusable `setCookie` / `getCookie` exports.
+- **Theme Options → Cookies** ACF options sub-page (`acf-json/group_cookiesettings01.json`):
+  - Banner tab: enable toggle, message, accept button label, learn-more link.
+  - Statement tab: editable variables (company/site name, website URL, contact email, last updated) plus an optional WYSIWYG for additional content.
+- **Cookie Statement template content**: `templates/cookie-statement.php` now ships a full, generic cookie policy built from the editable variables above (each falls back to a sensible site default), with an optional appended WYSIWYG section.
+
+### Removed
+- **Cookiebot integration**: `src/scss/global/_cookiebot.scss`, its `@use` in `src/scss/index.scss` and `src/scss/editor.scss`, and the `https://consent.cookiebot.com` `frame-src` entry in `include/headers.php`.
+
+### Migration Recipe (from 3.21 → 3.22)
+1. Copy `include/cookie_banner.php` and add `'cookie_banner'` to the `$ossark_theme_includes` array in `functions.php` (after `'coming_soon'`).
+2. Copy `components/cookie-banner/` (both `cookie-banner.php` and `_cookie-banner.scss`).
+3. Copy `acf-json/group_cookiesettings01.json` and add the `Cookies` options sub-page block in `include/acf.php` (`menu_slug => 'cookies'`, `parent => 'theme-options'`).
+4. Copy `src/js/modules/ui/cookie-banner.js`, replace `src/js/modules/ui/cookie.js` with the exports-only version, then import `cookieBanner` in `src/js/index.js` and call it inside `runAfterDomLoad()`.
+5. Replace `templates/cookie-statement.php` with the updated variable-driven template.
+6. Remove Cookiebot: delete `src/scss/global/_cookiebot.scss`, drop its `@use` from `src/scss/index.scss` and `src/scss/editor.scss`, and remove `https://consent.cookiebot.com` from the `frame-src` directive in `include/headers.php`.
+7. Run `npm run build`, then enable the banner and fill in the variables under **Theme Options → Cookies**.
+
+---
+
+## [3.21.0] - 2026-08-26 (Kelbuild & Accessibility Update)
 
 ### Added
 - **Editor Template Parts Live Preview**:
@@ -26,7 +53,14 @@ Theme version is tracked in `style.css` (`Version: X.XX`) and `package.json` (`"
   - `ossark_get_editor_template_parts` AJAX endpoint with dynamic refresh on template changes.
 - **Draggable Block Inspector Sidebar**:
   - `assets/editor.css` & `assets/editor.js`: Added 6px resize grab handle on the left edge of `.interface-interface-skeleton__sidebar` with `localStorage` width persistence (`--ossark-inspector-width`).
+- **Mobile Header Accessibility & Navigation**:
+  - Added keyboard accessibility (Enter/Space) to mobile hamburger navigation.
+  - Enhanced ARIA state attributes (`aria-expanded`, `aria-label`) and escaped menu/logo output in header templates.
+  - Aligned mobile drawer close logic with the `$tablet` breakpoint (`1024px`).
 - **SCSS Helpers**: Added `.pos-abs-cover`, `.pos-rel`, `.pos-center`, `.overflow-hidden`, `.w-100`, `.h-100`, `.fit-cover` to `src/scss/include/_helpers.scss`.
+- **Project Documentation**:
+  - `docs/editor-integration-guide.md`: Complete exportable guide for modern Gutenberg & ACF setup.
+  - `going-live-checklist.md`: Step-by-step checklist for production deployment.
 
 ### Changed
 - **Slick Slider Teardown in Editor**: Updated `src/js/modules/vendor/slider.js` to automatically teardown existing slick instances (`slider.slick('unslick')`) before re-initializing on ACF preview render.
@@ -40,6 +74,8 @@ Theme version is tracked in `style.css` (`Version: X.XX`) and `package.json` (`"
    - `src/js/modules/editor/templateParts.js`
    - `assets/editor.css`
    - `assets/editor.js`
+   - `docs/editor-integration-guide.md`
+   - `going-live-checklist.md`
 2. **Update `functions.php`**:
    Add `'editor_template_parts'` to `$ossark_theme_includes`:
    ```php
@@ -80,7 +116,8 @@ Theme version is tracked in `style.css` (`Version: X.XX`) and `package.json` (`"
        }
    });
    ```
-5. **Rebuild Assets**: `npm run build`
+5. **Update Mobile Header**: Copy `components/header/` and `src/js/modules/ui/hamburger.js` for enhanced mobile drawer accessibility.
+6. **Rebuild Assets**: `npm run build`
 
 ---
 
@@ -240,16 +277,29 @@ Theme version is tracked in `style.css` (`Version: X.XX`) and `package.json` (`"
 
 ---
 
-## [2.0.0] - 2023-09-12 to 2024-03-20 (Modular SCSS & Include System)
+## [2.0.0] - 2023-09-12 to 2024-03-20 (Modular Architecture & UI Kit Foundation)
 
 ### Added
-- **Modular Includes System**: Replaced monolithic `functions.php` with modular files in `include/` (`setup_theme.php`, `cleanup.php`, `acf.php`, `custom_post_types.php`, `theme_functions.php`).
-- **Modern Grid System**: Replaced heavy offset classes with empty responsive column spans and CSS grid utilities.
-- **SVG & WebP Uploads**: Added MIME type handlers and admin thumbnail support in `include/setup_theme.php`.
+- **Modular Includes Architecture**: Refactored monolithic `functions.php` into modular single-responsibility files in `include/` (`setup_theme.php`, `cleanup.php`, `acf.php`, `custom_post_types.php`, `theme_functions.php`, `debug.php`).
+- **Theme Debug Engine**: Added `include/debug.php` with `console_log()` debugging, ACF debug toggle option, and PHP error logging.
+- **Modern Grid System**: Replaced rigid offset classes (`col-6-offset-2`) with flex/empty column spans and responsive breakpoints.
+- **SVG & WebP Media Support**: Added upload MIME type handlers and SVG thumbnail previews in `include/setup_theme.php`.
+- **UI Kit Core**: Initialized `include/ui_kit.php` with standardized image and button helpers (`get_image()`, `get_button()`).
+- **Form Redirect Utility**: Added form redirect handling function in `include/theme_functions.php`.
+
+---
+
+## [1.1.0] - 2023-07-29 to 2023-08-09 (Core Blocks & Navigation)
+
+### Added
+- **Coming Soon Mode**: Added `templates/coming-soon.php` and ACF toggle support in `include/coming_soon.php`.
+- **Hamburger Navigation**: Added overlay hamburger menu component with toggle animations (`components/header/hamburger.php`, `src/js/modules/ui/hamburger.js`).
+- **Starter ACF Blocks**: Added Hero, Text, Video, and Image-Text blocks.
+- **CF7 Form Integration**: Added contact block template and basic styling in `assets/forms/contact.html`.
 
 ---
 
 ## [1.0.0] - 2023-07-15 (Initial Boilerplate Release)
 
 ### Added
-- Initial theme release with Webpack, Babel, Dart Sass, ACF integration, and basic blocks.
+- Initial theme boilerplate release with Webpack, Babel, Dart Sass, ACF block registration, and baseline WordPress setup.

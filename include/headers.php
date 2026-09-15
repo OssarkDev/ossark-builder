@@ -87,8 +87,7 @@ function ossark_send_csp_header(): void {
                            . " https://www.googletagmanager.com",
         "frame-src"       => "'self'"
                            . " https://www.youtube.com"
-                           . " https://www.google.com"
-                           . " https://consent.cookiebot.com",
+                           . " https://www.google.com",
         "frame-ancestors" => "'none'",
         "object-src"      => "'none'",
         "base-uri"        => "'self'",

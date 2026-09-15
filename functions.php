@@ -13,6 +13,7 @@ $ossark_theme_includes = [
     'ui_kit',
     'editor_template_parts',
     'coming_soon',
+    'cookie_banner',
     'debug',
     // 'custom_taxonomies',
     // 'theme_ajax',

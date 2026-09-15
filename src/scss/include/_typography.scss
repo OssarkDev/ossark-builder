@@ -140,11 +140,6 @@ ul, ol {
     Helper classes
 =================================================================
 */
-.wp-text {
-	display: flex;
-	flex-direction: column;
-	gap: 1em;
-}
 
 .text-center {
 	text-align: center;
@@ -159,5 +154,480 @@ ul, ol {
 .text {
 	&-white {
 		color: $white;
+	}
+}
+
+/*
+=================================================================
+    WYSIWYG & Rich Text Content (.wp-text)
+=================================================================
+*/
+.wp-text {
+	display: block;
+	word-break: break-word;
+	overflow-wrap: break-word;
+
+	// Clearfix for floated elements (e.g. .alignleft, .alignright)
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	// Boundary spacing resets
+	> :first-child {
+		margin-top: 0 !important;
+	}
+
+	> :last-child {
+		margin-bottom: 0 !important;
+	}
+
+	// Paragraphs
+	p, .p {
+		margin-top: 0;
+		margin-bottom: 1.25em;
+		line-height: $default-line-height;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	// Headings
+	h1, .h1,
+	h2, .h2,
+	h3, .h3,
+	h4, .h4,
+	h5, .h5,
+	h6, .h6 {
+		font-family: $font-heading;
+		font-weight: 300;
+		line-height: 120%;
+
+		// Group adjacent headings closely
+		+ h1, + .h1,
+		+ h2, + .h2,
+		+ h3, + .h3,
+		+ h4, + .h4,
+		+ h5, + .h5,
+		+ h6, + .h6 {
+			margin-top: 0.35em;
+		}
+	}
+
+	h1, .h1 {
+		margin-top: 1.6em;
+		margin-bottom: 0.5em;
+	}
+
+	h2, .h2 {
+		margin-top: 1.5em;
+		margin-bottom: 0.45em;
+	}
+
+	h3, .h3 {
+		margin-top: 1.4em;
+		margin-bottom: 0.4em;
+	}
+
+	h4, .h4 {
+		margin-top: 1.3em;
+		margin-bottom: 0.35em;
+	}
+
+	h5, .h5 {
+		margin-top: 1.2em;
+		margin-bottom: 0.3em;
+	}
+
+	h6, .h6 {
+		margin-top: 1.1em;
+		margin-bottom: 0.3em;
+	}
+
+	// Unordered & Ordered Lists
+	ul, ol {
+		margin-top: 0;
+		margin-bottom: 1.25em;
+		padding-left: 24px;
+
+		@include mobile {
+			padding-left: 20px;
+		}
+
+		li {
+			margin-bottom: 0.5em;
+			line-height: $default-line-height;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			// Paragraph inside list items
+			p {
+				margin-bottom: 0.5em;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	ul {
+		list-style-type: disc;
+
+		ul {
+			list-style-type: circle;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+
+			ul {
+				list-style-type: square;
+			}
+		}
+
+		ol {
+			list-style-type: decimal;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+	}
+
+	ol {
+		list-style-type: decimal;
+
+		ol {
+			list-style-type: lower-alpha;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+
+			ol {
+				list-style-type: lower-roman;
+			}
+		}
+
+		ul {
+			list-style-type: disc;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+		}
+	}
+
+	// Definition Lists
+	dl {
+		margin-top: 0;
+		margin-bottom: 1.25em;
+
+		dt {
+			font-weight: 600;
+			margin-top: 0.75em;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+		dd {
+			margin-left: 24px;
+			margin-bottom: 0.5em;
+		}
+	}
+
+	// Blockquotes
+	blockquote {
+		margin: 1.5em 0;
+		padding: 16px 24px;
+		border-left: 4px solid $purple;
+		background-color: $frost-grey;
+		border-radius: 0 8px 8px 0;
+		font-style: italic;
+
+		p {
+			font-size: 1.05em;
+			line-height: 140%;
+			margin-bottom: 0.5em;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		cite {
+			display: block;
+			font-style: normal;
+			font-size: 0.875em;
+			font-weight: 500;
+			margin-top: 0.75em;
+			color: $dim-grey;
+		}
+
+		@include mobile {
+			padding: 12px 16px;
+			margin: 1.25em 0;
+		}
+	}
+
+	q {
+		font-style: italic;
+	}
+
+	// Links
+	a:not(.btn):not(.button) {
+		color: $purple;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+
+		&:hover {
+			color: $purple-hover;
+		}
+	}
+
+	// Inline Elements
+	strong, b {
+		font-weight: 600;
+		color: inherit;
+	}
+
+	em, i {
+		font-style: italic;
+	}
+
+	mark {
+		background-color: rgba($purple, 0.12);
+		color: inherit;
+		padding: 0.1em 0.3em;
+		border-radius: 2px;
+	}
+
+	small {
+		font-size: 0.85em;
+	}
+
+	del, s, strike {
+		text-decoration: line-through;
+		opacity: 0.8;
+	}
+
+	ins, u {
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	sub, sup {
+		font-size: 75%;
+		line-height: 0;
+		position: relative;
+		vertical-align: baseline;
+	}
+
+	sup {
+		top: -0.5em;
+	}
+
+	sub {
+		bottom: -0.25em;
+	}
+
+	// Code & Preformatted
+	code, kbd, samp {
+		font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+		font-size: 0.875em;
+		padding: 2px 6px;
+		background-color: $frost-grey;
+		border-radius: 4px;
+		color: $black;
+	}
+
+	pre {
+		margin: 1.5em 0;
+		padding: 16px 20px;
+		background-color: $frost-grey;
+		border-radius: 8px;
+		overflow-x: auto;
+		max-width: 100%;
+
+		code {
+			padding: 0;
+			background-color: transparent;
+			font-size: 0.875rem;
+			line-height: 1.5;
+			color: inherit;
+		}
+	}
+
+	// Horizontal Rule
+	hr {
+		border: 0;
+		height: 1px;
+		background-color: $silver;
+		margin: 2em 0;
+	}
+
+	// Tables
+	table {
+		width: 100%;
+		margin: 1.5em 0;
+		border-collapse: collapse;
+		font-size: 0.95em;
+
+		th, td {
+			padding: 12px 16px;
+			text-align: left;
+			border-bottom: 1px solid $silver;
+			vertical-align: top;
+
+			@include mobile {
+				padding: 8px 12px;
+			}
+		}
+
+		th {
+			font-weight: 600;
+			color: $black;
+			border-bottom: 2px solid $light-grey;
+			background-color: rgba($frost-grey, 0.5);
+		}
+
+		tbody tr:last-child td {
+			border-bottom: none;
+		}
+
+		tbody tr:hover {
+			background-color: rgba($frost-grey, 0.3);
+		}
+	}
+
+	// Media & WordPress Alignment Classes
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	figure {
+		margin: 1.5em 0;
+		max-width: 100%;
+
+		img {
+			margin: 0 auto;
+		}
+
+		figcaption, .wp-caption-text {
+			font-size: 14px;
+			line-height: 1.4;
+			color: $dim-grey;
+			margin-top: 8px;
+			text-align: center;
+			font-style: italic;
+		}
+	}
+
+	.alignleft {
+		float: left;
+		margin: 0.5em 24px 1em 0;
+		max-width: 50%;
+
+		@include mobile {
+			float: none;
+			margin: 1em 0;
+			max-width: 100%;
+		}
+	}
+
+	.alignright {
+		float: right;
+		margin: 0.5em 0 1em 24px;
+		max-width: 50%;
+
+		@include mobile {
+			float: none;
+			margin: 1em 0;
+			max-width: 100%;
+		}
+	}
+
+	.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+	}
+
+	iframe, video, embed {
+		max-width: 100%;
+		margin: 1.5em 0;
+	}
+
+	// Dark & Inverted Theme Modifiers
+	&.text-white,
+	.text-white & {
+		color: $white;
+
+		p, .p, span, li, div {
+			color: $white;
+		}
+
+		h1, h2, h3, h4, h5, h6,
+		.h1, .h2, .h3, .h4, .h5, .h6 {
+			color: $white;
+		}
+
+		a:not(.btn):not(.button) {
+			color: $white;
+			text-decoration-color: rgba($white, 0.7);
+
+			&:hover {
+				color: $sky-blue;
+				text-decoration-color: $sky-blue;
+			}
+		}
+
+		blockquote {
+			background-color: rgba($white, 0.08);
+			border-left-color: $sky-blue;
+			color: $white;
+
+			cite {
+				color: rgba($white, 0.7);
+			}
+		}
+
+		code, kbd, samp, pre {
+			background-color: rgba($white, 0.1);
+			color: $white;
+		}
+
+		hr {
+			background-color: rgba($white, 0.2);
+		}
+
+		table {
+			th {
+				color: $white;
+				background-color: rgba($white, 0.08);
+				border-bottom-color: rgba($white, 0.4);
+			}
+
+			th, td {
+				border-bottom-color: rgba($white, 0.15);
+			}
+
+			tbody tr:hover {
+				background-color: rgba($white, 0.05);
+			}
+		}
+
+		figure figcaption, .wp-caption-text {
+			color: rgba($white, 0.7);
+		}
 	}
 }

@@ -18,6 +18,7 @@ import { activeMenuItem } from './modules/ui/activeMenuItem';
 // import { testAjax } from './modules/ui/testAjax'; // demo code — enable only while testing AJAX
 import { map } from './modules/vendor/map';
 import { imageDimensions } from './modules/ui/imageDimensions';
+import { cookieBanner } from './modules/ui/cookie-banner';
 
 // Auto-run colocated block JS: blocks/{slug}/{slug}.js
 // Each file must `export default` an init function.
@@ -41,6 +42,7 @@ export function runAfterDomLoad() {
 	// testAjax();
 	map();
 	parallax();
+	cookieBanner();
 
 	blockScripts.keys().forEach(key => {
 		const mod = blockScripts(key);

@@ -102,6 +102,13 @@ if( function_exists('acf_add_options_page') ) {
 		'parent' => 'theme-options'
 	]);
 
+	acf_add_options_sub_page([
+		'page_title' => 'Cookies',
+		'menu_title' => __( 'Cookies', 'ossark-builder' ),
+		'menu_slug' => 'cookies',
+		'parent' => 'theme-options'
+	]);
+
 }
 
 

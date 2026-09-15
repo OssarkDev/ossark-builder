@@ -1,0 +1,255 @@
+{
+    "key": "group_cookiesettings01",
+    "title": "Theme Options: Cookies",
+    "fields": [
+        {
+            "key": "field_cookie_banner_tab",
+            "label": "Cookie Banner",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cookie_banner_enabled",
+            "label": "Enable Cookie Banner",
+            "name": "cookie_banner_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show the cookie notice bar across the site until a visitor dismisses it.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_cookie_banner_message",
+            "label": "Banner Message",
+            "name": "cookie_banner_message",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "The text shown in the cookie notice bar. Basic HTML is allowed.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_cookie_banner_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "We use cookies to enhance your browsing experience and analyse our traffic. By continuing to use this site, you consent to our use of cookies.",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_cookie_banner_button_label",
+            "label": "Accept Button Label",
+            "name": "cookie_banner_button_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the dismiss / accept button.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_cookie_banner_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Accept",
+            "maxlength": "",
+            "placeholder": "Accept",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cookie_banner_link",
+            "label": "Learn More Link",
+            "name": "cookie_banner_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Optional link to your Cookie Statement page.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_cookie_banner_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cookie_statement_tab",
+            "label": "Cookie Statement",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_cookie_company_name",
+            "label": "Company / Website Name",
+            "name": "cookie_company_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Used throughout the default Cookie Statement. Defaults to the site name if left blank.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cookie_website_url",
+            "label": "Website URL",
+            "name": "cookie_website_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Defaults to the site URL if left blank.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cookie_contact_email",
+            "label": "Contact Email",
+            "name": "cookie_contact_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Defaults to the admin email if left blank.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cookie_last_updated",
+            "label": "Last Updated",
+            "name": "cookie_last_updated",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown at the top of the Cookie Statement, e.g. \"September 2026\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "September 2026",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cookie_statement_extra",
+            "label": "Additional Statement Content",
+            "name": "cookie_statement_extra",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Optional. Appended after the default Cookie Statement content (e.g. a table of the specific cookies you set).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "cookies"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1757894400
+}

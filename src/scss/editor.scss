@@ -12,7 +12,6 @@
 
 // Global part styles (no components/{slug}/ folder of their own)
 @use 'global/_buttons';
-@use 'global/_cookiebot';
 @use 'global/_form';
 
 // Part SCSS colocated in components/*/_*.scss and block SCSS in blocks/*/_*.scss
