@@ -5,6 +5,8 @@
  * inside the Gutenberg editor canvas for single templates and page templates.
  */
 
+import { initSlider } from '../vendor/slider';
+
 export function initEditorTemplateParts() {
     const config = window.ossarkTemplatePartsConfig;
     if (!config) return;
@@ -51,6 +53,7 @@ export function initEditorTemplateParts() {
             }
             if (beforeContainer.innerHTML !== beforeHtml) {
                 beforeContainer.innerHTML = beforeHtml;
+                initSlider(beforeContainer);
             }
         } else if (beforeContainer) {
             beforeContainer.remove();
@@ -71,6 +74,7 @@ export function initEditorTemplateParts() {
             }
             if (afterContainer.innerHTML !== afterHtml) {
                 afterContainer.innerHTML = afterHtml;
+                initSlider(afterContainer);
             }
         } else if (afterContainer) {
             afterContainer.remove();
