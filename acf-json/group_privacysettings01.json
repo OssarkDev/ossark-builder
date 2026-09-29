@@ -1,0 +1,336 @@
+{
+    "key": "group_privacysettings01",
+    "title": "Theme Options: Privacy Policy",
+    "fields": [
+        {
+            "key": "field_privacy_general_tab",
+            "label": "General",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_privacy_intro",
+            "label": "About this page",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "The Privacy Policy template reuses your Company name, Website URL and Contact email from <strong>Theme Options → Cookies</strong> so you only enter them once. Use the toggles below to switch on the sections that match the features your website actually uses.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_privacy_last_updated",
+            "label": "Last Updated",
+            "name": "privacy_last_updated",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown at the top of the Privacy Policy, e.g. \"September 2026\". Falls back to the Cookie Statement date if left blank.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "September 2026",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_privacy_cookie_statement_link",
+            "label": "Cookie Statement Link",
+            "name": "privacy_cookie_statement_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Optional link to your Cookie Statement page, referenced from the Cookies section.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_privacy_feature_cookies",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_privacy_features_tab",
+            "label": "Features",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_privacy_features_message",
+            "label": "Website Features",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable a toggle for each feature your website uses. Only the matching sections will appear in the generated Privacy Policy.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_privacy_feature_forms",
+            "label": "Contact / Enquiry Forms",
+            "name": "privacy_feature_forms",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Site collects personal data through contact, enquiry or booking forms.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_feature_analytics",
+            "label": "Analytics",
+            "name": "privacy_feature_analytics",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Site uses analytics tools such as Google Analytics.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_feature_marketing",
+            "label": "Email Marketing / Newsletter",
+            "name": "privacy_feature_marketing",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Site collects email addresses for newsletters or marketing.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_feature_cookies",
+            "label": "Cookies",
+            "name": "privacy_feature_cookies",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Site sets cookies (recommended if the cookie banner is enabled).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_feature_accounts",
+            "label": "User Accounts / Registration",
+            "name": "privacy_feature_accounts",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Visitors can register and log in to accounts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_feature_ecommerce",
+            "label": "Online Payments / E-commerce",
+            "name": "privacy_feature_ecommerce",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Site sells products or processes payments (e.g. WooCommerce).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_feature_comments",
+            "label": "Blog Comments",
+            "name": "privacy_feature_comments",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Visitors can leave comments on posts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_feature_embeds",
+            "label": "Third-party Embeds",
+            "name": "privacy_feature_embeds",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Site embeds third-party content such as maps, video or social feeds.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_privacy_content_tab",
+            "label": "Additional Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_privacy_statement_extra",
+            "label": "Additional Policy Content",
+            "name": "privacy_statement_extra",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Optional. Appended after the default Privacy Policy content (e.g. sector-specific clauses or named third-party processors).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "privacy-policy"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1759104000
+}

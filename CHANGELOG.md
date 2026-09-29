@@ -15,7 +15,7 @@ When upgrading an older theme to the latest boilerplate structure, an AI agent s
    - Check `style.css` for `Version: X.XX` and `package.json` for `"version": "X.Y.Z"`.
    - Inspect existing directory structure (e.g. `components/blocks/` vs `blocks/`, `components/parts/` vs `components/{slug}/`, `functions.php` includes, and Webpack config).
 2. **Determine Target Migration Path**:
-   - Identify all version milestones between the source version and target version (`3.22.0`).
+   - Identify all version milestones between the source version and target version (`3.23.0`).
    - Execute the **Migration Recipes** chronologically from oldest to newest.
 3. **Execute Step-by-Step File & Code Changes**:
    - Create missing directories and move files according to the architectural milestones.
@@ -27,20 +27,20 @@ When upgrading an older theme to the latest boilerplate structure, an AI agent s
    - Run `npm install` to install/update dependencies (`lenis`, `slick-carousel`, `lottie-web`, etc.).
    - Run `npm run build` (or `npm run build:dev`) and ensure Webpack compiles without errors.
    - Verify that all block and part templates resolve with `get_block()` and `get_part()`.
-   - Ensure `style.css` and `package.json` are bumped to `Version: 3.22` and `"version": "3.22.0"`.
+   - Ensure `style.css` and `package.json` are bumped to `Version: 3.23` and `"version": "3.23.0"`.
 
 ### AI Agent Prompt Template
-> *"Please read CHANGELOG.md and upgrade this WordPress theme from its current version to version 3.22.0 by executing the migration recipes in chronological order. Ensure directory structures, Webpack configuration, theme includes, editor integration, and build scripts are fully aligned with the latest architecture, and run `npm run build` to verify."*
+> *"Please read CHANGELOG.md and upgrade this WordPress theme from its current version to version 3.23.0 by executing the migration recipes in chronological order. Ensure directory structures, Webpack configuration, theme includes, editor integration, and build scripts are fully aligned with the latest architecture, and run `npm run build` to verify."*
 
 ---
 
-## Target Architecture Overview (v3.22.0)
+## Target Architecture Overview (v3.23.0)
 
 ```text
 theme-root/
 ├── 404.php, archive.php, footer.php, functions.php, header.php, index.php, page.php, search.php, single.php
-├── style.css                      (Version: 3.22)
-├── package.json                   (version: 3.22.0, scripts for dev/build/make:block/make:part)
+├── style.css                      (Version: 3.23)
+├── package.json                   (version: 3.23.0, scripts for dev/build/make:block/make:part)
 ├── theme.json                     (contentSize: 100%, wideSize: 100%)
 ├── webpack.config.js              (entry: main & editor, Sass loadPaths, splitChunks)
 ├── acf-json/                      (Auto-synced ACF field groups)
@@ -93,9 +93,46 @@ theme-root/
 │       └── include/               (_shared.scss, _variables.scss, _mixins.scss, _layout.scss, _helpers.scss)
 ├── templates/
 │   ├── coming-soon.php
-│   └── cookie-statement.php       (Variable-driven cookie statement)
+│   ├── cookie-statement.php       (Variable-driven cookie statement)
+│   └── privacy-policy.php         (Variable-driven, feature-toggled privacy policy)
 └── woocommerce/                   (Full override templates for shop, cart, checkout, myaccount)
 ```
+
+---
+
+## [3.23.0] - 2026-09-29 (Privacy Policy Generator)
+
+### Added
+- **Variable-driven Privacy Policy template** (`templates/privacy-policy.php`): a complete, GDPR-aware privacy policy generated from Theme Options, mirroring the Cookie Statement approach.
+  - **Reuses the shared identity variables** from Theme Options → Cookies (`cookie_company_name`, `cookie_website_url`, `cookie_contact_email`) so the company name, website and contact email are only entered once.
+  - **Feature-conditional sections**: each section is rendered only when the matching feature is toggled on, so the policy reflects exactly what the website does.
+- **Theme Options → Privacy Policy** ACF options sub-page (`acf-json/group_privacysettings01.json`):
+  - General tab: privacy-specific "Last Updated" (falls back to the Cookie Statement date) and an optional Cookie Statement link.
+  - Features tab: toggles for Contact forms, Analytics, Email marketing, Cookies, User accounts, E-commerce, Blog comments and Third-party embeds.
+  - Additional Content tab: optional WYSIWYG appended after the default policy.
+- **`Privacy Policy` options sub-page** registered in `include/acf.php` (`menu_slug => 'privacy-policy'`).
+
+---
+
+#### 🛠️ Migration Recipe (Upgrading from v3.22.0 to v3.23.0)
+1. **Add the Privacy Policy Template**:
+   Copy `templates/privacy-policy.php` (Template Name: `Privacy Policy`).
+2. **Register the Privacy Policy Options Sub-Page**:
+   In `include/acf.php`, add the sub-page inside the `acf_add_options_page` block (after the `Cookies` sub-page):
+   ```php
+   acf_add_options_sub_page([
+       'page_title' => 'Privacy Policy',
+       'menu_title' => __( 'Privacy Policy', 'ossark-builder' ),
+       'menu_slug'  => 'privacy-policy',
+       'parent'     => 'theme-options'
+   ]);
+   ```
+3. **Import ACF Fields**:
+   Copy `acf-json/group_privacysettings01.json` to enable field sync in WP Admin.
+4. **Publish the Page**:
+   Create a `Privacy Policy` page, assign the **Privacy Policy** page template, then set the feature toggles under **Theme Options → Privacy Policy**.
+5. **Bump Version**:
+   Update `style.css` to `Version: 3.23` and `package.json` to `"version": "3.23.0"`.
 
 ---
 

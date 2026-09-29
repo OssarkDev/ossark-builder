@@ -109,6 +109,13 @@ if( function_exists('acf_add_options_page') ) {
 		'parent' => 'theme-options'
 	]);
 
+	acf_add_options_sub_page([
+		'page_title' => 'Privacy Policy',
+		'menu_title' => __( 'Privacy Policy', 'ossark-builder' ),
+		'menu_slug' => 'privacy-policy',
+		'parent' => 'theme-options'
+	]);
+
 }
 
 
