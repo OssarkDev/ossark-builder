@@ -53,6 +53,17 @@ body.wp-text,
     gap: 1em;
 }
 
+/* ─── Frontend-only chrome ──────────────────────────── */
+/*
+   Fixed/overlay elements that are injected on the frontend
+   (e.g. via wp_footer) but whose SCSS is mirrored into the
+   editor bundle. Force them hidden so they never bleed into
+   the canvas as a fixed bar/overlay stuck to the iframe.
+*/
+.editor-styles-wrapper .cookie-banner {
+    display: none !important;
+}
+
 /* ─── Reset patches for iframe ──────────────────────── */
 
 /*

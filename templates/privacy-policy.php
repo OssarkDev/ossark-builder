@@ -41,7 +41,7 @@ $cookie_link = get_field( 'privacy_cookie_statement_link', 'option' );
 <section class="section privacy-policy">
 	<div class="container">
 		<div class="row">
-			<div class="col-10-offset-1">
+			<div class="col-10-offset-1 wp-text">
 				<h1><?php the_title(); ?></h1>
 
 				<?php if ( $updated ) : ?>

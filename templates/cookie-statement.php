@@ -26,7 +26,7 @@ $website_host = esc_html( wp_parse_url( $website, PHP_URL_HOST ) ?: $website );
 <section class="section cookie-statement">
 	<div class="container">
 		<div class="row">
-			<div class="col-10-offset-1">
+			<div class="col-10-offset-1 wp-text">
 				<h1><?php the_title(); ?></h1>
 
 				<?php if ( $updated ) : ?>

@@ -15,6 +15,8 @@ $ossark_theme_includes = [
     'coming_soon',
     'cookie_banner',
     'debug',
+    'seo_import',
+    'unused_media',
     // 'custom_taxonomies',
     // 'theme_ajax',
     // 'woocommerce',

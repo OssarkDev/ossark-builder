@@ -15,7 +15,7 @@ When upgrading an older theme to the latest boilerplate structure, an AI agent s
    - Check `style.css` for `Version: X.XX` and `package.json` for `"version": "X.Y.Z"`.
    - Inspect existing directory structure (e.g. `components/blocks/` vs `blocks/`, `components/parts/` vs `components/{slug}/`, `functions.php` includes, and Webpack config).
 2. **Determine Target Migration Path**:
-   - Identify all version milestones between the source version and target version (`3.23.0`).
+   - Identify all version milestones between the source version and target version (`3.24.0`).
    - Execute the **Migration Recipes** chronologically from oldest to newest.
 3. **Execute Step-by-Step File & Code Changes**:
    - Create missing directories and move files according to the architectural milestones.
@@ -27,20 +27,20 @@ When upgrading an older theme to the latest boilerplate structure, an AI agent s
    - Run `npm install` to install/update dependencies (`lenis`, `slick-carousel`, `lottie-web`, etc.).
    - Run `npm run build` (or `npm run build:dev`) and ensure Webpack compiles without errors.
    - Verify that all block and part templates resolve with `get_block()` and `get_part()`.
-   - Ensure `style.css` and `package.json` are bumped to `Version: 3.23` and `"version": "3.23.0"`.
+   - Ensure `style.css` and `package.json` are bumped to `Version: 3.24` and `"version": "3.24.0"`.
 
 ### AI Agent Prompt Template
-> *"Please read CHANGELOG.md and upgrade this WordPress theme from its current version to version 3.23.0 by executing the migration recipes in chronological order. Ensure directory structures, Webpack configuration, theme includes, editor integration, and build scripts are fully aligned with the latest architecture, and run `npm run build` to verify."*
+> *"Please read CHANGELOG.md and upgrade this WordPress theme from its current version to version 3.24.0 by executing the migration recipes in chronological order. Ensure directory structures, Webpack configuration, theme includes, editor integration, and build scripts are fully aligned with the latest architecture, and run `npm run build` to verify."*
 
 ---
 
-## Target Architecture Overview (v3.23.0)
+## Target Architecture Overview (v3.24.0)
 
 ```text
 theme-root/
 ├── 404.php, archive.php, footer.php, functions.php, header.php, index.php, page.php, search.php, single.php
-├── style.css                      (Version: 3.23)
-├── package.json                   (version: 3.23.0, scripts for dev/build/make:block/make:part)
+├── style.css                      (Version: 3.24)
+├── package.json                   (version: 3.24.0, scripts for dev/build/make:block/make:part)
 ├── theme.json                     (contentSize: 100%, wideSize: 100%)
 ├── webpack.config.js              (entry: main & editor, Sass loadPaths, splitChunks)
 ├── acf-json/                      (Auto-synced ACF field groups)
@@ -100,6 +100,32 @@ theme-root/
 
 ---
 
+## [3.24.0] - 2026-10-08 (SEO Import & Unused Media Tools)
+
+### Added
+- **`include/seo_import.php`**: adds **Tools → SEO Import** in wp-admin. Reads `seo/seo-data.csv` from the theme and bulk-sets the Yoast SEO title, meta description and focus keyphrase on matching posts (matched by `post_type` + `slug`).
+  - Previews every row first (found / not found / already has Yoast data) before anything is written.
+  - Never overwrites existing Yoast values unless the **Overwrite** checkbox is ticked.
+  - CSV columns: `post_type`, `slug`, `seo_title`, `meta_description`, `focus_keyphrase`.
+  - Workflow: generate the CSV locally, deploy it with the theme, run the import on live, then remove the include and the `seo/` folder.
+- **`include/unused_media.php`**: adds **Tools → Unused Media** in wp-admin. Scans the Media Library and lists attachments not referenced anywhere on the site.
+  - A file counts as used if its ID or file name (ignoring resized/scaled/converted copies) appears in post content (blocks, shortcodes, HTML), post/term/user meta, the options table (theme mods, ACF options, widgets, site icon/logo) or theme files that hard-code an `uploads` path.
+  - Scan first, then tick files and confirm; deletion is permanent (`wp_delete_attachment( $id, true )`) and limited to IDs from the last scan. Back up first.
+  - Not covered: references in custom database tables or plugin code.
+
+---
+
+#### 🛠️ Migration Recipe (Upgrading from v3.23.0 to v3.24.0)
+1. **Add the SEO Import Module**:
+   Copy `include/seo_import.php` and add `'seo_import'` to the `$ossark_theme_includes` array in `functions.php` (after `'debug'`).
+2. **Add the Data File** (when needed):
+   Create `seo/seo-data.csv` with the columns listed above, then use **Tools → SEO Import**.
+3. **Add the Unused Media Tool**:
+   Copy `include/unused_media.php` and add `'unused_media'` to `$ossark_theme_includes` (after `'seo_import'`). Use **Tools → Unused Media**.
+4. **Bump Version**:
+   Update `style.css` to `Version: 3.24` and `package.json` to `"version": "3.24.0"`.
+
+---
 ## [3.23.0] - 2026-09-29 (Privacy Policy Generator)
 
 ### Added

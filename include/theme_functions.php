@@ -149,3 +149,48 @@ function get_acf_block_data($post_id, $block_name, $field_name) {
 
   return $content; // Return the field value
 }
+
+
+
+
+/*
+	=====================
+		Image aspect ratio (width / height)
+	=====================	
+*/
+// Accepts an ACF image array or attachment ID. SVGs are read from their viewBox because ACF/WP report them as 1x1.
+function get_image_aspect_ratio( $image ) {
+  $id = is_array( $image ) ? (int) ( $image['ID'] ?? 0 ) : (int) $image;
+  $ar = $id ? get_transient( 'image_ar_' . $id ) : false;
+
+  if ( false !== $ar ) {
+    return (float) $ar;
+  }
+
+  $w    = is_array( $image ) ? (float) ( $image['width'] ?? 0 ) : 0;
+  $h    = is_array( $image ) ? (float) ( $image['height'] ?? 0 ) : 0;
+  $file = $id ? get_attached_file( $id ) : '';
+
+  if ( $file && 'svg' === strtolower( pathinfo( $file, PATHINFO_EXTENSION ) ) && is_readable( $file ) ) {
+    $svg = file_get_contents( $file, false, null, 0, 4096 );
+    if ( preg_match( '/viewBox\s*=\s*["\']\s*[-\d.]+[\s,]+[-\d.]+[\s,]+([\d.]+)[\s,]+([\d.]+)/i', $svg, $m ) ) {
+      $w = (float) $m[1];
+      $h = (float) $m[2];
+    } elseif ( preg_match( '/<svg[^>]*\swidth\s*=\s*["\']([\d.]+)/i', $svg, $mw ) && preg_match( '/<svg[^>]*\sheight\s*=\s*["\']([\d.]+)/i', $svg, $mh ) ) {
+      $w = (float) $mw[1];
+      $h = (float) $mh[1];
+    }
+  } elseif ( $id && ( $w <= 1 || $h <= 1 ) ) {
+    $meta = wp_get_attachment_metadata( $id );
+    $w    = (float) ( $meta['width'] ?? 0 );
+    $h    = (float) ( $meta['height'] ?? 0 );
+  }
+
+  $ar = ( $w > 0 && $h > 0 ) ? round( $w / $h, 3 ) : 1.0;
+
+  if ( $id ) {
+    set_transient( 'image_ar_' . $id, $ar, DAY_IN_SECONDS );
+  }
+
+  return $ar;
+}
