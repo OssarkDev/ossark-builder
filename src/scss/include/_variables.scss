@@ -91,8 +91,9 @@ $row-gap-mobile: 24px;
 
 // direction properties + matching class prefixes for the generated
 // spacing utilities (see _layout.scss for the 4px scale and responsive map)
-$directions: padding padding-top padding-right padding-bottom padding-left margin margin-top margin-right margin-bottom margin-left;
-$directions-classname: p pt pr pb pl m mt mr mb ml;
+// (g = gap, gx = column-gap, gy = row-gap)
+$directions: padding padding-top padding-right padding-bottom padding-left margin margin-top margin-right margin-bottom margin-left gap column-gap row-gap;
+$directions-classname: p pt pr pb pl m mt mr mb ml g gx gy;
 
 // header
 $header-height: 80px;

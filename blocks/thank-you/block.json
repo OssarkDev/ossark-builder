@@ -16,5 +16,20 @@
     "acf": {
         "mode": "auto",
         "renderTemplate": "thank-you.php"
+    },
+    "example": {
+        "viewportWidth": 1200,
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "is_preview": true,
+                "title": "Thank you for getting in touch",
+                "button": {
+                    "title": "Back to home",
+                    "url": "#",
+                    "target": ""
+                }
+            }
+        }
     }
 }

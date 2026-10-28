@@ -79,11 +79,16 @@ function ossark_send_csp_header(): void {
         "style-src"       => "'self' 'unsafe-inline'"
                            . " https://fonts.googleapis.com",
         "img-src"         => "'self' data: https: blob:",
+        "media-src"       => "'self' data: blob: https:",
         "font-src"        => "'self' data:"
                            . " https://fonts.gstatic.com",
         "connect-src"     => "'self'"
                            . " https://maps.googleapis.com"
+                           . " https://www.google.com"
                            . " https://www.google-analytics.com"
+                           . " https://*.google-analytics.com"
+                           . " https://*.analytics.google.com"
+                           . " https://*.googletagmanager.com"
                            . " https://www.googletagmanager.com",
         "frame-src"       => "'self'"
                            . " https://www.youtube.com"

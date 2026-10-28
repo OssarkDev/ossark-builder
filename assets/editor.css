@@ -81,3 +81,21 @@ body.ossark-resizing * {
 body.ossark-resizing iframe {
     pointer-events: none !important;
 }
+
+/* ─── Larger block hover previews in the inserter ───────
+   The preview is scaled to the width of this container, so a wider
+   container gives a proportionally larger preview. Blocks set
+   example.viewportWidth (1200) so it renders with the desktop layout.
+─────────────────────────────────────────────────────────── */
+.block-editor-inserter__preview-container {
+    width: min(800px, calc(100vw - 440px)) !important;
+    max-width: none !important;
+}
+
+.block-editor-inserter__preview-container .block-editor-inserter__preview-content {
+    min-height: 420px;
+}
+
+.block-editor-inserter__preview-container .block-editor-block-preview__container {
+    min-height: 420px;
+}

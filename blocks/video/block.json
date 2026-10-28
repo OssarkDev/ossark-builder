@@ -16,5 +16,15 @@
     "acf": {
         "mode": "auto",
         "renderTemplate": "video.php"
+    },
+    "example": {
+        "viewportWidth": 1200,
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "is_preview": true,
+                "subtitle": "Video subtitle goes here"
+            }
+        }
     }
 }

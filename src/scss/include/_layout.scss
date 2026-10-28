@@ -175,7 +175,7 @@ section, .section {
 =================================================================
     Spacing — 4px grid scale
 =================================================================
-    Padding/margin utilities generated on a 4px baseline so any
+    Padding/margin/gap utilities generated on a 4px baseline so any
     4px-grid design has a matching token. Steps stay fine (4px) for
     small values and widen as they grow to keep the output lean.
 
@@ -183,6 +183,7 @@ section, .section {
         64–120 → 8px steps   (.mt-72 … .mt-120)
 
     e.g. .mt-4, .pb-24, .p-120
+    Gaps: .g-24 (gap), .gx-24 (column-gap), .gy-24 (row-gap)
 */
 
 // Build the 4px scale (capped at 120).

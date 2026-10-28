@@ -262,3 +262,29 @@ body.editor-styles-wrapper {
     pointer-events: none;
 }
 
+/* Fixed/sticky parts (cookie banner, header) must sit in the flow of the
+   preview instead of covering the canvas. */
+.ossark-editor-template-part__body > * {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+}
+
+.ossark-editor-template-part--component {
+    border-style: dotted;
+    border-color: rgba(120, 120, 120, 0.5);
+}
+
+.ossark-editor-template-part--component .ossark-editor-template-part__badge-tag {
+    background: #6b7280;
+}
+
+.ossark-editor-template-part__empty {
+    margin: 0;
+    padding: 12px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    color: #757575;
+}
+

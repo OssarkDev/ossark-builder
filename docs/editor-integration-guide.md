@@ -151,16 +151,16 @@ $(function () {
 Mirror your design tokens, grid layout, reset rules, and typography into the editor bundle:
 
 ```scss
-@use 'include/_fonts';
-@use 'include/_reset';
-@use 'include/_typography';
-@use 'include/_layout';
-@use 'include/_smooth-scroll';
-@use 'include/_animations';
-@use 'include/_helpers';
+@use 'include/fonts';
+@use 'include/reset';
+@use 'include/typography';
+@use 'include/layout';
+@use 'include/smooth-scroll';
+@use 'include/animations';
+@use 'include/helpers';
 
-@use 'global/_buttons';
-@use 'global/_form';
+// components/*/_*.scss (buttons, form, header…) and blocks/*/_*.scss
+// are auto-imported via require.context in src/editor.js
 ```
 
 ---

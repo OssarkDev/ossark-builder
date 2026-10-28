@@ -16,5 +16,15 @@
     "acf": {
         "mode": "auto",
         "renderTemplate": "text.php"
+    },
+    "example": {
+        "viewportWidth": 1200,
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "is_preview": true,
+                "text": "<h2>Heading</h2><p>Rich text content goes here. Replace this with your own copy in the editor.</p>"
+            }
+        }
     }
 }

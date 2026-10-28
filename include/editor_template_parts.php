@@ -236,16 +236,41 @@ function ossark_render_single_template_part( string $slug, array $args, int $pos
         return '';
     }
 
-    ob_start();
-    include $resolved;
-    $rendered_content = ob_get_clean();
+    $is_component = 'component' === $position;
 
-    if ( false === $rendered_content || '' === trim( $rendered_content ) ) {
-        return '';
+    $level = ob_get_level();
+    // Standalone components get empty args, so quieten notices from missing keys.
+    $prev_reporting = $is_component ? error_reporting( error_reporting() & ~( E_WARNING | E_NOTICE | E_DEPRECATED ) ) : null;
+    ob_start();
+    try {
+        include $resolved;
+        $rendered_content = ob_get_clean();
+    } catch ( \Throwable $e ) {
+        while ( ob_get_level() > $level ) {
+            ob_end_clean();
+        }
+        $rendered_content = '';
+    }
+    if ( null !== $prev_reporting ) {
+        error_reporting( $prev_reporting );
     }
 
-    $pos_class = 'before' === $position ? 'ossark-editor-template-part--before' : 'ossark-editor-template-part--after';
-    $badge_tag = 'before' === $position ? 'Top Template Part' : 'Bottom Template Part';
+    if ( false === $rendered_content || '' === trim( $rendered_content ) ) {
+        // Standalone components may need arguments or live data to render;
+        // still list them so every part is visible in the editor.
+        if ( ! $is_component ) {
+            return '';
+        }
+        $rendered_content = '<p class="ossark-editor-template-part__empty">This component renders nothing without arguments or data.</p>';
+    }
+
+    $labels = [
+        'before'    => [ 'ossark-editor-template-part--before', 'Top Template Part' ],
+        'after'     => [ 'ossark-editor-template-part--after', 'Bottom Template Part' ],
+        'component' => [ 'ossark-editor-template-part--component', 'Component' ],
+    ];
+
+    list( $pos_class, $badge_tag ) = $labels[ $position ] ?? $labels['after'];
 
     return sprintf(
         '<div class="ossark-editor-template-part %s" data-part="%s">
@@ -276,41 +301,61 @@ function ossark_render_single_template_part( string $slug, array $args, int $pos
  */
 function ossark_get_editor_template_parts_data( int $post_id = 0, string $template_slug = '' ): array {
     $template_file = ossark_resolve_post_template_file( $post_id, $template_slug );
+    $template_name = $template_file ? basename( $template_file ) : '';
 
-    if ( empty( $template_file ) ) {
-        return [
-            'has_parts'     => false,
-            'template_file' => '',
-            'before_html'   => '',
-            'after_html'    => '',
-            'before_slugs'  => [],
-            'after_slugs'   => [],
-        ];
+    $parsed = [
+        'before' => [],
+        'after'  => [],
+    ];
+    if ( $template_file ) {
+        $parsed = ossark_parse_template_parts_from_file( $template_file );
     }
 
-    $parsed = ossark_parse_template_parts_from_file( $template_file );
+    // Every get_part() in header.php sits above the content, footer.php below it.
+    $header_parts = [];
+    $footer_parts = [];
+    $header_file  = locate_template( 'header.php' );
+    $footer_file  = locate_template( 'footer.php' );
+    if ( $header_file ) {
+        $found        = ossark_parse_template_parts_from_file( $header_file );
+        $header_parts = array_merge( $found['before'], $found['after'] );
+    }
+    if ( $footer_file ) {
+        $found        = ossark_parse_template_parts_from_file( $footer_file );
+        $footer_parts = array_merge( $found['before'], $found['after'] );
+    }
 
-    if ( empty( $parsed['before'] ) && empty( $parsed['after'] ) ) {
-        return [
-            'has_parts'     => false,
-            'template_file' => basename( $template_file ),
-            'before_html'   => '',
-            'after_html'    => '',
-            'before_slugs'  => [],
-            'after_slugs'   => [],
-        ];
+    // Any component folder not called by the files above (cookie banner, map, ...).
+    $used_slugs = array_column(
+        array_merge( $header_parts, $parsed['before'], $parsed['after'], $footer_parts ),
+        'slug'
+    );
+    $component_parts = [];
+    foreach ( glob( get_template_directory() . '/components/*', GLOB_ONLYDIR ) ?: [] as $dir ) {
+        $slug = basename( $dir );
+        if ( file_exists( $dir . '/' . $slug . '.php' ) && ! in_array( $slug, $used_slugs, true ) ) {
+            $component_parts[] = [
+                'slug' => $slug,
+                'args' => [],
+            ];
+        }
     }
 
     // Set up post context so get_field(), the_title(), etc. receive correct values
-    $post = $post_id ? get_post( $post_id ) : null;
-    if ( $post ) {
-        global $post;
+    global $post;
+    $original_post = $post;
+    $editing_post  = $post_id ? get_post( $post_id ) : null;
+    if ( $editing_post ) {
+        $post = $editing_post;
         setup_postdata( $post );
     }
 
-    $template_name = basename( $template_file );
-    $before_html   = '';
-    $after_html    = '';
+    $before_html = '';
+    $after_html  = '';
+
+    foreach ( $header_parts as $part ) {
+        $before_html .= ossark_render_single_template_part( $part['slug'], $part['args'], $post_id, 'header.php', 'before' );
+    }
 
     foreach ( $parsed['before'] as $part ) {
         $before_html .= ossark_render_single_template_part( $part['slug'], $part['args'], $post_id, $template_name, 'before' );
@@ -320,17 +365,31 @@ function ossark_get_editor_template_parts_data( int $post_id = 0, string $templa
         $after_html .= ossark_render_single_template_part( $part['slug'], $part['args'], $post_id, $template_name, 'after' );
     }
 
-    if ( $post ) {
-        wp_reset_postdata();
+    foreach ( $footer_parts as $part ) {
+        $after_html .= ossark_render_single_template_part( $part['slug'], $part['args'], $post_id, 'footer.php', 'after' );
+    }
+
+    foreach ( $component_parts as $part ) {
+        $after_html .= ossark_render_single_template_part( $part['slug'], $part['args'], $post_id, 'not called by a template', 'component' );
+    }
+
+    if ( $editing_post ) {
+        $post = $original_post;
+        if ( $original_post instanceof \WP_Post ) {
+            setup_postdata( $original_post );
+        } else {
+            wp_reset_postdata();
+        }
     }
 
     return [
-        'has_parts'     => ( ! empty( $before_html ) || ! empty( $after_html ) ),
-        'template_file' => $template_name,
-        'before_html'   => $before_html,
-        'after_html'    => $after_html,
-        'before_slugs'  => array_column( $parsed['before'], 'slug' ),
-        'after_slugs'   => array_column( $parsed['after'], 'slug' ),
+        'has_parts'       => ( ! empty( $before_html ) || ! empty( $after_html ) ),
+        'template_file'   => $template_name,
+        'before_html'     => $before_html,
+        'after_html'      => $after_html,
+        'before_slugs'    => array_column( array_merge( $header_parts, $parsed['before'] ), 'slug' ),
+        'after_slugs'     => array_column( array_merge( $parsed['after'], $footer_parts ), 'slug' ),
+        'component_slugs' => array_column( $component_parts, 'slug' ),
     ];
 }
 

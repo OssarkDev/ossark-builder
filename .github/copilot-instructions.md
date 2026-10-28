@@ -52,6 +52,7 @@ This is a modern WordPress theme boilerplate built with **ACF blocks**, **Webpac
 
 ### Utility Classes
 - Spacing: `.mt-48` (margin-top: 48px), `.pb-48` (padding-bottom: 48px)
+- Gaps: `.g-24` (gap), `.gx-24` (column-gap), `.gy-24` (row-gap) — same 4px scale
 - Responsive variations available - configure in `_variables.scss`
 
 ## ACF Block System

@@ -67,6 +67,16 @@ const blockJson = `{
     "acf": {
         "mode": "auto",
         "renderTemplate": "${slug}.php"
+    },
+    "example": {
+        "viewportWidth": 1200,
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "is_preview": true,
+                "title": "${title}"
+            }
+        }
     }
 }
 `;

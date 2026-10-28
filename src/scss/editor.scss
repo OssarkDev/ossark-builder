@@ -2,17 +2,14 @@
 // Mirrors the frontend fully (global tokens, parts and blocks) so the block
 // editor WYSIWYG matches production.
 
-@use 'include/_fonts';
-@use 'include/_reset';
-@use 'include/_typography';
-@use 'include/_layout';
-@use 'include/_smooth-scroll';
-@use 'include/_animations';
-@use 'include/_helpers';
+@use 'include/fonts';
+@use 'include/reset';
+@use 'include/typography';
+@use 'include/layout';
+@use 'include/smooth-scroll';
+@use 'include/animations';
+@use 'include/helpers';
 
-// Global part styles (no components/{slug}/ folder of their own)
-@use 'global/_buttons';
-@use 'global/_form';
-
-// Part SCSS colocated in components/*/_*.scss and block SCSS in blocks/*/_*.scss
-// are auto-imported via require.context in src/editor.js.
+// Part SCSS colocated in components/*/_*.scss (buttons, form, header, ...)
+// and block SCSS in blocks/*/_*.scss are auto-imported via
+// require.context in src/editor.js.

@@ -57,8 +57,8 @@ src/
       vendor/         → slider, map (library wiring)
   scss/
     index.scss        → Main SCSS entry
-    include/          → Variables, mixins, shared, layout, reset, fonts, animations
-    global/           → Global element styles (buttons, form, cookiebot)
+    include/          → Variables, mixins, shared, layout, reset, fonts, animations, helpers
+    (buttons, form, header, footer… live in components/{slug}/_{slug}.scss, auto-imported)
 templates/           → WordPress page templates
 acf-json/            → ACF field group JSON (auto-synced)
 ```
@@ -101,6 +101,7 @@ The layout uses a Bootstrap-like grid: `section → container → row → col`
 ### Utility Classes
 
 - Spacing: `.mt-48` → `margin-top: 48px`, `.pb-48` → `padding-bottom: 48px`
+- Gaps: `.g-24` → `gap: 24px`, `.gx-24` → `column-gap: 24px`, `.gy-24` → `row-gap: 24px` (same 4px scale and responsive overrides as spacing)
 - Responsive variations: configure sizes in `$laptop-change` & `$mobile-change` in `_variables.scss`
 
 ---
